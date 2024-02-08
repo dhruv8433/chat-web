@@ -13,6 +13,8 @@
 
   --text: white;
   --global-font: "Baloo 2", sans-serif;
+
+  --red: red;
 }
 
 @media (prefers-color-scheme: dark) {
