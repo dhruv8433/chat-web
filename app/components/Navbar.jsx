@@ -11,6 +11,7 @@ const Navbar = () => {
         <Avatar
           src="https://wallpapers.com/images/hd/shin-chan-amazed-3ifhnlv2ww6kuwb9.jpg"
           alt="user image"
+          className="bg-cover"
         />
         <h1 className="ml-4 text-2xl" style={{ fontWeight: 700 }}>
           Hi , Partner

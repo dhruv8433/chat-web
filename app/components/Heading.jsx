@@ -4,7 +4,7 @@ import React from "react";
 
 const Heading = ({ title }) => {
   return (
-    <div className="h-16 primary w-full flex justify-between items-center px-2 rounded-xl">
+    <div className="h-16 primary w-full flex justify-between items-center px-5 rounded-xl">
       <h1 className="text-4xl ">{title}</h1>
       <div className="flex">
         <button className="button h-min w-max p-2 rounded m-auto mr-2">+ New Chat</button>
