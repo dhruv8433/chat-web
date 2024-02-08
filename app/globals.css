@@ -7,9 +7,11 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  --primary: #23262f 
-  --secondary: #494c55
-  --buttons: #2f80f0
+  --primary: #23262f; 
+  --secondary: #494c55;
+  --buttons: #2f80f0;
+
+  --text: white;
 }
 
 @media (prefers-color-scheme: dark) {
