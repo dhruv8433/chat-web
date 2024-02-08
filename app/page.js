@@ -17,8 +17,8 @@ const Item = styled(Paper)(({ theme }) => ({
 }));
 
 export default function Home() {
+
   return (
-    <Container>
       <Box sx={{ flexGrow: 1, mt: 5 }}>
     <Heading title={"Chats"} />
         <Grid container spacing={2}>
@@ -32,6 +32,7 @@ export default function Home() {
           </Grid>
         </Grid>
       </Box>
-    </Container>
+   
   );
+
 }

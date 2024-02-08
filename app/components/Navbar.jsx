@@ -1,11 +1,16 @@
-import { Avatar, Icon } from "@mui/material";
+"use client";
+
+import { Avatar, Box } from "@mui/material";
 
 import React from "react";
 import Routes from "./Routes";
 
 const Navbar = () => {
   return (
-    <div className="border border-black primary h-[90vh] p-2 w-auto rounded-2xl absolute">
+    <Box
+      className=" primary h-[90vh] p-2 rounded-2xl relative"
+      sx={{ width: { xs: "100%", md: "100%" } }}
+    >
       <div className="flex items-center p-4">
         {/* user image -- dynamic */}
         <Avatar
@@ -18,7 +23,7 @@ const Navbar = () => {
         </h1>
       </div>
       <Routes />
-    </div>
+    </Box>
   );
 };
 
