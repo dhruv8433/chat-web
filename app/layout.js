@@ -18,11 +18,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${font.className} m-10`}>
-        <Grid container>
-          <Grid item xs={12} md={2}>
+        <Grid container spacing={{ xs: 2, sm: 2, md: 2, lg: 2, xl: 2 }}>
+          <Grid item xs={12} md={4} sm={12}>
             <Navbar />
           </Grid>
-          <Grid item xs={12} md={10}>
+          <Grid item xs={12} md={8} sm={12}>
             {children}
           </Grid>
         </Grid>

@@ -7,8 +7,10 @@ const Heading = ({ title }) => {
     <div className="h-16 primary w-full flex justify-between items-center px-5 rounded-xl">
       <h1 className="text-4xl ">{title}</h1>
       <div className="flex">
-        <button className="button h-min w-max p-2 rounded m-auto mr-2">+ New Chat</button>
-        <IconButton>
+        <button className="button h-min w-max p-2 rounded m-auto mr-2">
+          + New Chat
+        </button>
+        <IconButton aria-label="notifications">
           <NotificationsOutlined sx={{ color: "white" }} />
         </IconButton>
         <div className="flex items-center p-4">
