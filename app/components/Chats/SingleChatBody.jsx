@@ -1,25 +1,14 @@
 import React from "react";
-import "../../app/style.css";
-import {
-  Card,
-  TextField,
-  IconButton,
-  Stack,
-  Box,
-  CardMedia,
-  Typography,
-} from "@mui/material";
+import { Card, IconButton, Box, CardMedia } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import GalleryIcon from "@mui/icons-material/InsertPhoto";
 import VoiceIcon from "@mui/icons-material/Mic";
 
 export const SingleChatBody = () => {
   return (
-    <Card className="my-secondary" sx={{ padding: 3 }}>
+    <Card className="secondary rounded-2xl p-2 mt-3">
       {/* Receiver messages */}
-      <Box
-        sx={{ display: "flex", justifyContent: "flex-start", marginBottom: 2 }}
-      >
+      <div className="flex justify-start mb-2 min-h-[520px]">
         <CardMedia
           component="img"
           src="/userProfile.jpg"
@@ -32,71 +21,62 @@ export const SingleChatBody = () => {
             marginRight: 2,
           }}
         />
-        <Typography
-          className="my-primary"
-          sx={{
-            padding: 2,
-            borderRadius: 2,
-            backgroundColor: "#f0f0f0",
-            maxWidth: "70%",
+        <h1
+          className="primary p-3 h-min rounded text-white"
+          style={{
             borderTopLeftRadius: 0,
           }}
         >
           Hello, how are you?
-        </Typography>
-      </Box>
+        </h1>
+      </div>
+
       {/* Sender messages */}
       <Box
         sx={{ display: "flex", justifyContent: "flex-end", marginBottom: 2 }}
       >
-        <Typography
-          className="my-primary"
-          sx={{
-            padding: 2,
-            borderRadius: 2,
-            backgroundColor: "#dcf8c6",
-            maxWidth: "70%",
+        <h1
+          className="primary p-3 rounded text-white"
+          style={{
             borderTopRightRadius: 0, // Set top-right corner border radius to zero
           }}
         >
           I'm good, thank you!
-        </Typography>
+        </h1>
       </Box>
       {/* Message input */}
       <Box>
-        <Stack direction="row" spacing={1}>
+        <div className="flex space-x-2">
           {/* Text Field */}
-          <TextField
-            className="my-primary"
-            variant="outlined"
+          <input
+            className="primary pl-2 rounded text-white w-full"
             placeholder="Write message"
-            fullWidth
           />
           {/* Gallery Icon */}
           <IconButton
             aria-label="gallery"
-            className="my-primary"
-            sx={{ borderRadius: "10%" }}
+            className="primary rounded text-white hover:primary"
+            size="medium"
           >
-            <GalleryIcon fontSize="large" />
+            <GalleryIcon fontSize="medium" />
           </IconButton>
           {/* Voice Icon */}
           <IconButton
             aria-label="voice"
-            className="my-primary"
-            sx={{ borderRadius: "10%" }}
+            className="primary rounded text-white"
+            size="medium"
           >
-            <VoiceIcon fontSize="large" />
+            <VoiceIcon fontSize="medium" />
           </IconButton>
           {/* Send Icon */}
           <IconButton
             aria-label="send"
-            className="my-primary"
-            sx={{ borderRadius: "10%" }}
+            className="button rounded text-white"
+            size="medium"
           >
-            <SendIcon fontSize="large" />
+            <SendIcon fontSize="medium" />
           </IconButton>
-        </Stack>
+        </div>
       </Box>
     </Card>
   );

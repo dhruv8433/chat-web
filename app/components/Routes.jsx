@@ -23,7 +23,10 @@ const Routes = () => {
             "& .MuiTabs-indicator": {
               left: 0,
               right: "auto",
+              borderWidth: "3px",
+              borderRadius: "5px",
               backgroundColor: "white",
+              color: "white",
             },
           }}
           onChange={handleChange}
@@ -31,13 +34,29 @@ const Routes = () => {
         >
           <Tab
             label="Explore"
-            sx={{ color: "white" }}
-            icon={<WhatshotOutlined />}
+            className="flex flex-row items-center text-white justify-start"
+            icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />}
           />
-          <Tab label="Chats" icon={<PiChats />} />
-          <Tab label="Calls" icon={<IoCallOutline />} />
-          <Tab label="Privacy" icon={<HiOutlineLockClosed />} />
-          <Tab label="Settings" icon={<IoSettingsOutline />} />
+          <Tab
+            className="flex flex-row items-center text-white justify-start"
+            label="Chats"
+            icon={<PiChats style={{ height: 20, width: 20 }} />}
+          />
+          <Tab
+            className="flex flex-row items-center text-white justify-start"
+            label="Calls"
+            icon={<IoCallOutline style={{ height: 20, width: 20 }} />}
+          />
+          <Tab
+            className="flex flex-row items-center text-white justify-start"
+            label="Privacy"
+            icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
+          />
+          <Tab
+            className="flex flex-row items-center text-white justify-start"
+            label="Settings"
+            icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
+          />
         </Tabs>
       </Box>
 

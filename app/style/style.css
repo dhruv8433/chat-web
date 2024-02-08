@@ -19,6 +19,18 @@ body {
   color: var(--text);
 }
 
-.button{
+.button {
   background-color: var(--buttons);
+}
+
+.MuiTab-iconWrapper {
+  margin-right: 10px;
+}
+
+.font {
+  font-family: "Baloo 2", sans-serif;
+}
+
+.chat-name{
+  font-weight: 600;
 }

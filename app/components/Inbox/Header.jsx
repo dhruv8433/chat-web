@@ -5,26 +5,24 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import { Button, Tab, Tabs } from "@mui/material";
-import "../../app/style.css";
 
 export default function Header() {
   const [tabValue, setTabValue] = React.useState(0);
 
-  const handleTabChange = (event, newValue) => {
+  const handleTabChange = (newValue) => {
     setTabValue(newValue);
   };
 
   return (
     <>
-      <Card className="my-primary" sx={{ mb: 3 }}>
+      <Card className="primary rounded-2xl" sx={{ mb: 3 }}>
         <CardHeader
           title={
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <Typography variant="h6">Inbox</Typography>
+            <div className="flex items-center rounded-2xl">
+              <h1 className="text">Inbox</h1>
               <Button
                 variant="contained"
-                className="my-secondary"
-                sx={{ marginLeft: "5%", color: "white" }}
+                className="bg-red-500 hover:bg-red-500 ml-4"
               >
                 3 New
               </Button>
@@ -33,8 +31,7 @@ export default function Header() {
           action={
             <IconButton
               aria-label="settings"
-              className="my-secondary"
-              sx={{ borderRadius: 2 }}
+              className="button rounded-md hover:button text-white"
             >
               <WidgetsOutlinedIcon />
             </IconButton>
@@ -44,11 +41,11 @@ export default function Header() {
           value={tabValue}
           onChange={handleTabChange}
           variant="fullWidth"
-          className="my-secondary"
+          className="secondary"
         >
-          <Tab label="Primary" sx={{ color: "white" }} />
-          <Tab label="Groups" sx={{ color: "white" }} />
-          <Tab label="Archive" sx={{ color: "white" }} />
+          <Tab className="font text-white" label="Primary" />
+          <Tab className="font text-white" label="Groups" />
+          <Tab className="font text-white" label="Archive" />
         </Tabs>
       </Card>
     </>
