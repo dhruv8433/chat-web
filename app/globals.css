@@ -7,14 +7,18 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
 
-  --primary: #23262f;
+
+  --primary: #23262f; 
   --secondary: #494c55;
   --buttons: #2f80f0;
 
   --text: white;
+
   --global-font: "Baloo 2", sans-serif;
 
+
   --red: red;
+
 }
 
 @media (prefers-color-scheme: dark) {
