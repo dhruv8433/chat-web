@@ -5,7 +5,6 @@ import { HiOutlineLockClosed } from "react-icons/hi2";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import { WhatshotOutlined } from "@mui/icons-material";
-import { motion } from "framer-motion";
 import { Box, Tab, Tabs, styled } from "@mui/material";
 
 const Routes = () => {
@@ -15,12 +14,8 @@ const Routes = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 200 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 1 }}
-    >
-      <Box sx={{ width: "100%" }}>
+    <>
+      <Box>
         <Tabs
           orientation="vertical"
           value={value}
@@ -34,7 +29,11 @@ const Routes = () => {
           onChange={handleChange}
           aria-label="Vertical tabs example"
         >
-          <Tab label="Explore" sx={{color:'white'}} icon={<WhatshotOutlined />} />
+          <Tab
+            label="Explore"
+            sx={{ color: "white" }}
+            icon={<WhatshotOutlined />}
+          />
           <Tab label="Chats" icon={<PiChats />} />
           <Tab label="Calls" icon={<IoCallOutline />} />
           <Tab label="Privacy" icon={<HiOutlineLockClosed />} />
@@ -48,7 +47,7 @@ const Routes = () => {
           <h1 className="ml-4">Logout</h1>
         </div>
       </div>
-    </motion.div>
+    </>
   );
 };
 
