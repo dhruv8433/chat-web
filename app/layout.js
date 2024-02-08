@@ -1,7 +1,13 @@
-import { Inter } from "next/font/google";
+import { Baloo_2 } from "next/font/google";
 import "./globals.css";
+import { Grid } from "@mui/material";
+import "./style/style.css";
+import Navbar from "./components/Navbar";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = Baloo_2({
+  subsets: ["vietnamese"],
+  weight: ["400", "500", "600", "700", "800"],
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +17,16 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${font.className} m-10`}>
+        <Grid container>
+          <Grid item xs={12} md={2}>
+            <Navbar />
+          </Grid>
+          <Grid item xs={12} md={10}>
+            {children}
+          </Grid>
+        </Grid>
+      </body>
     </html>
   );
 }
