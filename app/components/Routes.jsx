@@ -6,6 +6,7 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import { WhatshotOutlined } from "@mui/icons-material";
 import { Box, Tab, Tabs, styled } from "@mui/material";
+import Link from "next/link";
 
 const Routes = () => {
   const [value, setValue] = React.useState(0);
@@ -34,29 +35,38 @@ const Routes = () => {
         >
           <Tab
             label="Explore"
-            className="flex flex-row items-center text-white justify-start"
+            className="flex flex-row w-full items-center text-white justify-start"
             icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />}
           />
+
+          {/* chats route */}
+          <Link href={"/chats"}>
+            <Tab
+              className="flex flex-row w-full items-center text-white justify-start"
+              label="Chats"
+              icon={<PiChats style={{ height: 20, width: 20 }} />}
+            />
+          </Link>
+
           <Tab
-            className="flex flex-row items-center text-white justify-start"
-            label="Chats"
-            icon={<PiChats style={{ height: 20, width: 20 }} />}
-          />
-          <Tab
-            className="flex flex-row items-center text-white justify-start"
+            className="flex flex-row w-full items-center text-white justify-start"
             label="Calls"
             icon={<IoCallOutline style={{ height: 20, width: 20 }} />}
           />
           <Tab
-            className="flex flex-row items-center text-white justify-start"
+            className="flex flex-row w-full items-center text-white justify-start"
             label="Privacy"
             icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
           />
-          <Tab
-            className="flex flex-row items-center text-white justify-start"
-            label="Settings"
-            icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
-          />
+
+          {/* Settings Route */}
+          <Link href={"/settings"}>
+            <Tab
+              className="flex flex-row w-full items-center text-white justify-start"
+              label="Settings"
+              icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
+            />
+          </Link>
         </Tabs>
       </Box>
 
