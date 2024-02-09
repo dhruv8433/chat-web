@@ -40,8 +40,8 @@ export default function Header() {
         <Tabs
           value={tabValue}
           onChange={handleTabChange}
+          className="secondary w-full"
           variant="fullWidth"
-          className="secondary"
         >
           <Tab className="font text-white" label="Primary" />
           <Tab className="font text-white" label="Groups" />
