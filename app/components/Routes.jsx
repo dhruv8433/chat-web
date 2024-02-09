@@ -6,15 +6,14 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import { WhatshotOutlined } from "@mui/icons-material";
 import {
-  Box,
-  Tab,
-  Tabs,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
   Button,
-} from "@mui/material";
+} from "@mui/material"
+import { Box, Tab, Tabs, styled } from "@mui/material";
+import Link from "next/link";
 
 const Routes = () => {
   const [value, setValue] = useState(0);
@@ -22,34 +21,6 @@ const Routes = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const handleTabClick = (index) => {
-    // Handle navigation based on the index of the clicked tab
-    switch (index) {
-      case 0:
-        // Navigate to Explore page
-        window.location.href = "/explore";
-        break;
-      case 1:
-        // Navigate to Chats page
-        window.location.href = "/chats";
-        break;
-      case 2:
-        // Navigate to Calls page
-        window.location.href = "/calls";
-        break;
-      case 3:
-        // Navigate to Privacy page
-        window.location.href = "/privacy_policies";
-        break;
-      case 4:
-        // Navigate to Settings page
-        window.location.href = "/settings";
-        break;
-      default:
-        break;
-    }
   };
 
   const handleLogout = () => {
@@ -80,34 +51,50 @@ const Routes = () => {
         >
           <Tab
             label="Explore"
-            className="flex flex-row items-center text-white justify-start"
+            className="flex flex-row w-full items-center text-white justify-start"
             icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />}
-            onClick={() => handleTabClick(0)}
           />
+
+          {/* chats route */}
+          <Link href={"/chats"}>
+            <Tab
+              className="flex flex-row w-full items-center text-white justify-start"
+              label="Chats"
+              icon={<PiChats style={{ height: 20, width: 20 }} />}
+            />
+          </Link>
+
           <Tab
             className="flex flex-row items-center text-white justify-start"
             label="Chats"
             icon={<PiChats style={{ height: 20, width: 20 }} />}
-            onClick={() => handleTabClick(1)}
           />
+              
           <Tab
-            className="flex flex-row items-center text-white justify-start"
+            className="flex flex-row w-full items-center text-white justify-start"
             label="Calls"
             icon={<IoCallOutline style={{ height: 20, width: 20 }} />}
-            onClick={() => handleTabClick(2)}
           />
           <Tab
-            className="flex flex-row items-center text-white justify-start"
+            className="flex flex-row w-full items-center text-white justify-start"
             label="Privacy"
             icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
-            onClick={() => handleTabClick(3)}
           />
+
           <Tab
             className="flex flex-row items-center text-white justify-start"
             label="Settings"
             icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
-            onClick={() => handleTabClick(4)}
           />
+
+          {/* Settings Route */}
+          <Link href={"/settings"}>
+            <Tab
+              className="flex flex-row w-full items-center text-white justify-start"
+              label="Settings"
+              icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
+            />
+          </Link>
         </Tabs>
       </Box>
 

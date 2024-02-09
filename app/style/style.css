@@ -1,3 +1,4 @@
+/* global body */
 body {
   background-color: var(--secondary);
   color: var(--text);
@@ -18,12 +19,14 @@ body {
   background-color: var(--secondary);
 }
 
-/* tbas color */
+
+/* tabs button color -- white */
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
   color: var(--text);
 }
 
-/* button -- blue */
+
+/* buttons color -- blue */
 .button {
   background-color: var(--buttons);
 }
@@ -33,7 +36,8 @@ body {
   margin-right: 10px;
 }
 
-/* font family */
+
+/* global font -- baloo 2 */
 .font {
   font-family: "Baloo 2", sans-serif;
 }
@@ -45,10 +49,10 @@ body {
 
 /* privacy policy */
 /* style.css */
-.primary {
+/* .primary {
   font-family: Arial, sans-serif;
   padding: 20px;
-}
+} */
 
 .privacy-policy-content {
   margin-top: 20px;
@@ -72,4 +76,14 @@ body {
 .privacy-policy-content li {
   margin-top: 5px;
   font-size: 16px;
+}
+
+/* username font weight -- 600 */
+.chat-name {
+  font-weight: 600;
+}
+
+/* settings icon height -- 100% */
+.css-kp9ftd-MuiIcon-root {
+  height: 100%;
 }
