@@ -1,40 +1,50 @@
+/* global body */
 body {
   background-color: var(--secondary);
   color: var(--text);
 }
 
+/* primary color -- dark gray */
 .primary {
   background-color: var(--primary);
 }
 
+/* text -- white */
 .text {
   color: var(--text);
 }
 
+/* secondary -- light gray */
 .secondary {
   background-color: var(--secondary);
 }
 
+/* tabs button color -- white */
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
   color: var(--text);
 }
 
+/* buttons color -- blue */
 .button {
   background-color: var(--buttons);
 }
 
+/* tabs style */
 .MuiTab-iconWrapper {
   margin-right: 10px;
 }
 
+/* global font -- baloo 2 */
 .font {
   font-family: "Baloo 2", sans-serif;
 }
 
+/* username font weight -- 600 */
 .chat-name {
   font-weight: 600;
 }
 
+/* settings icon height -- 100% */
 .css-kp9ftd-MuiIcon-root {
   height: 100%;
 }
