@@ -31,6 +31,10 @@ body {
   font-family: "Baloo 2", sans-serif;
 }
 
-.chat-name{
+.chat-name {
   font-weight: 600;
+}
+
+.css-kp9ftd-MuiIcon-root {
+  height: 100%;
 }
