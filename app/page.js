@@ -4,10 +4,9 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import "./style.css";
 import Heading from "./components/Heading";
-import { SingleChat } from "@/Components/SingleChat/SingleChat";
-import { AllChats } from "@/Components/AllChats/allChat";
+import { SingleChat } from "@/app/components/Chats/ChattingComponent";
+import { AllChats } from "@/app/components/Inbox/InboxComponent";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#23262f" : "#23262f",
   padding: theme.spacing(3),
@@ -17,19 +16,20 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function Home() {
   return (
-    
-      <Box sx={{ flexGrow: 1, mt: 5 }}>
-    <Heading title={"Chats"} />
-        <Grid container spacing={2}>
-          <Grid item xs={4}>
-            <Item><AllChats/></Item>
-          </Grid>
-          <Grid item xs={8}>
-            <Item>
-              <SingleChat />
-            </Item>
-          </Grid>
+    <Box>
+      <Heading title={"Chats"} />
+      <Grid container spacing={2} sx={{mt: 1}}>
+        <Grid item xs={4}>
+          <Item className="rounded-2xl">
+            <AllChats />
+          </Item>
         </Grid>
-      </Box>
+        <Grid item xs={8}>
+          <Item className="rounded-2xl">
+            <SingleChat />
+          </Item>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
