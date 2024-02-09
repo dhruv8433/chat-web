@@ -3,34 +3,73 @@ body {
   color: var(--text);
 }
 
+/* primary -- dark gray */
 .primary {
   background-color: var(--primary);
 }
 
+/* text -- white */
 .text {
   color: var(--text);
 }
 
+/* secondary -- light gray */
 .secondary {
   background-color: var(--secondary);
 }
 
+/* tbas color */
 .css-1h9z7r5-MuiButtonBase-root-MuiTab-root {
   color: var(--text);
 }
 
+/* button -- blue */
 .button {
   background-color: var(--buttons);
 }
 
+/* tab -- icons */
 .MuiTab-iconWrapper {
   margin-right: 10px;
 }
 
+/* font family */
 .font {
   font-family: "Baloo 2", sans-serif;
 }
 
+/* heading - 2 */
 .chat-name{
   font-weight: 600;
+}
+
+/* privacy policy */
+/* style.css */
+.primary {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+
+.privacy-policy-content {
+  margin-top: 20px;
+}
+
+.privacy-policy-content h2 {
+  margin-top: 30px;
+  font-size: 22px;
+}
+
+.privacy-policy-content p {
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.privacy-policy-content ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.privacy-policy-content li {
+  margin-top: 5px;
+  font-size: 16px;
 }

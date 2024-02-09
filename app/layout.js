@@ -21,6 +21,7 @@ export default function RootLayout({ children }) {
           <Grid item xs={12} md={2}>
             <Box display={{ xs: "none", md: "block" }}>
               <Navbar />
+              
             </Box>
           </Grid>
           <Grid item xs={12} md={10}>
