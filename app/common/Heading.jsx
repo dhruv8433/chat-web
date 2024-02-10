@@ -10,6 +10,7 @@ const Heading = ({ title }) => {
         <button className="button h-min w-max p-2 rounded m-auto mr-2">
           + New Chat
         </button>
+        
         <IconButton aria-label="notifications">
           <NotificationsOutlined sx={{ color: "white" }} />
         </IconButton>

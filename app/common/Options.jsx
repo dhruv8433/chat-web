@@ -14,7 +14,7 @@ const Options = ({ OptionIcon, title, callPage }) => {
           <h1 className="text-xl ml-4">{title}</h1>
           {/* if it's calls page than only visible time and call type */}
           {callPage && (
-            <p>
+            <p className="ml-4">
               12:20 <span>voice call</span>
             </p>
           )}

@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState } from "react";
 import { IoCallOutline } from "react-icons/io5";
 import { PiChats } from "react-icons/pi";
@@ -5,15 +7,10 @@ import { HiOutlineLockClosed } from "react-icons/hi2";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import { WhatshotOutlined } from "@mui/icons-material";
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  Button,
-} from "@mui/material"
+import { Modal } from "@mui/material";
 import { Box, Tab, Tabs, styled } from "@mui/material";
 import Link from "next/link";
+import LogoutModel from "../model/LogoutModel";
 
 const Routes = () => {
   const [value, setValue] = useState(0);
@@ -32,7 +29,7 @@ const Routes = () => {
 
   return (
     <>
-      <Box>
+      <div>
         <Tabs
           orientation="vertical"
           value={value}
@@ -51,87 +48,63 @@ const Routes = () => {
         >
           <Tab
             label="Explore"
-            className="flex flex-row w-full items-center text-white justify-start"
+            className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
             icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />}
           />
 
           {/* chats route */}
           <Link href={"/chats"}>
             <Tab
-              className="flex flex-row w-full items-center text-white justify-start"
+              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
               label="Chats"
               icon={<PiChats style={{ height: 20, width: 20 }} />}
             />
           </Link>
 
-          <Tab
-            className="flex flex-row items-center text-white justify-start"
-            label="Chats"
-            icon={<PiChats style={{ height: 20, width: 20 }} />}
-          />
-              
-          <Tab
-            className="flex flex-row w-full items-center text-white justify-start"
-            label="Calls"
-            icon={<IoCallOutline style={{ height: 20, width: 20 }} />}
-          />
-          <Tab
-            className="flex flex-row w-full items-center text-white justify-start"
-            label="Privacy"
-            icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
-          />
+          <Link href={"/calls"}>
+            <Tab
+              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+              label="Calls"
+              icon={<IoCallOutline style={{ height: 20, width: 20 }} />}
+            />
+          </Link>
 
-          <Tab
-            className="flex flex-row items-center text-white justify-start"
-            label="Settings"
-            icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
-          />
+          <Link href={"/privacy-policies"}>
+            <Tab
+              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+              label="Privacy"
+              icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
+            />
+          </Link>
 
           {/* Settings Route */}
           <Link href={"/settings"}>
             <Tab
-              className="flex flex-row w-full items-center text-white justify-start"
+              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
               label="Settings"
               icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
             />
           </Link>
         </Tabs>
-      </Box>
-
-      <div className="absolute bottom-2 ">
-        <div className="flex ml-3 h-10 items-center">
-          <CiLogout style={{ height: 20, width: 20 }} />
-          <Button
-            className="ml-4 text-white"
-            onClick={() => setLogoutDialogOpen(true)}
-          >
-            Logout
-          </Button>
+        <div
+          onClick={() => setLogoutDialogOpen(true)}
+          className="absolute bottom-4 hover:cursor-pointer p-4 w-[94%] rounded-2xl hover:bg-[#494c55]"
+        >
+          <div className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]">
+            <CiLogout style={{ height: 20, width: 20 }} />
+            <h1 className="ml-2">Logout</h1>
+          </div>
         </div>
       </div>
 
       {/* Logout Confirmation Dialog */}
-      <Dialog
-      sx={{borderRadius:20}}
+      <Modal
+        className="flex justify-center items-center"
         open={logoutDialogOpen}
         onClose={() => setLogoutDialogOpen(false)}
       >
-        <DialogTitle className="secondary text">Logout</DialogTitle>
-        <DialogContent className="secondary text">
-          <p>Are you sure ,you want to logout?</p>
-        </DialogContent>
-        <DialogActions className="secondary">
-          <Button className="button text-white" onClick={handleLogout}>
-            Yes
-          </Button>
-          <Button
-            className="button text-white"
-            onClick={() => setLogoutDialogOpen(false)}
-          >
-            Cancel
-          </Button>
-        </DialogActions>
-      </Dialog>
+        <LogoutModel setLogoutDialogOpen={setLogoutDialogOpen} />
+      </Modal>
     </>
   );
 };

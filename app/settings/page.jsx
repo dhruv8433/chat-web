@@ -1,7 +1,6 @@
 import React from "react";
-import Heading from "../components/Heading";
+import Heading from "../common/Heading";
 import { Grid } from "@mui/material";
-import ProfileLeft from "../components/Chat-setting/ProfileLeft";
 import Settings from "../components/Chat-setting/Settings";
 
 const page = () => {
