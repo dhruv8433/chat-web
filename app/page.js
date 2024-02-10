@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
-import Heading from "./components/Heading";
+import Heading from "./common/Heading";
 import { SingleChat } from "@/app/components/Chats/ChattingComponent";
 import { AllChats } from "@/app/components/Inbox/InboxComponent";
 const Item = styled(Paper)(({ theme }) => ({
