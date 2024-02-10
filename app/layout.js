@@ -19,9 +19,11 @@ export default function RootLayout({ children }) {
       <body className={`${font.className} m-10`}>
         <Grid container spacing={2}>
           <Grid item xs={12} md={2}>
-            <Box display={{ xs: "none", md: "block" }}>
+            <Box
+              className="fixed w-[15%]"
+              display={{ xs: "none", md: "block" }}
+            >
               <Navbar />
-              
             </Box>
           </Grid>
           <Grid item xs={12} md={10}>
