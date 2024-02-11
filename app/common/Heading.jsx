@@ -1,20 +1,34 @@
+"use client";
+
 import { Add, MenuRounded, NotificationsOutlined } from "@mui/icons-material";
-import { Avatar, Box, Icon, IconButton } from "@mui/material";
-import React from "react";
+import { Avatar, Box, Drawer, Icon, IconButton } from "@mui/material";
+import React, { useState } from "react";
+import NavDrawer from "../drawer/NavDrawer";
 
 const Heading = ({ title }) => {
+  const [open, setOpen] = useState(false);
   return (
-    <Box className="h-16 primary w-full flex justify-between items-center  rounded-2xl" px={{xs: 2 }} mt={{xs: -1, md: "auto"}}>
-
+    <Box
+      className="h-16 primary w-full flex justify-between items-center  rounded-2xl"
+      px={{ xs: 2 }}
+      mt={{ xs: -1, md: "auto" }}
+    >
       <div className="flex">
         {/* menu only visible in small devices */}
         <Box display={{ xs: "block", md: "none" }}>
-          <IconButton>
+          <IconButton onClick={() => setOpen(true)}>
             <MenuRounded className="text-white" />
           </IconButton>
         </Box>
         <h1 className="text-4xl">{title}</h1>
       </div>
+
+      {/* Nav - Drawer */}
+      <Drawer open={open} onClose={() => setOpen(false)}>
+        <Box width={200}>
+          <NavDrawer />
+        </Box>
+      </Drawer>
 
       <div className="flex">
         {/* new chat button visible in large device else icon button here */}
