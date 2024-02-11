@@ -13,7 +13,10 @@
   --buttons: #2f80f0;
 
   --text: white;
-
+/* light */
+  --primary-light: #f6f6f8;
+  --secondary-light: #ffffff;
+  --text: black
   --global-font: "Baloo 2", sans-serif;
 
 
