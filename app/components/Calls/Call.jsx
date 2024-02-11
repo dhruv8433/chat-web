@@ -12,12 +12,12 @@ const Call = () => {
         />
         <Options
           OptionIcon={PhoneOutlinedIcon}
-          title={"#Partner"}
+          title={"User1"}
           callPage={true}
         />
         <Options
           OptionIcon={PhoneOutlinedIcon}
-          title={"#Partner"}
+          title={"Temp-Test"}
           callPage={true}
         />
       </div>
