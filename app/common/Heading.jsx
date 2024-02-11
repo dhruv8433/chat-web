@@ -1,31 +1,58 @@
-import { NotificationsOutlined } from "@mui/icons-material";
-import { Avatar, IconButton } from "@mui/material";
+import { Add, MenuRounded, NotificationsOutlined } from "@mui/icons-material";
+import { Avatar, Box, Icon, IconButton } from "@mui/material";
 import React from "react";
 
 const Heading = ({ title }) => {
   return (
-    <div className="h-16 primary w-full flex justify-between items-center px-5 rounded-2xl">
-      <h1 className="text-4xl">{title}</h1>
+    <Box className="h-16 primary w-full flex justify-between items-center  rounded-2xl" px={{xs: 2 }} mt={{xs: -1, md: "auto"}}>
+
       <div className="flex">
-        <button className="button h-min w-max p-2 rounded m-auto mr-2">
-          + New Chat
-        </button>
-        
+        {/* menu only visible in small devices */}
+        <Box display={{ xs: "block", md: "none" }}>
+          <IconButton>
+            <MenuRounded className="text-white" />
+          </IconButton>
+        </Box>
+        <h1 className="text-4xl">{title}</h1>
+      </div>
+
+      <div className="flex">
+        {/* new chat button visible in large device else icon button here */}
+        <Box display={{ xs: "none", md: "flex" }}>
+          <button className="button h-min w-max p-2 rounded m-auto mr-2">
+            + New Chat
+          </button>
+        </Box>
+
+        {/* icon button for small screens */}
+        <Box className="w-max" display={{ xs: "flex", md: "none" }}>
+          <IconButton>
+            <Add className="text-white" />
+          </IconButton>
+        </Box>
+
+        {/* notifications button */}
         <IconButton aria-label="notifications">
           <NotificationsOutlined sx={{ color: "white" }} />
         </IconButton>
+
+        {/* DP */}
         <div className="flex items-center p-4">
           {/* user image -- dynamic */}
           <Avatar
             src="https://wallpapers.com/images/hd/shin-chan-amazed-3ifhnlv2ww6kuwb9.jpg"
             alt="user image"
           />
-          <h1 className="ml-4 text-2xl" style={{ fontWeight: 700 }}>
-            Partner
-          </h1>
+
+          {/* name only shown in md screen */}
+          <Box display={{ xs: "none", md: "block" }}>
+            <h1 className="ml-4 text-2xl" style={{ fontWeight: 700 }}>
+              Partner
+            </h1>
+          </Box>
         </div>
       </div>
-    </div>
+    </Box>
   );
 };
 
