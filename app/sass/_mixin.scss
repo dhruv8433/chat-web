@@ -1,0 +1,6 @@
+@import "_variables";
+
+@mixin fun_name($parameter1){
+    color: $parameter1;
+    text-align: center;
+}
