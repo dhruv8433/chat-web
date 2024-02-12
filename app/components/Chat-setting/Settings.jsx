@@ -7,6 +7,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import SupervisorAccountOutlinedIcon from '@mui/icons-material/SupervisorAccountOutlined';
 import CheckCircleOutlinedIcon from '@mui/icons-material/CheckCircleOutlined';
 import StarBorderPurple500OutlinedIcon from '@mui/icons-material/StarBorderPurple500Outlined';
+import Link from "next/link";
 
 const Settings = () => {
   return (
@@ -14,8 +15,6 @@ const Settings = () => {
       <div className="p-2 ">
         {/* Profile */}
         <Options OptionIcon={PersonOutlineIcon} title={"Profile"} />
-        {/* theme */}
-        <Options OptionIcon={ColorLensOutlinedIcon} title={"Themes"} />
         {/* your activity */}
         <Options OptionIcon={UpdateIcon} title={"Your Activity"} />
         {/* Archived */}
