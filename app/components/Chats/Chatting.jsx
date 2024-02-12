@@ -8,7 +8,7 @@ import { SingleChatBody } from "./SingleChatBody";
 const Chatting = () => {
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex p-4 justify-between">
         <div className="flex items-center">
           <div className="">
             <Avatar className="bg-red-500" aria-label="recipe">
@@ -44,7 +44,9 @@ const Chatting = () => {
           </IconButton>
         </div>
       </div>
-      <SingleChatBody />
+      <div className="p-4">
+        <SingleChatBody />
+      </div>
     </>
   );
 };

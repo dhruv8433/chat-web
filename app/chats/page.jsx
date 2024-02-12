@@ -7,27 +7,19 @@ import Grid from "@mui/material/Grid";
 import Heading from "../common/Heading";
 import { AllChats } from "../components/Inbox/InboxComponent";
 import { SingleChat } from "../components/Chats/ChattingComponent";
-const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === "dark" ? "#23262f" : "#23262f",
-  padding: theme.spacing(3),
-  textAlign: "center",
-  color: "white",
-}));
 
 export default function Home() {
   return (
     <Box>
       <Heading title={"Chats"} />
       <Grid container spacing={2} sx={{ mt: 1 }}>
-        <Grid item xs={4}>
-          <Item className="rounded-2xl">
-            <AllChats />
-          </Item>
+        <Grid item xs={12} md={4}>
+          <AllChats />
         </Grid>
         <Grid item xs={8}>
-          <Item className="rounded-2xl">
+          <Box display={{ xs: "none", md: "block" }}>
             <SingleChat />
-          </Item>
+          </Box>
         </Grid>
       </Grid>
     </Box>

@@ -2,7 +2,6 @@ import * as React from "react";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 import { Button, Tab, Tabs } from "@mui/material";
 
@@ -20,12 +19,9 @@ export default function Header() {
           title={
             <div className="flex items-center rounded-2xl">
               <h1 className="text">Inbox</h1>
-              <Button
-                variant="contained"
-                className="bg-red-500 hover:bg-red-500 ml-4"
-              >
+              <button className="bg-red-500 hover:bg-red-500 ml-4 px-2 rounded text-white text-lg">
                 3 New
-              </Button>
+              </button>
             </div>
           }
           action={
