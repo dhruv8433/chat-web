@@ -14,14 +14,16 @@ const font = Baloo_2({
 });
 
 export default function RootLayout({ children }) {
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(localStorage.getItem("theme"));
 
   function changeDarkMode() {
     setTheme("dark");
+    localStorage.setItem("theme", "dark");
   }
 
   function changeLightMode() {
     setTheme("light");
+    localStorage.setItem("theme", "light");
   }
   return (
     <html lang="en">
