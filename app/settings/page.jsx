@@ -3,7 +3,10 @@ import Heading from "../common/Heading";
 import { Grid } from "@mui/material";
 import Settings from "../components/Chat-setting/Settings";
 
-const page = () => {
+const page = ({ changeDarkMode, changeLightMode }) => {
+  console.log("====================================");
+  console.log(changeDarkMode);
+  console.log("====================================");
   return (
     <div>
       <Heading title={"Settings"} />
