@@ -7,24 +7,17 @@ import { HiOutlineLockClosed } from "react-icons/hi2";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import { WhatshotOutlined } from "@mui/icons-material";
-import { Modal } from "@mui/material";
-import { Box, Tab, Tabs, styled } from "@mui/material";
+import { Button, ButtonGroup, Modal } from "@mui/material";
+import { Tab, Tabs } from "@mui/material";
 import Link from "next/link";
 import LogoutModel from "../model/LogoutModel";
 
-const Routes = () => {
+const Routes = ({ changeDarkMode, changeLightMode }) => {
   const [value, setValue] = useState(0);
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
-  };
-
-  const handleLogout = () => {
-    // Perform logout action here
-    // For example, redirect to the logout page or clear session
-    // Then close the logout dialog
-    setLogoutDialogOpen(false);
   };
 
   return (
@@ -86,13 +79,19 @@ const Routes = () => {
             />
           </Link>
         </Tabs>
-        <div
-          onClick={() => setLogoutDialogOpen(true)}
-          className="absolute bottom-4 hover:cursor-pointer p-4 w-[94%] rounded-2xl hover:bg-[#494c55]"
-        >
-          <div className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]">
-            <CiLogout style={{ height: 20, width: 20 }} />
-            <h1 className="ml-2">Logout</h1>
+        <div className="absolute bottom-4 w-full">
+          <ButtonGroup variant="contained" aria-label="Basic button group">
+            <Button onClick={() => changeDarkMode()}>Dark Mode</Button>
+            <Button onClick={() => changeLightMode()}>Light Mode</Button>
+          </ButtonGroup>
+          <div
+            onClick={() => setLogoutDialogOpen(true)}
+            className=" hover:cursor-pointer p-4 w-[94%] rounded-2xl hover:bg-[#494c55]"
+          >
+            <div className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]">
+              <CiLogout style={{ height: 20, width: 20 }} />
+              <h1 className="ml-2">Logout</h1>
+            </div>
           </div>
         </div>
       </div>

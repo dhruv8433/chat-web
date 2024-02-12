@@ -80,6 +80,6 @@ body {
 }
 
 /* settings icon height -- 100% */
-.css-kp9ftd-MuiIcon-root {
+.css-kp9ftd-MuiIcon-root .MuiSvgIcon-root{
   height: 100%;
 }

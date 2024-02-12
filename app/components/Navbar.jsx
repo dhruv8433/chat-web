@@ -1,14 +1,16 @@
 "use client";
 
-import { Avatar, Box } from "@mui/material";
+import { Avatar, Box, useTheme } from "@mui/material";
 
 import React from "react";
 import Routes from "./Routes";
 
-const Navbar = () => {
+const Navbar = ({ changeLightMode, changeDarkMode }) => {
+  const theme = useTheme();
   return (
     <Box
-      className=" primary h-[90vh] p-2 rounded-2xl relative"
+      bgcolor={theme.palette.primary.main}
+      className="h-[90vh] p-2 rounded-2xl relative"
       sx={{ width: { xs: "100%", md: "100%" } }}
     >
       <div className="flex items-center p-4">
@@ -22,7 +24,10 @@ const Navbar = () => {
           Hi , Partner
         </h1>
       </div>
-      <Routes />
+      <Routes
+        changeDarkMode={changeDarkMode}
+        changeLightMode={changeLightMode}
+      />
     </Box>
   );
 };
