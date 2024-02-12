@@ -3,6 +3,7 @@ import "./style/style.css";
 import { Box, Grid } from "@mui/material";
 import Navbar from "./components/Navbar";
 import { Baloo_2 } from "next/font/google";
+import LandingPage from "./components/LandingPage";
 
 const font = Baloo_2({
   subsets: ["vietnamese"],
@@ -14,9 +15,12 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const login = false;
   return (
     <html lang="en">
       <body className={`${font.className} m-10`}>
+    {
+      !login ? 
         <Grid container spacing={2}>
           <Grid item xs={12} md={2}>
             <Box
@@ -29,7 +33,8 @@ export default function RootLayout({ children }) {
           <Grid item xs={12} md={10}>
             {children}
           </Grid>
-        </Grid>
+        </Grid> : <LandingPage/>
+    }
       </body>
     </html>
   );
