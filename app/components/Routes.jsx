@@ -7,8 +7,8 @@ import { HiOutlineLockClosed } from "react-icons/hi2";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import { WhatshotOutlined } from "@mui/icons-material";
-import { Modal } from "@mui/material";
-import { Box, Tab, Tabs, styled } from "@mui/material";
+import { Modal, useTheme } from "@mui/material";
+import { Tab, Tabs } from "@mui/material";
 import Link from "next/link";
 import LogoutModel from "../model/LogoutModel";
 
@@ -20,12 +20,7 @@ const Routes = () => {
     setValue(newValue);
   };
 
-  const handleLogout = () => {
-    // Perform logout action here
-    // For example, redirect to the logout page or clear session
-    // Then close the logout dialog
-    setLogoutDialogOpen(false);
-  };
+  const theme = useTheme();
 
   return (
     <>
@@ -39,8 +34,8 @@ const Routes = () => {
               right: "auto",
               borderWidth: "3px",
               borderRadius: "5px",
-              backgroundColor: "white",
-              color: "white",
+              backgroundColor: theme.palette.background.indicator,
+              color: theme.palette.background.indicator,
             },
           }}
           onChange={handleChange}
@@ -48,22 +43,32 @@ const Routes = () => {
         >
           <Tab
             label="Explore"
-            className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+            sx={{ color: theme.palette.background.text }}
+            className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
             icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />}
           />
 
           {/* chats route */}
           <Link href={"/chats"}>
             <Tab
-              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+              className="flex w-full items-center justify-start rounded-2xl hover:bg-[#494c55]"
               label="Chats"
-              icon={<PiChats style={{ height: 20, width: 20 }} />}
+              sx={{ color: theme.palette.background.text }}
+              icon={
+                <PiChats
+                  style={{
+                    height: 20,
+                    width: 20,
+                  }}
+                />
+              }
             />
           </Link>
 
           <Link href={"/calls"}>
             <Tab
-              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+              className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
+              sx={{ color: theme.palette.background.text }}
               label="Calls"
               icon={<IoCallOutline style={{ height: 20, width: 20 }} />}
             />
@@ -71,7 +76,8 @@ const Routes = () => {
 
           <Link href={"/privacy-policies"}>
             <Tab
-              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+              className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
+              sx={{ color: theme.palette.background.text }}
               label="Privacy"
               icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
             />
@@ -80,19 +86,22 @@ const Routes = () => {
           {/* Settings Route */}
           <Link href={"/settings"}>
             <Tab
-              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+              className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
+              sx={{ color: theme.palette.background.text }}
               label="Settings"
               icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
             />
           </Link>
         </Tabs>
-        <div
-          onClick={() => setLogoutDialogOpen(true)}
-          className="absolute bottom-4 hover:cursor-pointer p-4 w-[94%] rounded-2xl hover:bg-[#494c55]"
-        >
-          <div className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]">
-            <CiLogout style={{ height: 20, width: 20 }} />
-            <h1 className="ml-2">Logout</h1>
+        <div className="absolute bottom-4 w-full">
+          <div
+            onClick={() => setLogoutDialogOpen(true)}
+            className=" hover:cursor-pointer p-4 w-[94%] rounded-2xl hover:bg-[#494c55]"
+          >
+            <div className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]">
+              <CiLogout style={{ height: 20, width: 20 }} />
+              <h1 className="ml-2">Logout</h1>
+            </div>
           </div>
         </div>
       </div>

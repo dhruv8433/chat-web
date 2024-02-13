@@ -1,12 +1,11 @@
 import React from "react";
-import Heading from "../common/Heading";
 import { Grid } from "@mui/material";
 import Settings from "../components/Chat-setting/Settings";
 
 const page = () => {
   return (
     <div>
-      <Heading title={"Settings"} />
+      {/* <Heading title={"Settings"} /> */}
       <div className="mt-4">
         <Grid container spacing={2}>
           {/* left side */}

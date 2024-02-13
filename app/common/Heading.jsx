@@ -1,16 +1,20 @@
 "use client";
 
 import { Add, MenuRounded, NotificationsOutlined } from "@mui/icons-material";
-import { Avatar, Box, Drawer, Icon, IconButton } from "@mui/material";
+import { Avatar, Box, Drawer, Icon, IconButton, useTheme } from "@mui/material";
 import React, { useState } from "react";
 import NavDrawer from "../drawer/NavDrawer";
+import ThemeSwitch from "./ThemeSwitch";
 
-const Heading = ({ title }) => {
+const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
   const [open, setOpen] = useState(false);
+
+  const theme = useTheme();
   return (
     <Box
-      className="h-16 primary w-full flex justify-between items-center  rounded-2xl"
+      className="h-16 w-full flex justify-between items-center  rounded-2xl"
       px={{ xs: 2 }}
+      bgcolor={theme.palette.primary.main}
       mt={{ xs: -1, md: "auto" }}
     >
       <div className="flex">
@@ -20,7 +24,7 @@ const Heading = ({ title }) => {
             <MenuRounded className="text-white" />
           </IconButton>
         </Box>
-        <h1 className="text-4xl">{title}</h1>
+        <h1 className="text-4xl" style={{color: theme.palette.background.text}}>{title}</h1>
       </div>
 
       {/* Nav - Drawer */}
@@ -45,6 +49,12 @@ const Heading = ({ title }) => {
           </IconButton>
         </Box>
 
+        {/*  Themes Button */}
+        <ThemeSwitch
+          DarkThemeApplied={DarkThemeApplied}
+          lightThemeApplied={lightThemeApplied}
+        />
+
         {/* notifications button */}
         <IconButton aria-label="notifications">
           <NotificationsOutlined sx={{ color: "white" }} />
@@ -60,7 +70,7 @@ const Heading = ({ title }) => {
 
           {/* name only shown in md screen */}
           <Box display={{ xs: "none", md: "block" }}>
-            <h1 className="ml-4 text-2xl" style={{ fontWeight: 700 }}>
+            <h1 className="ml-4 text-2xl" style={{ fontWeight: 700, color: theme.palette.background.text }}>
               Partner
             </h1>
           </Box>

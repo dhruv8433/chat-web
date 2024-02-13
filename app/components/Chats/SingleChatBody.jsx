@@ -6,7 +6,7 @@ import VoiceIcon from "@mui/icons-material/Mic";
 
 export const SingleChatBody = () => {
   return (
-    <Card className="secondary rounded-2xl p-2">
+    <Card className="rounded-2xl p-2">
       {/* Receiver messages */}
       <div className="flex justify-start mb-2 min-h-[520px]">
         <CardMedia
