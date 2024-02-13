@@ -51,7 +51,7 @@ const Routes = () => {
           {/* chats route */}
           <Link href={"/chats"}>
             <Tab
-              className="flex flex-row w-full items-center justify-start rounded-2xl hover:bg-[#494c55]"
+              className="flex w-full items-center justify-start rounded-2xl hover:bg-[#494c55]"
               label="Chats"
               sx={{ color: theme.palette.background.text }}
               icon={
