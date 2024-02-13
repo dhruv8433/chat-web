@@ -1,11 +1,10 @@
 import React from "react";
-import Heading from "../common/Heading";
 import "../../app/style/style.css";
 
 const PrivacyPolicyPage = () => {
   return (
     <div>
-      <Heading title={"Privacy"} />
+      {/* <Heading title={"Privacy"} /> */}
       <div className="primary privacy-policy-content rounded-2xl mt-6">
         <div className="rounded p-4">
           <h2 className="chat-name text-2xl">Introduction</h2>
