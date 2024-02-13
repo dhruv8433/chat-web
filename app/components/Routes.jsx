@@ -7,18 +7,20 @@ import { HiOutlineLockClosed } from "react-icons/hi2";
 import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import { WhatshotOutlined } from "@mui/icons-material";
-import { Button, ButtonGroup, Modal } from "@mui/material";
+import { Modal, useTheme } from "@mui/material";
 import { Tab, Tabs } from "@mui/material";
 import Link from "next/link";
 import LogoutModel from "../model/LogoutModel";
 
-const Routes = ({ changeDarkMode, changeLightMode }) => {
+const Routes = () => {
   const [value, setValue] = useState(0);
   const [logoutDialogOpen, setLogoutDialogOpen] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  const theme = useTheme();
 
   return (
     <>
@@ -32,8 +34,8 @@ const Routes = ({ changeDarkMode, changeLightMode }) => {
               right: "auto",
               borderWidth: "3px",
               borderRadius: "5px",
-              backgroundColor: "white",
-              color: "white",
+              backgroundColor: theme.palette.background.indicator,
+              color: theme.palette.background.indicator,
             },
           }}
           onChange={handleChange}
@@ -41,22 +43,32 @@ const Routes = ({ changeDarkMode, changeLightMode }) => {
         >
           <Tab
             label="Explore"
-            className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+            sx={{ color: theme.palette.background.text }}
+            className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
             icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />}
           />
 
           {/* chats route */}
           <Link href={"/chats"}>
             <Tab
-              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+              className="flex flex-row w-full items-center justify-start rounded-2xl hover:bg-[#494c55]"
               label="Chats"
-              icon={<PiChats style={{ height: 20, width: 20 }} />}
+              sx={{ color: theme.palette.background.text }}
+              icon={
+                <PiChats
+                  style={{
+                    height: 20,
+                    width: 20,
+                  }}
+                />
+              }
             />
           </Link>
 
           <Link href={"/calls"}>
             <Tab
-              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+              className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
+              sx={{ color: theme.palette.background.text }}
               label="Calls"
               icon={<IoCallOutline style={{ height: 20, width: 20 }} />}
             />
@@ -64,7 +76,8 @@ const Routes = ({ changeDarkMode, changeLightMode }) => {
 
           <Link href={"/privacy-policies"}>
             <Tab
-              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+              className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
+              sx={{ color: theme.palette.background.text }}
               label="Privacy"
               icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
             />
@@ -73,22 +86,19 @@ const Routes = ({ changeDarkMode, changeLightMode }) => {
           {/* Settings Route */}
           <Link href={"/settings"}>
             <Tab
-              className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]"
+              className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
+              sx={{ color: theme.palette.background.text }}
               label="Settings"
               icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
             />
           </Link>
         </Tabs>
         <div className="absolute bottom-4 w-full">
-          <ButtonGroup variant="contained" aria-label="Basic button group">
-            <Button onClick={() => changeDarkMode()}>Dark Mode</Button>
-            <Button onClick={() => changeLightMode()}>Light Mode</Button>
-          </ButtonGroup>
           <div
             onClick={() => setLogoutDialogOpen(true)}
             className=" hover:cursor-pointer p-4 w-[94%] rounded-2xl hover:bg-[#494c55]"
           >
-            <div className="flex flex-row w-full items-center text-white justify-start rounded-2xl hover:bg-[#494c55]">
+            <div className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]">
               <CiLogout style={{ height: 20, width: 20 }} />
               <h1 className="ml-2">Logout</h1>
             </div>

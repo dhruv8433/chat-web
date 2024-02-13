@@ -5,7 +5,7 @@ import { Avatar, Box, useTheme } from "@mui/material";
 import React from "react";
 import Routes from "./Routes";
 
-const Navbar = ({ changeLightMode, changeDarkMode }) => {
+const Navbar = ({ toggleTheme }) => {
   const theme = useTheme();
   return (
     <Box
@@ -24,10 +24,7 @@ const Navbar = ({ changeLightMode, changeDarkMode }) => {
           Hi , Partner
         </h1>
       </div>
-      <Routes
-        changeDarkMode={changeDarkMode}
-        changeLightMode={changeLightMode}
-      />
+      <Routes toggleTheme={toggleTheme} />
     </Box>
   );
 };
