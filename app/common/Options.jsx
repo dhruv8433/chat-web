@@ -8,9 +8,10 @@ const Options = ({ OptionIcon, title, callPage }) => {
         {/* icons */}
         <div className="ml-3">
           <Icon className="h-10 overflow-visible" sx={{ height: 20, width: 20, overflow: "visible" }}>
-            {OptionIcon}
+            {<OptionIcon />}
           </Icon>
         </div>
+        
         {/* content */}
         <div className="">
           <h1 className="text-xl ml-4">{title}</h1>
