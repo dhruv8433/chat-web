@@ -28,12 +28,12 @@ export default function RootLayout({ children }) {
   }
 
   const theme = useTheme();
-  console.log("palletes: ", theme);
+  console.log("palletes: ", theme.palette);
   return (
     <html lang="en">
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <body className={`${font.className}`}>
-          <Box bgcolor={theme.palette.background.paper} className="m-10">
+          <Box bgcolor={theme.palette.background.body} className="m-10">
             <Grid container spacing={2}>
               <Grid item xs={12} md={2}>
                 <Box
