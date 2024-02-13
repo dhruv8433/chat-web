@@ -1,4 +1,4 @@
-import { Avatar, Card, CardHeader, IconButton } from "@mui/material";
+import { Avatar, Card, CardHeader, IconButton, useTheme } from "@mui/material";
 import React from "react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import CallRoundedIcon from "@mui/icons-material/CallRounded";
@@ -6,6 +6,7 @@ import VideoCallRoundedIcon from "@mui/icons-material/VideoCallRounded";
 import { SingleChatBody } from "./SingleChatBody";
 
 const Chatting = () => {
+  const theme = useTheme();
   return (
     <>
       <div className="flex p-4 justify-between">
@@ -16,8 +17,13 @@ const Chatting = () => {
             </Avatar>
           </div>
           <div className="ml-2 text-start">
-            <h1 className="chat-name">#Partner</h1>
-            <h1>Active</h1>
+            <h1
+              className="chat-name"
+              style={{ color: theme.palette.background.text }}
+            >
+              #Partner
+            </h1>
+            <h1 style={{ color: theme.palette.background.text }}>Active</h1>
           </div>
         </div>
         <div className="flex justify-between space-x-4 mb-2">

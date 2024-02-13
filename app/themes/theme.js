@@ -12,7 +12,7 @@ const darkTheme = createTheme({
       main: "#111111",
     },
     background: {
-      paper: "#000000",
+      body: "#000000",
       text: "#ffffff",
       indicator: "#ffffff",
     },
@@ -30,7 +30,7 @@ const lightTheme = createTheme({
       main: "#e3e3e5",
     },
     background: {
-      paper: "#0d1b2b",
+      body: "#0d1b2b",
       text: "#000000",
       indicator: "#000000",
     },

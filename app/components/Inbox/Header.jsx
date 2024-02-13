@@ -19,7 +19,7 @@ export default function Header() {
     <Box bgcolor={theme.palette.primary.main} className="rounded-2xl">
       <div className="flex p-2 justify-between items-center">
         <div className="flex">
-          <h1 className="text-2xl">Index</h1>
+          <h1 className="text-2xl" style={{color: theme.palette.background.text}}>Index</h1>
           <button className="border ml-2 border-red-400 bg-red-500 px-2 py-1 rounded">
             3 New
           </button>
