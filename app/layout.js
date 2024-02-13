@@ -9,6 +9,7 @@ import { darkTheme, lightTheme } from "./themes/theme";
 import React, { useState } from "react";
 import Heading from "./common/Heading";
 import LandingPage from "./components/LandingPage";
+import { StoreProvider } from "./storeProvider";
 
 const font = Baloo_2({
   subsets: ["vietnamese"],
@@ -33,39 +34,36 @@ export default function RootLayout({ children }) {
   console.log("palletes: ", theme.palette);
   return (
     <html lang="en">
-      <body className={`${font.className}`}>  
-    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-      
+      <body className={`${font.className}`}>
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
           <StoreProvider>
-          {!login ? (
-          <Box bgcolor={theme.palette.background.body} className="m-10"> 
-             <Grid container spacing={2}>
-              <Grid item xs={12} md={2}>
-                <Box
-                  className="fixed w-[15%]"
-                  display={{ xs: "none", md: "block" }}
-                >
-                  <Navbar />
-                </Box>
-              </Grid>
-              <Grid item xs={12} md={10}>
-                <Heading
-                  title={"Chats"}
-                  DarkThemeApplied={DarkThemeApplied}
-                  lightThemeApplied={lightThemeApplied}
-                />
-                <div>{children}</div>
-              </Grid>
-            </Grid>
-          </Box>) : (
-          <LandingPage />
-          )}
-        
-        </StoreProvider>
-      
-      </ThemeProvider>
-</body>
-
+            {!login ? (
+              <Box bgcolor={theme.palette.background.body} className="m-10">
+                <Grid container spacing={2}>
+                  <Grid item xs={12} md={2}>
+                    <Box
+                      className="fixed w-[15%]"
+                      display={{ xs: "none", md: "block" }}
+                    >
+                      <Navbar />
+                    </Box>
+                  </Grid>
+                  <Grid item xs={12} md={10}>
+                    <Heading
+                      title={"Chats"}
+                      DarkThemeApplied={DarkThemeApplied}
+                      lightThemeApplied={lightThemeApplied}
+                    />
+                    <div>{children}</div>
+                  </Grid>
+                </Grid>
+              </Box>
+            ) : (
+              <LandingPage />
+            )}
+          </StoreProvider>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
