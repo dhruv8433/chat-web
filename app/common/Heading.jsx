@@ -24,7 +24,7 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
             <MenuRounded className="text-white" />
           </IconButton>
         </Box>
-        <h1 className="text-4xl">{title}</h1>
+        <h1 className="text-4xl" style={{color: theme.palette.background.text}}>{title}</h1>
       </div>
 
       {/* Nav - Drawer */}
@@ -70,7 +70,7 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
 
           {/* name only shown in md screen */}
           <Box display={{ xs: "none", md: "block" }}>
-            <h1 className="ml-4 text-2xl" style={{ fontWeight: 700 }}>
+            <h1 className="ml-4 text-2xl" style={{ fontWeight: 700, color: theme.palette.background.text }}>
               Partner
             </h1>
           </Box>
