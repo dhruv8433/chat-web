@@ -1,7 +1,19 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { Grid, Typography, Button } from "@mui/material";
+import LoginModel from "../model/LoginModel";
 
 const LandingPage = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
   return (
     <Grid
       container
@@ -31,9 +43,16 @@ const LandingPage = () => {
             Your customers are waiting to chat with you. Start chatting now to
             provide real-time support and build better relationships.
           </Typography>
-          <Button variant="contained" color="primary" size="large" href="/chat">
+          <button
+            className="button h-min w-max p-5 rounded m-auto mr-2 text-2xl capitalize"
+            onClick={handleOpenModal}
+          >
             Start Chatting Now
-          </Button>
+          </button>
+          {/* Render LoginModel only if openModal is true */}
+          {openModal && (
+            <LoginModel open={openModal} onClose={handleCloseModal} />
+          )}
         </div>
       </Grid>
 
