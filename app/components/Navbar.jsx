@@ -20,7 +20,7 @@ const Navbar = ({ toggleTheme }) => {
           alt="user image"
           className="bg-cover"
         />
-        <h1 className="ml-4 text-2xl" style={{ fontWeight: 700 }}>
+        <h1 className="ml-4 text-2xl" style={{ fontWeight: 700, color: theme.palette.background.text }}>
           Hi , Partner
         </h1>
       </div>
