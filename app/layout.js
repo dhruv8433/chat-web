@@ -8,6 +8,7 @@ import { Baloo_2 } from "next/font/google";
 import { darkTheme, lightTheme } from "./themes/theme";
 import React, { useState } from "react";
 import Heading from "./common/Heading";
+import LandingPage from "./components/LandingPage";
 
 const font = Baloo_2({
   subsets: ["vietnamese"],
@@ -28,13 +29,17 @@ export default function RootLayout({ children }) {
   }
 
   const theme = useTheme();
+  const login = false;
   console.log("palletes: ", theme.palette);
   return (
     <html lang="en">
-      <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-        <body className={`${font.className}`}>
-          <Box bgcolor={theme.palette.background.body} className="m-10">
-            <Grid container spacing={2}>
+      <body className={`${font.className}`}>  
+    <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+      
+          <StoreProvider>
+          {!login ? (
+          <Box bgcolor={theme.palette.background.body} className="m-10"> 
+             <Grid container spacing={2}>
               <Grid item xs={12} md={2}>
                 <Box
                   className="fixed w-[15%]"
@@ -52,9 +57,15 @@ export default function RootLayout({ children }) {
                 <div>{children}</div>
               </Grid>
             </Grid>
-          </Box>
-        </body>
+          </Box>) : (
+          <LandingPage />
+          )}
+        
+        </StoreProvider>
+      
       </ThemeProvider>
+</body>
+
     </html>
   );
 }

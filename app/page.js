@@ -5,11 +5,13 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import { SingleChat } from "@/app/components/Chats/ChattingComponent";
 import { AllChats } from "@/app/components/Inbox/InboxComponent";
+import LandingPage from "./components/LandingPage";
+
 
 export default function Home() {
   return (
     <Box>
-      {/* <Heading title={"Chats"} /> */}
+
       <Grid container spacing={2} sx={{ mt: 1 }}>
         <Grid item xs={4}>
           <AllChats />
@@ -18,6 +20,7 @@ export default function Home() {
           <SingleChat />
         </Grid>
       </Grid>
+
     </Box>
   );
 }

@@ -1,27 +1,51 @@
-import { Divider } from "@mui/material";
+import { Button, Divider, Typography, Modal, Box } from "@mui/material";
 import React from "react";
 
 const LogoutModel = ({ setLogoutDialogOpen }) => {
   return (
-    <div className="secondary p-4 rounded-2xl w-80">
-      <h1 className="text-2xl chat-name">Logout</h1>
-      <Divider className="text-white" />
-      <h1 className="mt-2">
-        Are you sure you want to logout? Click 'Confirm' to proceed or 'Cancel'
-        to stay.
-      </h1>
-
-      {/* action buttons */}
-      <div className="flex justify-end space-x-2 mt-4">
-        <button
-          className="border p-1 rounded "
-          onClick={() => setLogoutDialogOpen(false)}
+    <Modal
+      open={true} // You can manage the modal's open state from parent component
+      onClose={() => setLogoutDialogOpen(false)} // Handle close action
+      aria-labelledby="logout-modal"
+      aria-describedby="logout-modal-description"
+    >
+      <Box
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          backgroundColor: "white",
+          border: "2px solid #000",
+          boxShadow: 24,
+          p: 4,
+          minWidth: 500,
+          maxWidth: 1000,
+          borderRadius: 4,
+        }}
+      >
+        <Typography variant="h1" sx={{ fontSize: "2rem" }} gutterBottom>
+          Logout
+        </Typography>
+        <Divider />
+        <Typography variant="body1" sx={{ mt: 2, textWrap: "wrap" }}>
+          Are you sure , Do you want to logout ?
+        </Typography>
+        {/* action buttons */}
+        <div
+          style={{ display: "flex", justifyContent: "flex-end", marginTop: 20 }}
         >
-          Cancle
-        </button>
-        <button className="border p-1 rounded bg-red-500">Loogout</button>
-      </div>
-    </div>
+          <Button
+            variant="outlined"
+            onClick={() => setLogoutDialogOpen(false)}
+            sx={{ mr: 1 }}
+          >
+            Cancel
+          </Button>
+          <Button className="bg-red-700 text-white p-4">Logout</Button>
+        </div>
+      </Box>
+    </Modal>
   );
 };
 
