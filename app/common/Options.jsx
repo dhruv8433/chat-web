@@ -7,8 +7,8 @@ const Options = ({ OptionIcon, title, callPage }) => {
       <div className="flex items-center rounded-2xl h-20 relative hover:cursor-pointer hover:bg-[#494c55]">
         {/* icons */}
         <div className="ml-3">
-          <Icon className="h-full" sx={{ height: 20, width: 20 }}>
-            {<OptionIcon />}
+          <Icon className="h-10 overflow-visible" sx={{ height: 20, width: 20, overflow: "visible" }}>
+            {OptionIcon}
           </Icon>
         </div>
         {/* content */}
