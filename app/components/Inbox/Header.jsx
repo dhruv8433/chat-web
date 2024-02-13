@@ -3,7 +3,8 @@ import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import IconButton from "@mui/material/IconButton";
 import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
-import { Button, Tab, Tabs } from "@mui/material";
+import { Box, Button, Tab, Tabs, useTheme } from "@mui/material";
+import ChatList from "./ChatList";
 
 export default function Header() {
   const [tabValue, setTabValue] = React.useState(0);
@@ -12,38 +13,35 @@ export default function Header() {
     setTabValue(newValue);
   };
 
+  const theme = useTheme();
+
   return (
-    <>
-      <Card className="primary rounded-2xl" sx={{ mb: 3 }}>
-        <CardHeader
-          title={
-            <div className="flex items-center rounded-2xl">
-              <h1 className="text">Inbox</h1>
-              <button className="bg-red-500 hover:bg-red-500 ml-4 px-2 rounded text-white text-lg">
-                3 New
-              </button>
-            </div>
-          }
-          action={
-            <IconButton
-              aria-label="settings"
-              className="button rounded-md hover:button text-white"
-            >
-              <WidgetsOutlinedIcon />
-            </IconButton>
-          }
-        />
-        <Tabs
-          value={tabValue}
-          onChange={handleTabChange}
-          className="secondary w-full"
-          variant="fullWidth"
-        >
-          <Tab className="font text-white" label="Primary" />
-          <Tab className="font text-white" label="Groups" />
-          <Tab className="font text-white" label="Archive" />
-        </Tabs>
-      </Card>
-    </>
+    <Box bgcolor={theme.palette.primary.main} className="rounded-2xl">
+      <div className="flex p-2 justify-between items-center">
+        <div className="flex">
+          <h1 className="text-2xl">Index</h1>
+          <button className="border ml-2 border-red-400 bg-red-500 px-2 py-1 rounded">
+            3 New
+          </button>
+        </div>
+        <div className="">
+          <IconButton>
+            <WidgetsOutlinedIcon />
+          </IconButton>
+        </div>
+      </div>
+      <Tabs
+        value={tabValue}
+        onChange={handleTabChange}
+        className="secondary w-full"
+        variant="fullWidth"
+      >
+        <Tab className="font text-white" label="Primary" />
+        <Tab className="font text-white" label="Groups" />
+        <Tab className="font text-white" label="Archive" />
+      </Tabs>
+
+      <ChatList />
+    </Box>
   );
 }
