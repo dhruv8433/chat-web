@@ -5,7 +5,7 @@ const LogoutModel = ({ setLogoutDialogOpen }) => {
   return (
     <div className="secondary p-4 rounded-2xl w-80">
       <h1 className="text-2xl chat-name">Logout</h1>
-      <Divider className="text-white bg-white" />
+      <Divider className="text-white" />
       <h1 className="mt-2">
         Are you sure you want to logout? Click 'Confirm' to proceed or 'Cancel'
         to stay.
