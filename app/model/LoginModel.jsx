@@ -9,6 +9,7 @@ import {
   loginUserSuccess,
 } from "../components/action/action";
 import Cookies from "js-cookie";
+import MyModel from "../common/MyModel";
 
 const LoginModel = ({ open, onClose }) => {
   const dispatch = useDispatch();
@@ -63,14 +64,10 @@ const LoginModel = ({ open, onClose }) => {
   };
   return (
     <>
-      <Modal
+      <MyModel
         open={open}
-        onClose={handleClose}
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
+        setOpen={handleClose}
+        className = "flex items-center justify-center"
       >
         <div
           style={{
@@ -150,7 +147,7 @@ const LoginModel = ({ open, onClose }) => {
             </Grid>
           </form>
         </div>
-      </Modal>
+      </MyModel>
       <SignUpModel
         open={openSignUpModal}
         onClose={() => setOpenSignUpModal(false)}
