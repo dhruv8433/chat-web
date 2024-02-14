@@ -5,6 +5,7 @@ import { Avatar, Box, Drawer, Icon, IconButton, useTheme } from "@mui/material";
 import React, { useState } from "react";
 import NavDrawer from "../drawer/NavDrawer";
 import ThemeSwitch from "./ThemeSwitch";
+import MyAvatar from "./MyAvatar";
 
 const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
   const [open, setOpen] = useState(false);
@@ -24,7 +25,12 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
             <MenuRounded className="text-white" />
           </IconButton>
         </Box>
-        <h1 className="text-4xl" style={{color: theme.palette.background.text}}>{title}</h1>
+        <h1
+          className="text-4xl"
+          style={{ color: theme.palette.background.text }}
+        >
+          {title}
+        </h1>
       </div>
 
       {/* Nav - Drawer */}
@@ -63,14 +69,14 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
         {/* DP */}
         <div className="flex items-center p-4">
           {/* user image -- dynamic */}
-          <Avatar
-            src="https://wallpapers.com/images/hd/shin-chan-amazed-3ifhnlv2ww6kuwb9.jpg"
-            alt="user image"
-          />
+          <MyAvatar />
 
           {/* name only shown in md screen */}
           <Box display={{ xs: "none", md: "block" }}>
-            <h1 className="ml-4 text-2xl" style={{ fontWeight: 700, color: theme.palette.background.text }}>
+            <h1
+              className="ml-4 text-2xl"
+              style={{ fontWeight: 700, color: theme.palette.background.text }}
+            >
               Partner
             </h1>
           </Box>

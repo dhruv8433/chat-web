@@ -1,13 +1,14 @@
 import { Avatar, Divider } from "@mui/material";
 import React from "react";
 import PostCard from "./PostCard";
+import { MyTextAvatar } from "@/app/common/MyAvatar";
 
 const ProfileLeft = () => {
   return (
     <div className="border border-black min-h-[770px] rounded-2xl">
       {/* Avatar, following and posts info */}
       <div className="mt-4 flex justify-around">
-        <Avatar className="h-36 w-36" />
+        <MyTextAvatar className='h-36 w-36'/>
         <div className="flex flex-col justify-center text-center">
           <h1>1</h1>
           <h1>Posts</h1>
