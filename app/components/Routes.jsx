@@ -43,17 +43,16 @@ const Routes = () => {
           onChange={handleChange}
           aria-label="Vertical tabs example"
         >
-          <Tab
+          <MyTab
             label="Explore"
-            sx={{ color: theme.palette.background.text }}
-            className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
+            className="flex w-full items-center rounded-2xl hover:bg-[#494c55]"
             icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />}
           />
 
           {/* chats route */}
           <MyLink href={"/chats"}>
             <MyTab
-              className="flex w-full items-center justify-start rounded-2xl hover:bg-[#494c55]"
+              className="flex w-full items-cente rounded-2xl hover:bg-[#494c55]"
               label="Chats"
               icon={
                 <PiChats
@@ -67,18 +66,16 @@ const Routes = () => {
           </MyLink>
 
           <Link href={"/calls"}>
-            <Tab
-              className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
-              sx={{ color: theme.palette.background.text }}
+            <MyTab
+              className="flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55]"
               label="Calls"
               icon={<IoCallOutline style={{ height: 20, width: 20 }} />}
             />
           </Link>
 
           <Link href={"/privacy-policies"}>
-            <Tab
-              className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
-              sx={{ color: theme.palette.background.text }}
+            <MyTab
+              className="flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55]"
               label="Privacy"
               icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
             />
@@ -86,9 +83,8 @@ const Routes = () => {
 
           {/* Settings Route */}
           <Link href={"/settings"}>
-            <Tab
-              className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]"
-              sx={{ color: theme.palette.background.text }}
+            <MyTab
+              className="flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55]"
               label="Settings"
               icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
             />
