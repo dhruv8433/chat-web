@@ -16,9 +16,9 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
   const theme = useTheme();
   return (
     <MyBox
+      isPrimary={true}
       className="h-16 w-full flex justify-between items-center px-2 rounded-2xl"
-      px={{ xs: 2 }}
-      mt={{ xs: -1, md: "auto" }}
+      sx={{ xs: -1, md: "auto" }}
     >
       <div className="flex">
         {/* menu only visible in small devices */}
@@ -45,7 +45,11 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
       <div className="flex">
         {/* new chat button visible in large device else icon button here */}
         <Box display={{ xs: "none", md: "flex" }}>
-          <MyButton title={"+ New Chat"} myFunction={""} className="button h-min w-max p-2 rounded m-auto mr-2" />
+          <MyButton
+            title={"+ New Chat"}
+            myFunction={""}
+            className="button h-min w-max p-2 rounded m-auto mr-2"
+          />
         </Box>
 
         {/* icon button for small screens */}
@@ -63,7 +67,7 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
 
         {/* notifications button */}
         <IconButton aria-label="notifications">
-          <NotificationsOutlined sx={{ color: "white" }} />
+          <NotificationsOutlined />
         </IconButton>
 
         {/* DP */}

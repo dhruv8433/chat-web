@@ -7,12 +7,12 @@ const ThemeToggleButton = ({ lightThemeApplied, DarkThemeApplied }) => {
     <>
       <Tooltip title="Dark Mode">
         <IconButton onClick={() => DarkThemeApplied()}>
-          <Brightness4Outlined className="text-white" />
+          <Brightness4Outlined />
         </IconButton>
       </Tooltip>
       <Tooltip title="Light Mode">
         <IconButton onClick={() => lightThemeApplied()}>
-          <Brightness7Outlined className="text-white" />
+          <Brightness7Outlined />
         </IconButton>
       </Tooltip>
     </>
