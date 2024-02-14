@@ -1,6 +1,5 @@
 import React from "react";
 import Options from "@/app/common/Options";
-import ColorLensOutlinedIcon from "@mui/icons-material/ColorLensOutlined";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import UpdateIcon from "@mui/icons-material/Update";
 import HistoryIcon from "@mui/icons-material/History";
@@ -8,7 +7,6 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import SupervisorAccountOutlinedIcon from "@mui/icons-material/SupervisorAccountOutlined";
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 import StarBorderPurple500OutlinedIcon from "@mui/icons-material/StarBorderPurple500Outlined";
-import Link from "next/link";
 
 const Settings = () => {
   return (
