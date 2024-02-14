@@ -11,6 +11,8 @@ import { Modal, useTheme } from "@mui/material";
 import { Tab, Tabs } from "@mui/material";
 import Link from "next/link";
 import LogoutModel from "../model/LogoutModel";
+import MyLink from "../common/MyLink";
+import MyTab from "../common/MyTab";
 
 const Routes = () => {
   const [value, setValue] = useState(0);
@@ -49,11 +51,10 @@ const Routes = () => {
           />
 
           {/* chats route */}
-          <Link href={"/chats"}>
-            <Tab
+          <MyLink href={"/chats"}>
+            <MyTab
               className="flex w-full items-center justify-start rounded-2xl hover:bg-[#494c55]"
               label="Chats"
-              sx={{ color: theme.palette.background.text }}
               icon={
                 <PiChats
                   style={{
@@ -63,7 +64,7 @@ const Routes = () => {
                 />
               }
             />
-          </Link>
+          </MyLink>
 
           <Link href={"/calls"}>
             <Tab

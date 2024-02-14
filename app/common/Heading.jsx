@@ -6,16 +6,18 @@ import React, { useState } from "react";
 import NavDrawer from "../drawer/NavDrawer";
 import ThemeSwitch from "./ThemeSwitch";
 import MyAvatar from "./MyAvatar";
+import MyButton from "./MyButton";
+import MyBox from "./MyBox";
+import MyDrawer from "./MyDrawer";
 
 const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
   const [open, setOpen] = useState(false);
 
   const theme = useTheme();
   return (
-    <Box
-      className="h-16 w-full flex justify-between items-center  rounded-2xl"
+    <MyBox
+      className="h-16 w-full flex justify-between items-center px-2 rounded-2xl"
       px={{ xs: 2 }}
-      bgcolor={theme.palette.primary.main}
       mt={{ xs: -1, md: "auto" }}
     >
       <div className="flex">
@@ -34,18 +36,16 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
       </div>
 
       {/* Nav - Drawer */}
-      <Drawer open={open} onClose={() => setOpen(false)}>
+      <MyDrawer open={open} setOpen={setOpen}>
         <Box width={200}>
           <NavDrawer />
         </Box>
-      </Drawer>
+      </MyDrawer>
 
       <div className="flex">
         {/* new chat button visible in large device else icon button here */}
         <Box display={{ xs: "none", md: "flex" }}>
-          <button className="button h-min w-max p-2 rounded m-auto mr-2">
-            + New Chat
-          </button>
+          <MyButton title={"+ New Chat"} myFunction={""} className="button h-min w-max p-2 rounded m-auto mr-2" />
         </Box>
 
         {/* icon button for small screens */}
@@ -82,7 +82,7 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
           </Box>
         </div>
       </div>
-    </Box>
+    </MyBox>
   );
 };
 

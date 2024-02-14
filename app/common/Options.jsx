@@ -1,5 +1,8 @@
+"use client"
+
 import { Divider, Icon } from "@mui/material";
 import React from "react";
+import MyIcon from "./MyIcon";
 
 const Options = ({ OptionIcon, title, callPage }) => {
   return (
@@ -7,9 +10,9 @@ const Options = ({ OptionIcon, title, callPage }) => {
       <div className="flex items-center rounded-2xl h-20 relative hover:cursor-pointer hover:bg-[#494c55]">
         {/* icons */}
         <div className="ml-3">
-          <Icon className="h-10 overflow-visible" sx={{ height: 20, width: 20, overflow: "visible" }}>
-            {<OptionIcon />}
-          </Icon>
+          <MyIcon className="h-10 overflow-visible" sx={{ height: 20, width: 20, overflow: "visible" }}>
+            <OptionIcon />
+          </MyIcon>
         </div>
         
         {/* content */}
