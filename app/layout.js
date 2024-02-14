@@ -2,7 +2,7 @@
 
 import "./globals.css";
 import "./style/style.css";
-import { Box, Grid, ThemeProvider, useTheme } from "@mui/material";
+import { Box, Grid, Paper, ThemeProvider, useTheme } from "@mui/material";
 import Navbar from "./components/Navbar";
 import { Baloo_2 } from "next/font/google";
 import { darkTheme, lightTheme } from "./themes/theme";
@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import Heading from "./common/Heading";
 import LandingPage from "./components/LandingPage";
 import { StoreProvider } from "./storeProvider";
+import MyBox from "./common/MyBox";
 
 const font = Baloo_2({
   subsets: ["vietnamese"],
@@ -38,32 +39,32 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${font.className}`}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-          <StoreProvider>
-            {!login ? (
-              <Box bgcolor={theme.palette.background.body} className="m-10">
-                <Grid container spacing={2}>
-                  <Grid item xs={12} md={2}>
-                    <Box
-                      className="fixed w-[15%]"
-                      display={{ xs: "none", md: "block" }}
-                    >
-                      <Navbar />
-                    </Box>
+            <StoreProvider>
+              {!login ? (
+                <MyBox className="p-10 h-full">
+                  <Grid container spacing={2}>
+                    <Grid item xs={12} md={2}>
+                      <Box
+                        className="fixed w-[15%]"
+                        display={{ xs: "none", md: "block" }}
+                      >
+                        <Navbar />
+                      </Box>
+                    </Grid>
+                    <Grid item xs={12} md={10}>
+                      <Heading
+                        title={"Chats"}
+                        DarkThemeApplied={DarkThemeApplied}
+                        lightThemeApplied={lightThemeApplied}
+                      />
+                      <div>{children}</div>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12} md={10}>
-                    <Heading
-                      title={"Chats"}
-                      DarkThemeApplied={DarkThemeApplied}
-                      lightThemeApplied={lightThemeApplied}
-                    />
-                    <div>{children}</div>
-                  </Grid>
-                </Grid>
-              </Box>
-            ) : (
-              <LandingPage />
-            )}
-          </StoreProvider>
+                </MyBox>
+              ) : (
+                <LandingPage />
+              )}
+            </StoreProvider>
         </ThemeProvider>
       </body>
     </html>
