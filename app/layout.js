@@ -17,7 +17,9 @@ const font = Baloo_2({
 });
 
 export default function RootLayout({ children }) {
-  const [isDarkTheme, setDarkTheme] = useState(localStorage.getItem("theme"));
+  const [isDarkTheme, setDarkTheme] = useState(
+    typeof window !== "undefined" && localStorage.getItem("theme")
+  );
 
   function DarkThemeApplied() {
     setDarkTheme(true);
