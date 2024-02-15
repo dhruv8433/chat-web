@@ -1,6 +1,7 @@
 "use client";
+
 import React, { useState } from "react";
-import { Grid, Typography, Button } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import LoginModel from "../model/LoginModel";
 
 const LandingPage = () => {
