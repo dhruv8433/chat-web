@@ -13,7 +13,7 @@ const MyBox = ({ children, className, sx, isPrimary }) => {
   });
 
   return (
-    <StyledBox className={className} sx={sx}>
+    <StyledBox className={className} sx={{sx}}>
       {children}
     </StyledBox>
   );
