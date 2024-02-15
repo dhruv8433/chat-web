@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React, { useState } from "react";
 import { Modal, TextField, Button, Grid, Typography } from "@mui/material";
 import { signupservice } from "../services/signupService";
@@ -7,16 +7,13 @@ const SignUpModel = ({ open, onClose, openLoginModal }) => {
   const [signup, setSignup] = useState({ username: "", password: "" });
   async function handleSubmit(e) {
     e.preventDefault();
-    if (
-      !signup.username ||
-      !signup.password 
-    ) {
+    if (!signup.username || !signup.password) {
       console.error("please fill in all the field");
     }
     try {
       const response = await signupservice(signup.username, signup.password);
-      console.log(response);
-      onClose()
+
+      onClose();
       console.log("Account Created Successfully");
     } catch (error) {
       console.error("Failed to Create Account");

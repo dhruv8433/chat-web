@@ -28,7 +28,7 @@ const LoginModel = ({ open, onClose }) => {
 
     try {
       const response = await loginservice(login.username, login.password);
-      console.log(response);
+     
       Cookies.set("user", true);
       dispatch(loginUserSuccess(response));
       onClose();
