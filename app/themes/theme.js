@@ -16,6 +16,7 @@ const darkTheme = createTheme({
       text: "#ffffff",
       indicator: "#ffffff",
       icon: "#ffffff",
+      button: "#2f80f0",
     },
   },
 });
@@ -35,6 +36,7 @@ const lightTheme = createTheme({
       text: "#000000",
       indicator: "#000000",
       icon: "#000000",
+      button: "#2f80f0",
     },
   },
 });
