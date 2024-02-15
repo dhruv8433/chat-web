@@ -9,8 +9,21 @@ import MyAvatar from "./MyAvatar";
 import MyButton from "./MyButton";
 import MyBox from "./MyBox";
 import MyDrawer from "./MyDrawer";
+import { useSelector } from "react-redux";
+import LoginModel from "../model/LoginModel";
 
 const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
+  const user = useSelector((state) => state.auth.authUser);
+  console.log(user);
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
   const [open, setOpen] = useState(false);
 
   const theme = useTheme();
@@ -71,20 +84,38 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
         </IconButton>
 
         {/* DP */}
-        <div className="flex items-center p-4">
-          {/* user image -- dynamic */}
-          <MyAvatar />
 
-          {/* name only shown in md screen */}
-          <Box display={{ xs: "none", md: "block" }}>
-            <h1
-              className="ml-4 text-2xl"
-              style={{ fontWeight: 700, color: theme.palette.background.text }}
-            >
-              Partner
-            </h1>
-          </Box>
-        </div>
+        {user ? (
+          <>
+            <div className="flex items-center p-4">
+              {/* user image -- dynamic */}
+
+              <MyAvatar src={user.url} />
+
+              {/* name only shown in md screen */}
+              <Box display={{ xs: "none", md: "block" }}>
+                <h1
+                  className="ml-4 text-2xl"
+                  style={{
+                    fontWeight: 700,
+                    color: theme.palette.background.text,
+                  }}
+                >
+                  {user.name}
+                </h1>
+              </Box>
+            </div>
+          </>
+        ) : (
+          <MyButton
+            title={"Login"}
+            className="button h-min w-max p-2 rounded m-auto mr-2"
+            myFunction={handleOpenModal}
+          />
+        )}
+        {openModal && (
+          <LoginModel open={openModal} onClose={handleCloseModal} />
+        )}
       </div>
     </MyBox>
   );
