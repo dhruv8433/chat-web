@@ -33,8 +33,7 @@ export default function RootLayout({ children }) {
   }
 
   const theme = useTheme();
-  const login = false;
-  console.log("palletes: ", theme.palette);
+  const login = true;
   return (
     <html lang="en">
       <body className={`${font.className}`}>
