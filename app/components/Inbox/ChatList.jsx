@@ -1,6 +1,7 @@
 import * as React from "react";
 import { red } from "@mui/material/colors";
 import { Avatar, Box, useTheme } from "@mui/material";
+import { MyTextAvatar } from "@/app/common/MyAvatar";
 
 export default function ChatList() {
   const theme = useTheme();
@@ -8,9 +9,7 @@ export default function ChatList() {
     <Box bgcolor={theme.palette.primary.main} className="rounded-2xl">
       <div className="flex text px-4 hover:cursor-pointer py-2 mb-2 rounded-2xl">
         <div>
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
+          <MyTextAvatar  title={"R"} />
         </div>
         <div className="text-start ml-3 w-full">
           <div className="flex justify-between w-full">
@@ -23,9 +22,7 @@ export default function ChatList() {
 
       <div className="flex text px-4 hover:cursor-pointer py-2 mb-2 rounded-2xl">
         <div className="">
-          <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-            R
-          </Avatar>
+          <MyTextAvatar  title={"R"} />{" "}
         </div>
         <div className="text-start ml-3 w-full">
           <div className="flex justify-between w-full">

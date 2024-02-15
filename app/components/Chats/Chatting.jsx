@@ -4,6 +4,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import CallRoundedIcon from "@mui/icons-material/CallRounded";
 import VideoCallRoundedIcon from "@mui/icons-material/VideoCallRounded";
 import { SingleChatBody } from "./SingleChatBody";
+import { MyTextAvatar } from "@/app/common/MyAvatar";
 
 const Chatting = () => {
   const theme = useTheme();
@@ -12,9 +13,7 @@ const Chatting = () => {
       <div className="flex p-4 justify-between">
         <div className="flex items-center">
           <div className="">
-            <Avatar className="bg-red-500" aria-label="recipe">
-              R
-            </Avatar>
+            <MyTextAvatar title={"R"} />
           </div>
           <div className="ml-2 text-start">
             <h1

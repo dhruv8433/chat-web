@@ -48,10 +48,7 @@ export const SingleChatBody = () => {
       <Box>
         <div className="flex space-x-2">
           {/* Text Field */}
-          <input
-            className="primary pl-2 rounded text-white w-full"
-            placeholder="Write message"
-          />
+          {/* <MyInput title={"Write message"} /> */}
           {/* Gallery Icon */}
           <IconButton
             aria-label="gallery"

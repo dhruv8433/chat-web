@@ -1,12 +1,13 @@
 import React from "react";
 import Routes from "../components/Routes";
 import { Avatar, Divider } from "@mui/material";
+import MyAvatar from "../common/MyAvatar";
 
 const NavDrawer = () => {
   return (
     <div className="primary h-screen">
       <div className="flex p-2">
-        <Avatar src="https://wallpapers.com/images/hd/shin-chan-amazed-3ifhnlv2ww6kuwb9.jpg" />
+       <MyAvatar/>
         <div className="ml-4 text-white text-2xl">Hey, Partner</div>
       </div>
       <Divider />

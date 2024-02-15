@@ -16,7 +16,6 @@ export default function Home() {
           <SingleChat />
         </Grid>
       </Grid> */}
-      <h1 className="text-white">Pending...</h1>
     </div>
   );
 }
