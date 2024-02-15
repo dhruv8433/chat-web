@@ -10,6 +10,7 @@ import {
 } from "../components/action/action";
 import Cookies from "js-cookie";
 import MyModel from "../common/MyModel";
+import { handleSignIn } from "../authContext";
 
 const LoginModel = ({ open, onClose }) => {
   const dispatch = useDispatch();
@@ -28,10 +29,9 @@ const LoginModel = ({ open, onClose }) => {
 
     try {
       const response = await loginservice(login.username, login.password);
-     
+      onClose();
       Cookies.set("user", true);
       dispatch(loginUserSuccess(response));
-      onClose();
       console.log("Logged in successfully");
     } catch (error) {
       console.error("Login failed");
@@ -51,10 +51,6 @@ const LoginModel = ({ open, onClose }) => {
     // Handle login functionality here
   };
 
-  const handleSignInWithGoogle = () => {
-    // Handle sign up with Google functionality here
-  };
-
   const handleSignUp = () => {
     setOpenSignUpModal(true); // Open signup modal when "Sign up now!" is clicked
   };
@@ -67,7 +63,7 @@ const LoginModel = ({ open, onClose }) => {
       <MyModel
         open={open}
         setOpen={handleClose}
-        className = "flex items-center justify-center"
+        className="flex items-center justify-center"
       >
         <div
           style={{
@@ -139,7 +135,7 @@ const LoginModel = ({ open, onClose }) => {
               <Grid item xs={12} style={{ textAlign: "center", marginTop: 10 }}>
                 <button
                   className="button text-white h-min w-max p-2 rounded px-10  text-xl"
-                  onClick={handleSignInWithGoogle}
+                  onClick={() => handleSignIn({ dispatch })}
                 >
                   Sign Up with Google
                 </button>
