@@ -10,7 +10,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import { rootReducer } from "./components/reducer/rootReducer";
+import { rootReducer } from "./reducer/rootReducer";
 
 const persistconfig = {
   key: "root",

@@ -1,15 +1,19 @@
 import { useTheme } from "@mui/material";
 import React from "react";
 
-const MyButton = ({ title, className, myFunction }) => {
+const MyButton = ({ children, className, myFunction }) => {
   const theme = useTheme();
   return (
     <button
-      onClick={() => myFunction()}
-      style={{ color: theme.palette.background.MyButton }}
+      // if user provide function than execute that else nothing
+      onClick={() => (myFunction ? myFunction() : "")}
+      style={{
+        color: theme.palette.background.text,
+        backgroundColor: theme.palette.background.button,
+      }}
       className={`${className}`}
     >
-      {title}
+      {children}
     </button>
   );
 };
