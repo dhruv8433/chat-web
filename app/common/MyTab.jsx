@@ -12,6 +12,7 @@ const MyTab = ({ label, icon, className, sx }) => {
     justifyContent: "start",
     borderRadius: "1rem",
   });
+  
   return (
     <div>
       <CustomTab className={className} sx={sx} label={label} icon={icon} />
