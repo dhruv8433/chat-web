@@ -12,7 +12,7 @@ import Cookies from "js-cookie";
 import MyModel from "../common/MyModel";
 import { handleSignIn } from "../authContext";
 
-const LoginModel = ({ open, onClose }) => {
+const LoginModel = ({ onClose }) => {
   const dispatch = useDispatch();
   const [login, setLogin] = useState({
     username: "",
@@ -60,90 +60,85 @@ const LoginModel = ({ open, onClose }) => {
   };
   return (
     <>
-      <MyModel
-        open={open}
-        setOpen={handleClose}
-        className="flex items-center justify-center"
+      <div
+        style={{
+          backgroundColor: "#ffffff",
+          boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+          borderRadius: 8,
+          padding: 20,
+          minWidth: 300,
+        }}
       >
-        <div
-          style={{
-            backgroundColor: "#ffffff",
-            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
-            borderRadius: 8,
-            padding: 20,
-            minWidth: 300,
-          }}
-        >
-          <form onSubmit={handleSubmit}>
-            <Typography
-              variant="h5"
-              gutterBottom
-              style={{ textAlign: "center", marginBottom: 30 }}
-            >
-              Login Form
-            </Typography>
-            <Grid container spacing={2} direction="column">
-              <Grid item xs={12}>
-                <TextField
-                  label="Username"
-                  variant="filled"
-                  fullWidth
-                  onChange={(e) =>
-                    setLogin({
-                      ...login,
-                      username: e.target.value,
-                    })
-                  }
-                  value={login.username}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  label="Password"
-                  type="password"
-                  variant="filled"
-                  fullWidth
-                  onChange={(e) =>
-                    setLogin({
-                      ...login,
-                      password: e.target.value,
-                    })
-                  }
-                  value={login.password}
-                />
-              </Grid>
-              <Grid item xs={12} style={{ textAlign: "center" }}>
-                <button
-                  className="button text-white h-min w-max p-2 rounded  px-10 text-xl "
-                  type="submit"
-                  onClick={handleLogin}
-                >
-                  Login
-                </button>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography variant="body2" gutterBottom>
-                  Don't have an account?{" "}
-                  <span
-                    style={{ color: "blue", cursor: "pointer" }}
-                    onClick={handleSignUp} // Open signup modal when clicked
-                  >
-                    Sign up now!
-                  </span>
-                </Typography>
-              </Grid>
-              <Grid item xs={12} style={{ textAlign: "center", marginTop: 10 }}>
-                <button
-                  className="button text-white h-min w-max p-2 rounded px-10  text-xl"
-                  onClick={() => handleSignIn({ dispatch })}
-                >
-                  Sign Up with Google
-                </button>
-              </Grid>
+        <form onSubmit={handleSubmit}>
+          <Typography
+            variant="h5"
+            gutterBottom
+            style={{ textAlign: "center", marginBottom: 30 }}
+          >
+            Login Form
+          </Typography>
+          <Grid container spacing={2} direction="column">
+            <Grid item xs={12}>
+              <TextField
+                label="Username"
+                variant="filled"
+                fullWidth
+                onChange={(e) =>
+                  setLogin({
+                    ...login,
+                    username: e.target.value,
+                  })
+                }
+                value={login.username}
+              />
             </Grid>
-          </form>
-        </div>
-      </MyModel>
+            <Grid item xs={12}>
+              <TextField
+                label="Password"
+                type="password"
+                variant="filled"
+                fullWidth
+                onChange={(e) =>
+                  setLogin({
+                    ...login,
+                    password: e.target.value,
+                  })
+                }
+                value={login.password}
+              />
+            </Grid>
+            <Grid item xs={12} style={{ textAlign: "center" }}>
+              <button
+                className="button text-white h-min w-max p-2 rounded  px-10 text-xl "
+                type="submit"
+                onClick={handleLogin}
+              >
+                Login
+              </button>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography variant="body2" gutterBottom>
+                Don't have an account?{" "}
+                <span
+                  style={{ color: "blue", cursor: "pointer" }}
+                  onClick={handleSignUp} // Open signup modal when clicked
+                >
+                  Sign up now!
+                </span>
+              </Typography>
+            </Grid>
+            <Grid item xs={12} style={{ textAlign: "center", marginTop: 10 }}>
+              <button
+                className="button text-white h-min w-max p-2 rounded px-10  text-xl"
+                onClick={() => handleSignIn({ dispatch })}
+              >
+                Sign Up with Google
+              </button>
+            </Grid>
+          </Grid>
+        </form>
+      </div>
+
       <SignUpModel
         open={openSignUpModal}
         onClose={() => setOpenSignUpModal(false)}
