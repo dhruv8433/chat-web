@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Modal, TextField, Button, Grid, Typography } from "@mui/material";
+import { Modal, TextField, Button, Grid, Typography, useTheme } from "@mui/material";
 import SignUpModel from "./SignUpModel";
 import { loginservice } from "../services/loginService";
 import { useDispatch } from "react-redux";
@@ -11,9 +11,13 @@ import {
 import Cookies from "js-cookie";
 import MyModel from "../common/MyModel";
 import { handleSignIn } from "../authContext";
+import MyButton from "../common/MyButton";
+import MyTextField from "../common/MyTextField";
+import MyBox from "../common/MyBox";
 
 const LoginModel = ({ open, onClose }) => {
   const dispatch = useDispatch();
+  const theme = useTheme();
   const [login, setLogin] = useState({
     username: "",
     password: "",
@@ -60,14 +64,10 @@ const LoginModel = ({ open, onClose }) => {
   };
   return (
     <>
-      <MyModel
-        open={open}
-        setOpen={handleClose}
-        className="flex items-center justify-center"
-      >
-        <div
+      <div>
+        <MyBox
+          className={"w-[300px]"}
           style={{
-            backgroundColor: "#ffffff",
             boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
             borderRadius: 8,
             padding: 20,
@@ -78,17 +78,20 @@ const LoginModel = ({ open, onClose }) => {
             <Typography
               variant="h5"
               gutterBottom
-              style={{ textAlign: "center", marginBottom: 30 }}
+              style={{
+                textAlign: "center",
+                marginBottom: 30,
+                color: theme.palette.background.text,
+              }}
             >
               Login Form
             </Typography>
             <Grid container spacing={2} direction="column">
               <Grid item xs={12}>
-                <TextField
-                  label="Username"
-                  variant="filled"
-                  fullWidth
-                  onChange={(e) =>
+                <MyTextField
+                  label={"Username"}
+                  type={"username"}
+                  myFunction={(e) =>
                     setLogin({
                       ...login,
                       username: e.target.value,
@@ -98,12 +101,10 @@ const LoginModel = ({ open, onClose }) => {
                 />
               </Grid>
               <Grid item xs={12}>
-                <TextField
-                  label="Password"
-                  type="password"
-                  variant="filled"
-                  fullWidth
-                  onChange={(e) =>
+                <MyTextField
+                  label={"Password"}
+                  type={"password"}
+                  myFunction={(e) =>
                     setLogin({
                       ...login,
                       password: e.target.value,
@@ -113,16 +114,20 @@ const LoginModel = ({ open, onClose }) => {
                 />
               </Grid>
               <Grid item xs={12} style={{ textAlign: "center" }}>
-                <button
+                <MyButton
                   className="button text-white h-min w-max p-2 rounded  px-10 text-xl "
-                  type="submit"
-                  onClick={handleLogin}
+                  myFunction={() => handleLogin()}
+                  type={"submit"}
                 >
                   Login
-                </button>
+                </MyButton>
               </Grid>
               <Grid item xs={12}>
-                <Typography variant="body2" gutterBottom>
+                <Typography
+                  variant="body2"
+                  gutterBottom
+                  style={{ color: theme.palette.background.text }}
+                >
                   Don't have an account?{" "}
                   <span
                     style={{ color: "blue", cursor: "pointer" }}
@@ -133,22 +138,24 @@ const LoginModel = ({ open, onClose }) => {
                 </Typography>
               </Grid>
               <Grid item xs={12} style={{ textAlign: "center", marginTop: 10 }}>
-                <button
+                <MyButton
                   className="button text-white h-min w-max p-2 rounded px-10  text-xl"
-                  onClick={() => handleSignIn({ dispatch })}
+                  myFunction={() => handleSignIn({ dispatch })}
                 >
-                  Sign Up with Google
-                </button>
+                  Login with Google
+                </MyButton>
               </Grid>
             </Grid>
           </form>
-        </div>
+        </MyBox>
+      </div>
+
+      <MyModel open={openSignUpModal} setOpen={setOpenSignUpModal}>
+        <SignUpModel
+          onClose={() => setOpenSignUpModal(false)}
+          openLoginModal={openLoginModal}
+        />
       </MyModel>
-      <SignUpModel
-        open={openSignUpModal}
-        onClose={() => setOpenSignUpModal(false)}
-        openLoginModal={openLoginModal}
-      />
     </>
   );
 };
