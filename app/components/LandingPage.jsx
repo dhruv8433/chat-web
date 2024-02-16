@@ -14,6 +14,7 @@ import Feature from "../common/Feature";
 import { motion } from "framer-motion";
 import MyModel from "../common/MyModel";
 import SignUpModel from "../model/SignUpModel";
+import LoginModel from "../model/LoginModel";
 
 const LandingPage = () => {
   const [signupModalOpen, setsignupModalOpen] = useState(false);
@@ -80,7 +81,7 @@ const LandingPage = () => {
             setOpen={setsignupModalOpen}
             className={"flex justify-center items-center "}
           >
-            <SignUpModel />
+            <LoginModel />
           </MyModel>
 
           {/* Feature */}

@@ -35,7 +35,7 @@ export async function handleSignIn({ dispatch }) {
 
 export async function handleSignOut() {
   try {
-    await logOut();
+    await  logOut();
   } catch (error) {
     console.log(error);
   }
