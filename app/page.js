@@ -5,9 +5,11 @@ import Grid from "@mui/material/Grid";
 import { SingleChat } from "@/app/components/Chats/ChattingComponent";
 import { AllChats } from "@/app/components/Inbox/InboxComponent";
 
+
 export default function Home() {
   return (
     <div>
+     
       {/* <Grid container spacing={2} sx={{ mt: 1 }}>
         <Grid item xs={4}>
           <AllChats />

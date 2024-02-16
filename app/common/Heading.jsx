@@ -111,7 +111,9 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
             title={"Login"}
             className="button h-min w-max p-2 rounded m-auto mr-2"
             myFunction={handleOpenModal}
-          />
+          >
+            Login
+          </MyButton>
         )}
         {openModal && (
           <LoginModel open={openModal} onClose={handleCloseModal} />
