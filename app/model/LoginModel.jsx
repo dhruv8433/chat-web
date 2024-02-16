@@ -1,6 +1,13 @@
 "use client";
 import React, { useState } from "react";
-import { Modal, TextField, Button, Grid, Typography } from "@mui/material";
+import {
+  Modal,
+  TextField,
+  Button,
+  Grid,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import SignUpModel from "./SignUpModel";
 import { loginservice } from "../services/loginService";
 import { useDispatch } from "react-redux";
@@ -11,9 +18,13 @@ import {
 import Cookies from "js-cookie";
 import MyModel from "../common/MyModel";
 import { handleSignIn } from "../authContext";
+import MyButton from "../common/MyButton";
+import MyTextField from "../common/MyTextField";
+import MyBox from "../common/MyBox";
 
 const LoginModel = ({ onClose }) => {
   const dispatch = useDispatch();
+  const theme = useTheme();
   const [login, setLogin] = useState({
     username: "",
     password: "",
@@ -60,90 +71,98 @@ const LoginModel = ({ onClose }) => {
   };
   return (
     <>
-      <div
-        style={{
-          backgroundColor: "#ffffff",
-          boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
-          borderRadius: 8,
-          padding: 20,
-          minWidth: 300,
-        }}
-      >
-        <form onSubmit={handleSubmit}>
-          <Typography
-            variant="h5"
-            gutterBottom
-            style={{ textAlign: "center", marginBottom: 30 }}
-          >
-            Login Form
-          </Typography>
-          <Grid container spacing={2} direction="column">
-            <Grid item xs={12}>
-              <TextField
-                label="Username"
-                variant="filled"
-                fullWidth
-                onChange={(e) =>
-                  setLogin({
-                    ...login,
-                    username: e.target.value,
-                  })
-                }
-                value={login.username}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Password"
-                type="password"
-                variant="filled"
-                fullWidth
-                onChange={(e) =>
-                  setLogin({
-                    ...login,
-                    password: e.target.value,
-                  })
-                }
-                value={login.password}
-              />
-            </Grid>
-            <Grid item xs={12} style={{ textAlign: "center" }}>
-              <button
-                className="button text-white h-min w-max p-2 rounded  px-10 text-xl "
-                type="submit"
-                onClick={handleLogin}
-              >
-                Login
-              </button>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography variant="body2" gutterBottom>
-                Don't have an account?{" "}
-                <span
-                  style={{ color: "blue", cursor: "pointer" }}
-                  onClick={handleSignUp} // Open signup modal when clicked
+      <div>
+        <MyBox
+          className={"w-[300px]"}
+          style={{
+            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
+            borderRadius: 8,
+            padding: 20,
+            minWidth: 300,
+          }}
+        >
+          <form onSubmit={handleSubmit}>
+            <Typography
+              variant="h5"
+              gutterBottom
+              style={{
+                textAlign: "center",
+                marginBottom: 30,
+                color: theme.palette.background.text,
+              }}
+            >
+              Login Form
+            </Typography>
+            <Grid container spacing={2} direction="column">
+              <Grid item xs={12}>
+                <MyTextField
+                  label={"Username"}
+                  type={"username"}
+                  myFunction={(e) =>
+                    setLogin({
+                      ...login,
+                      username: e.target.value,
+                    })
+                  }
+                  value={login.username}
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <MyTextField
+                  label={"Password"}
+                  type={"password"}
+                  myFunction={(e) =>
+                    setLogin({
+                      ...login,
+                      password: e.target.value,
+                    })
+                  }
+                  value={login.password}
+                />
+              </Grid>
+              <Grid item xs={12} style={{ textAlign: "center" }}>
+                <MyButton
+                  className="button text-white h-min w-max p-2 rounded  px-10 text-xl "
+                  myFunction={() => handleLogin()}
+                  type={"submit"}
                 >
-                  Sign up now!
-                </span>
-              </Typography>
+                  Login
+                </MyButton>
+              </Grid>
+              <Grid item xs={12}>
+                <Typography
+                  variant="body2"
+                  gutterBottom
+                  style={{ color: theme.palette.background.text }}
+                >
+                  Don't have an account?{" "}
+                  <span
+                    style={{ color: "blue", cursor: "pointer" }}
+                    onClick={handleSignUp} // Open signup modal when clicked
+                  >
+                    Sign up now!
+                  </span>
+                </Typography>
+              </Grid>
+              <Grid item xs={12} style={{ textAlign: "center", marginTop: 10 }}>
+                <MyButton
+                  className="button text-white h-min w-max p-2 rounded px-10  text-xl"
+                  myFunction={() => handleSignIn({ dispatch })}
+                >
+                  Login with Google
+                </MyButton>
+              </Grid>
             </Grid>
-            <Grid item xs={12} style={{ textAlign: "center", marginTop: 10 }}>
-              <button
-                className="button text-white h-min w-max p-2 rounded px-10  text-xl"
-                onClick={() => handleSignIn({ dispatch })}
-              >
-                Sign Up with Google
-              </button>
-            </Grid>
-          </Grid>
-        </form>
+          </form>
+        </MyBox>
       </div>
 
-      <SignUpModel
-        open={openSignUpModal}
-        onClose={() => setOpenSignUpModal(false)}
-        openLoginModal={openLoginModal}
-      />
+      <MyModel open={openSignUpModal} setOpen={setOpenSignUpModal}>
+        <SignUpModel
+          onClose={() => setOpenSignUpModal(false)}
+          openLoginModal={openLoginModal}
+        />
+      </MyModel>
     </>
   );
 };

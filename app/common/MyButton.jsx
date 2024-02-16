@@ -1,7 +1,7 @@
 import { useTheme } from "@mui/material";
 import React from "react";
 
-const MyButton = ({ children, className, myFunction }) => {
+const MyButton = ({ children, className, myFunction, type }) => {
   const theme = useTheme();
   return (
     <button
@@ -12,6 +12,7 @@ const MyButton = ({ children, className, myFunction }) => {
         backgroundColor: theme.palette.background.button,
       }}
       className={`${className}`}
+      type={type}
     >
       {children}
     </button>

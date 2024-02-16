@@ -2,7 +2,7 @@ import { Box, styled, useTheme } from "@mui/material";
 import React from "react";
 
 // reusable Box
-const MyBox = ({ children, className, sx, isPrimary }) => {
+const MyBox = ({ children, className, sx, isPrimary,style }) => {
   const theme = useTheme();
 
   // based on user mode --> specific styles
@@ -13,7 +13,7 @@ const MyBox = ({ children, className, sx, isPrimary }) => {
   });
 
   return (
-    <StyledBox className={className} sx={{sx}}>
+    <StyledBox className={className} sx={{sx}} style={style}>
       {children}
     </StyledBox>
   );
