@@ -37,9 +37,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${font.className}`}>
-        <ThemeProvider theme={!isDarkTheme ? darkTheme : lightTheme}>
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <StoreProvider>
-              {!login ? (
+              {login ? (
                 <MyBox className="p-10 h-full">
                   <Grid container spacing={2}>
                     <Grid item xs={12} md={2}>
