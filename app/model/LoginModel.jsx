@@ -14,7 +14,7 @@ import { useDispatch } from "react-redux";
 import {
   loginUserFailure,
   loginUserSuccess,
-} from "../components/action/action";
+} from "../action/action";
 import Cookies from "js-cookie";
 import MyModel from "../common/MyModel";
 import { handleSignIn } from "../authContext";
