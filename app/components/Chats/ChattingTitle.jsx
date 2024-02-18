@@ -6,7 +6,7 @@ import VideoCallRoundedIcon from "@mui/icons-material/VideoCallRounded";
 import { SingleChatBody } from "./SingleChatBody";
 import { MyTextAvatar } from "@/app/common/MyAvatar";
 
-const Chatting = () => {
+const ChattingTitle = () => {
   const theme = useTheme();
   return (
     <>
@@ -56,4 +56,4 @@ const Chatting = () => {
   );
 };
 
-export default Chatting;
+export default ChattingTitle;
