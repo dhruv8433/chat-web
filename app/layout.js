@@ -2,7 +2,7 @@
 
 import "./globals.css";
 import "./style/style.css";
-import { Box, Grid, Paper, ThemeProvider, useTheme } from "@mui/material";
+import { Box, Grid, ThemeProvider, useTheme } from "@mui/material";
 import Navbar from "./components/Navbar";
 import { Baloo_2 } from "next/font/google";
 import { darkTheme, lightTheme } from "./themes/theme";
