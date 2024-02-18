@@ -13,7 +13,6 @@ import PostActionAnimation from "@/app/animations/postaction.json";
 import Feature from "../common/Feature";
 import { motion } from "framer-motion";
 import MyModel from "../common/MyModel";
-import SignUpModel from "../model/SignUpModel";
 import LoginModel from "../model/LoginModel";
 
 const LandingPage = () => {
