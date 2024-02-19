@@ -3,7 +3,6 @@ import React from "react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import CallRoundedIcon from "@mui/icons-material/CallRounded";
 import VideoCallRoundedIcon from "@mui/icons-material/VideoCallRounded";
-import { SingleChatBody } from "./SingleChatBody";
 import { MyTextAvatar } from "@/app/common/MyAvatar";
 
 const ChattingTitle = () => {
@@ -48,9 +47,6 @@ const ChattingTitle = () => {
             <CloseRoundedIcon fontSize="medium" />
           </IconButton>
         </div>
-      </div>
-      <div className="p-4">
-        <SingleChatBody />
       </div>
     </>
   );
