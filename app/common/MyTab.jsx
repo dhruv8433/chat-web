@@ -1,7 +1,7 @@
 import { Tab, styled, useTheme } from "@mui/material";
 import React from "react";
 
-const MyTab = ({ label, icon, className, sx }) => {
+const MyTab = ({ label, icon, className, sx, onChange }) => {
   const theme = useTheme();
 
   // global - tab styling
@@ -15,7 +15,7 @@ const MyTab = ({ label, icon, className, sx }) => {
   
   return (
     <div>
-      <CustomTab className={className} sx={sx} label={label} icon={icon} />
+      <CustomTab className={className} sx={sx} label={label} icon={icon} onChange={onChange} />
     </div>
   );
 };

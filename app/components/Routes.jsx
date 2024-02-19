@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import { IoCallOutline } from "react-icons/io5";
 import { PiChats } from "react-icons/pi";
@@ -11,6 +10,8 @@ import { Modal, useTheme } from "@mui/material";
 import { Tab, Tabs } from "@mui/material";
 import LogoutModel from "../model/LogoutModel";
 import MyBox from "../common/MyBox";
+import MyTab from "../common/MyTab";
+import MyLink from "../common/MyLink";
 function a11yProps(index) {
   return {
     id: `vertical-tab-${index}`,
@@ -27,22 +28,27 @@ export default function Routes() {
 
   useEffect(() => {
     // Get the stored value from localStorage
-    const storedValue = localStorage.getItem('selectedTab');
+    const storedValue = localStorage.getItem('selectedTabs');
+    console.log('storedValue:', storedValue);
     if (storedValue !== null) {
       setValue(parseInt(storedValue));
+    } else {
+      setValue(0);
     }
   }, []);
-  const handleTabChange = (event, newValue) => {
+
+
+  const handleTabChange = (newValue) => {
     setValue(newValue);
     // Store the selected tab value in localStorage
-    localStorage.setItem('selectedTab', newValue);
+    localStorage.setItem('selectedTabs', newValue);
   };
 
   const theme = useTheme();
   return (
     <>
-      <MyBox
-        sx={{ flexGrow: 1, bgcolor: theme.palette.primary.main, display: 'flex' }}
+      <MyBox isPrimary={true}
+        sx={{ flexGrow: 1, background: theme.palette.background.body, display: 'flex' }}
       >
         <Tabs
           orientation="vertical"
@@ -50,46 +56,74 @@ export default function Routes() {
           value={value}
           onChange={handleTabChange} // Use handleTabChange instead of handleChange
           aria-label="Vertical tabs example"
-          sx={{ borderRight: 1, borderColor: 'divider' }}
+          sx={{
+            borderLeft: '4px solid #333', borderColor: theme.palette.primary.main, "& .MuiTabs-indicator": {
+              left: 0,
+              right: "auto",
+              borderWidth: "3px",
+              borderRadius: "5px",
+              backgroundColor: theme.palette.background.indicator,
+              color: theme.palette.background.indicator,
+            },
+          }}
         >
-          <Tab
-            label="Explore"
-            className={`flex w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 0 ? 'Mui-selected' : ''}`}
-            icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />} {...a11yProps(0)} href="#item-one"
-          />
+          <MyLink href={"/explore"}>
+
+            <MyTab
+              label="Explore"
+              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 0 ? 'Mui-selected MuiTabs-indicator' : ''}`}
+              icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />} {...a11yProps(0)}
+              onChange={() => handleTabChange(0)}
+            />
+          </MyLink>
 
           {/* chats route */}
-          <Tab
-            className={`flex w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 1 ? 'Mui-selected' : ''}`}
-            label="Chats"
-            icon={
-              <PiChats
-                style={{
-                  height: 20,
-                  width: 20,
-                }}
-              />
-            }{...a11yProps(1)} href="/chats"
-          />
+          <MyLink href={"/chats"}>
 
-          <Tab
-            className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 2 ? 'Mui-selected' : ''}`}
-            label="Calls"
-            icon={<IoCallOutline style={{ height: 20, width: 20 }} />}{...a11yProps(2)} href="/calls"
-          />
+            <MyTab
+              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 1 ? 'Mui-selected' : ''}`}
+              label="Chats"
+              icon={
+                <PiChats
+                  style={{
+                    height: 20,
+                    width: 20,
+                  }}
+                />
+              }{...a11yProps(1)} onChange={() => handleTabChange(1)}
 
-          <Tab
-            className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 3 ? 'Mui-selected' : ''}`}
-            label="Privacy"
-            icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}{...a11yProps(3)} href="/privacy-policies"
-          />
+            />
+          </MyLink>
+          <MyLink href={"/calls"}>
+
+            <MyTab
+              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 2 ? 'Mui-selected' : ''}`}
+              label="Calls"
+              icon={<IoCallOutline style={{ height: 20, width: 20 }} />}{...a11yProps(2)} onChange={() => handleTabChange(2)}
+
+            />
+          </MyLink>
+          <MyLink href={"/privacy-policies"}>
+
+            <MyTab
+              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 3 ? 'Mui-selected' : ''}`}
+              label="Privacy"
+              icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}{...a11yProps(3)} onChange={() => handleTabChange(3)}
+
+            />
+          </MyLink>
 
           {/* Settings Route */}
-          <Tab
-            className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 4 ? 'Mui-selected' : ''}`}
-            label="Settings"
-            icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}{...a11yProps(4)} href="/settings"
-          />
+          <MyLink href={"/settings"}>
+
+            <MyTab
+              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 4 ? 'Mui-selected' : ''}`}
+              label="Settings"
+              icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}{...a11yProps(4)} onChange={() => handleTabChange(4)}
+
+            />
+          </MyLink>
+
         </Tabs>
         <div className="absolute bottom-4 w-full">
           <div
