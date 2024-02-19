@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
-import { Divider, Icon } from "@mui/material";
+import { Divider } from "@mui/material";
 import React from "react";
 import MyIcon from "./MyIcon";
+import MyText from "./MyText";
 
 const Options = ({ OptionIcon, title, callPage }) => {
   return (
@@ -10,19 +11,22 @@ const Options = ({ OptionIcon, title, callPage }) => {
       <div className="flex items-center rounded-2xl h-20 relative hover:cursor-pointer hover:bg-[#494c55]">
         {/* icons */}
         <div className="ml-3">
-          <MyIcon className="h-10 overflow-visible" sx={{ height: 20, width: 20, overflow: "visible" }}>
+          <MyIcon
+            className="h-10 overflow-visible"
+            sx={{ height: 20, width: 20, overflow: "visible" }}
+          >
             <OptionIcon />
           </MyIcon>
         </div>
-        
+
         {/* content */}
         <div className="">
-          <h1 className="text-xl ml-4">{title}</h1>
+          <MyText className="text-xl ml-4">{title}</MyText>
           {/* if it's calls page than only visible time and call type */}
           {callPage && (
-            <p className="ml-4">
+            <MyText className="ml-4">
               12:20 <span>voice call</span>
-            </p>
+            </MyText>
           )}
         </div>
       </div>

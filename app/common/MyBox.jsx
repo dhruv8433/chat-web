@@ -1,8 +1,17 @@
+"use client";
+
 import { Box, styled, useTheme } from "@mui/material";
 import React from "react";
 
 // reusable Box
-const MyBox = ({ children, className, sx, isPrimary, style }) => {
+const MyBox = ({
+  children,
+  className,
+  sx,
+  isPrimary,
+  style,
+  minHeightRequire,
+}) => {
   const theme = useTheme();
 
   // based on user mode --> specific styles
@@ -10,7 +19,8 @@ const MyBox = ({ children, className, sx, isPrimary, style }) => {
     backgroundColor: isPrimary
       ? theme.palette.primary.main
       : theme.palette.secondary.main,
-    minHeight: isPrimary ? "" : "100vh",
+    // if user set ,minHeightRequire true than only we provide min height 100vh -- as screen
+    minHeight: minHeightRequire ? "100vh" : "",
   });
 
   return (
