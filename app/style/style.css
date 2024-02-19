@@ -73,3 +73,8 @@
 .css-kp9ftd-MuiIcon-root .MuiSvgIcon-root {
   height: 100%;
 }
+
+.css-heg063-MuiTabs-flexContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
