@@ -1,7 +1,14 @@
 import { useTheme } from "@mui/material";
 import React from "react";
 
-const MyButton = ({ children, className, myFunction, type }) => {
+const MyButton = ({
+  children,
+  className,
+  myFunction,
+  type,
+  isPrimaryButton,
+  customBgColor,
+}) => {
   const theme = useTheme();
   return (
     <button
@@ -9,7 +16,10 @@ const MyButton = ({ children, className, myFunction, type }) => {
       onClick={() => (myFunction ? myFunction() : "")}
       style={{
         color: theme.palette.background.text,
-        backgroundColor: theme.palette.background.button,
+        // if button is primary than blue bg else user specified color
+        backgroundColor: isPrimaryButton
+          ? theme.palette.background.button
+          : customBgColor,
       }}
       className={`${className}`}
       type={type}
