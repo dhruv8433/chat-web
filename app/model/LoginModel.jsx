@@ -1,13 +1,20 @@
 "use client";
 import React, { useState } from "react";
-import { Modal, TextField, Button, Grid, Typography, useTheme } from "@mui/material";
+import {
+  Modal,
+  TextField,
+  Button,
+  Grid,
+  Typography,
+  useTheme,
+} from "@mui/material";
 import SignUpModel from "./SignUpModel";
 import { loginservice } from "../services/loginService";
 import { useDispatch } from "react-redux";
 import {
   loginUserFailure,
   loginUserSuccess,
-} from "../components/action/action";
+} from "../action/action";
 import Cookies from "js-cookie";
 import MyModel from "../common/MyModel";
 import { handleSignIn } from "../authContext";
@@ -15,7 +22,7 @@ import MyButton from "../common/MyButton";
 import MyTextField from "../common/MyTextField";
 import MyBox from "../common/MyBox";
 
-const LoginModel = ({ open, onClose }) => {
+const LoginModel = ({ onClose }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const [login, setLogin] = useState({

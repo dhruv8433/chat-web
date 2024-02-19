@@ -2,7 +2,7 @@
 
 import "./globals.css";
 import "./style/style.css";
-import { Box, Grid, Paper, ThemeProvider, useTheme } from "@mui/material";
+import { Box, Grid, ThemeProvider, useTheme } from "@mui/material";
 import Navbar from "./components/Navbar";
 import { Baloo_2 } from "next/font/google";
 import { darkTheme, lightTheme } from "./themes/theme";
@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <StoreProvider>
               {login ? (
-                <MyBox className="p-10 h-full">
+                <MyBox minHeightRequire={true} className="p-10 h-full">
                   <Grid container spacing={2}>
                     <Grid item xs={12} md={2}>
                       <Box

@@ -1,5 +1,5 @@
 import Cookies from "js-cookie";
-import { loginUserSuccess } from "./components/action/action";
+import { loginUserSuccess } from "./action/action";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "./firebase";
 
@@ -35,7 +35,7 @@ export async function handleSignIn({ dispatch }) {
 
 export async function handleSignOut() {
   try {
-    await logOut();
+    await  logOut();
   } catch (error) {
     console.log(error);
   }

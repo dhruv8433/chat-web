@@ -3,10 +3,9 @@ import React from "react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import CallRoundedIcon from "@mui/icons-material/CallRounded";
 import VideoCallRoundedIcon from "@mui/icons-material/VideoCallRounded";
-import { SingleChatBody } from "./SingleChatBody";
 import { MyTextAvatar } from "@/app/common/MyAvatar";
 
-const Chatting = () => {
+const ChattingTitle = () => {
   const theme = useTheme();
   return (
     <>
@@ -49,11 +48,8 @@ const Chatting = () => {
           </IconButton>
         </div>
       </div>
-      <div className="p-4">
-        <SingleChatBody />
-      </div>
     </>
   );
 };
 
-export default Chatting;
+export default ChattingTitle;

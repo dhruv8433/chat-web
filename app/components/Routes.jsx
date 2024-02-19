@@ -125,6 +125,7 @@ export default function Routes() {
           </MyLink>
 
         </Tabs>
+
         <div className="absolute bottom-4 w-full">
           <div
             onClick={() => setLogoutDialogOpen(true)}

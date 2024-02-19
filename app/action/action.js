@@ -2,7 +2,7 @@ import {
   LOGIN_USER_FAILURE,
   LOGIN_USER_SUCCESS,
   LOGOUT_USER,
-} from "../../reducer/authenticate";
+} from "../reducer/authenticate";
 
 // auth action
 export const loginUserSuccess = (userData) => ({

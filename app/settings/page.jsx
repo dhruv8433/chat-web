@@ -1,6 +1,6 @@
 import React from "react";
 import { Grid } from "@mui/material";
-import Settings from "../components/Chat-setting/Settings";
+import Settings from "../components/Settings/Settings";
 
 const page = () => {
   return (

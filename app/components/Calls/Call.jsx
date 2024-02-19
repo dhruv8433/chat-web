@@ -1,9 +1,10 @@
 import Options from "@/app/common/Options";
 import React from "react";
 import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
+import MyBox from "@/app/common/MyBox";
 const Call = () => {
   return (
-    <div className="min-h-[770px] mt-4 primary border border-black rounded-2xl">
+    <MyBox isPrimary={true} className="min-h-[770px] mt-4 rounded-2xl">
       <div className="p-2 ">
         <Options
           OptionIcon={PhoneOutlinedIcon}
@@ -21,7 +22,7 @@ const Call = () => {
           callPage={true}
         />
       </div>
-    </div>
+    </MyBox>
   );
 };
 
