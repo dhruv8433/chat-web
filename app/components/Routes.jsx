@@ -89,7 +89,9 @@ const Routes = () => {
               icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
             />
           </Link>
+
         </Tabs>
+
         <div className="absolute bottom-4 w-full">
           <div
             onClick={() => setLogoutDialogOpen(true)}

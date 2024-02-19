@@ -59,10 +59,11 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
         {/* new chat button visible in large device else icon button here */}
         <Box display={{ xs: "none", md: "flex" }}>
           <MyButton
-            title={"+ New Chat"}
             myFunction={""}
             className="button h-min w-max p-2 rounded m-auto mr-2"
-          />
+          >
+            + Add
+          </MyButton>
         </Box>
 
         {/* icon button for small screens */}

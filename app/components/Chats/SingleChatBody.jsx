@@ -3,24 +3,13 @@ import { Card, IconButton, Box, CardMedia } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import GalleryIcon from "@mui/icons-material/InsertPhoto";
 import VoiceIcon from "@mui/icons-material/Mic";
+import MyInput from "@/app/common/MyInput";
 
 export const SingleChatBody = () => {
   return (
-    <Card className="rounded-2xl p-2">
+    <div className="p-5 rounded-2xl">
       {/* Receiver messages */}
-      <div className="flex justify-start mb-2 min-h-[520px]">
-        <CardMedia
-          component="img"
-          src="/userProfile.jpg"
-          alt="User Profile"
-          sx={{
-            height: 40,
-            width: 40,
-            padding: 1,
-            borderRadius: "50%",
-            marginRight: 2,
-          }}
-        />
+      <div className="flex justify-start mb-2 rounded-2xl min-h-[500px]">
         <h1
           className="primary p-3 h-min rounded text-white"
           style={{
@@ -48,7 +37,10 @@ export const SingleChatBody = () => {
       <Box>
         <div className="flex space-x-2">
           {/* Text Field */}
-          {/* <MyInput title={"Write message"} /> */}
+          <MyInput
+            className={"w-full rounded bg-none px-1"}
+            placeholder={"Write message"}
+          />
           {/* Gallery Icon */}
           <IconButton
             aria-label="gallery"
@@ -75,6 +67,6 @@ export const SingleChatBody = () => {
           </IconButton>
         </div>
       </Box>
-    </Card>
+    </div>
   );
 };
