@@ -40,7 +40,7 @@ export default function RootLayout({ children }) {
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <StoreProvider>
               {login ? (
-                <MyBox className="p-10 h-full">
+                <MyBox minHeightRequire={true} className="p-10 h-full">
                   <Grid container spacing={2}>
                     <Grid item xs={12} md={2}>
                       <Box
