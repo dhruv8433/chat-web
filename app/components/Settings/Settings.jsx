@@ -7,10 +7,11 @@ import BookmarkBorderIcon from "@mui/icons-material/BookmarkBorder";
 import SupervisorAccountOutlinedIcon from "@mui/icons-material/SupervisorAccountOutlined";
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 import StarBorderPurple500OutlinedIcon from "@mui/icons-material/StarBorderPurple500Outlined";
+import MyBox from "@/app/common/MyBox";
 
 const Settings = () => {
   return (
-    <div className="min-h-[770px] primary border border-black rounded-2xl">
+    <MyBox isPrimary={true} className="min-h-[770px] rounded-2xl">
       <div className="p-2 ">
         {/* Profile */}
         <Options OptionIcon={PersonOutlineIcon} title={"Profile"} />
@@ -33,7 +34,7 @@ const Settings = () => {
           title={"Close Friends"}
         />
       </div>
-    </div>
+    </MyBox>
   );
 };
 
