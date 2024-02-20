@@ -36,8 +36,8 @@ export default function RootLayout({ children }) {
   const login = true;
 
   // TODO -- apply title of the page based on prams on currnet page
-  const params = useParams();
-  console.log("params", params);
+  // const params = useParams();
+  // console.log("params", params);
 
   return (
     <html lang="en">
