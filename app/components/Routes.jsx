@@ -66,7 +66,7 @@ export default function Routes() {
               right: "auto",
               borderWidth: "3px",
               borderRadius: "5px",
-              backgroundColor: theme.palette.background.indicator,
+              // backgroundColor: theme.palette.background.indicator,
               color: theme.palette.background.indicator,
             },
           }}
