@@ -28,7 +28,13 @@ export default function Header() {
           >
             Index
           </h1>
-          <MyButton className="border ml-2 px-2 py-1 rounded">3 New</MyButton>
+          <MyButton
+            isPrimaryButton={false}
+            customBgColor={"red"}
+            className="rounded-lg ml-2 px-2 py-1"
+          >
+            3 New
+          </MyButton>
         </div>
         <div className="">
           <IconButton>
