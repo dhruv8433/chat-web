@@ -2,15 +2,16 @@
 
 import "./globals.css";
 import "./style/style.css";
-import { Box, Grid, ThemeProvider, useTheme } from "@mui/material";
+import MyBox from "./common/MyBox";
+import Heading from "./common/Heading";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import { Baloo_2 } from "next/font/google";
-import { darkTheme, lightTheme } from "./themes/theme";
-import React, { useState } from "react";
-import Heading from "./common/Heading";
-import LandingPage from "./components/LandingPage";
+import { useParams } from "next/navigation";
 import { StoreProvider } from "./storeProvider";
-import MyBox from "./common/MyBox";
+import LandingPage from "./components/LandingPage";
+import { darkTheme, lightTheme } from "./themes/theme";
+import { Box, Grid, ThemeProvider } from "@mui/material";
 
 const font = Baloo_2({
   subsets: ["vietnamese"],
@@ -32,38 +33,42 @@ export default function RootLayout({ children }) {
     localStorage.setItem("theme", false);
   }
 
-  const theme = useTheme();
   const login = true;
+
+  // TODO -- apply title of the page based on prams on currnet page
+  const params = useParams();
+  console.log("params", params);
+
   return (
     <html lang="en">
       <body className={`${font.className}`}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-            <StoreProvider>
-              {login ? (
-                <MyBox minHeightRequire={true} className="p-10 h-full">
-                  <Grid container spacing={2}>
-                    <Grid item xs={12} md={2}>
-                      <Box
-                        className="fixed w-[15%]"
-                        display={{ xs: "none", md: "block" }}
-                      >
-                        <Navbar />
-                      </Box>
-                    </Grid>
-                    <Grid item xs={12} md={10}>
-                      <Heading
-                        title={"Chats"}
-                        DarkThemeApplied={DarkThemeApplied}
-                        lightThemeApplied={lightThemeApplied}
-                      />
-                      <div>{children}</div>
-                    </Grid>
+          <StoreProvider>
+            {login ? (
+              <MyBox minHeightRequire={true} className="p-10 h-full">
+                <Grid container spacing={2}>
+                  <Grid item xs={12} md={2}>
+                    <Box
+                      className="fixed w-[15%]"
+                      display={{ xs: "none", md: "block" }}
+                    >
+                      <Navbar />
+                    </Box>
                   </Grid>
-                </MyBox>
-              ) : (
-                <LandingPage />
-              )}
-            </StoreProvider>
+                  <Grid item xs={12} md={10}>
+                    <Heading
+                      title={"Chats"}
+                      DarkThemeApplied={DarkThemeApplied}
+                      lightThemeApplied={lightThemeApplied}
+                    />
+                    <div>{children}</div>
+                  </Grid>
+                </Grid>
+              </MyBox>
+            ) : (
+              <LandingPage />
+            )}
+          </StoreProvider>
         </ThemeProvider>
       </body>
     </html>
