@@ -11,7 +11,10 @@ import { Tab, Tabs } from "@mui/material";
 import LogoutModel from "../model/LogoutModel";
 import MyBox from "../common/MyBox";
 import MyTab from "../common/MyTab";
-import MyLink from "../common/MyLink";
+import MyText from "../common/MyText";
+import MyIcon from "../common/MyIcon";
+
+
 function a11yProps(index) {
   return {
     id: `vertical-tab-${index}`,
@@ -122,8 +125,8 @@ export default function Routes() {
               icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}{...a11yProps(4)} onChange={() => handleTabChange(4)}
 
             />
-          </MyLink>
 
+          </MyLink>
         </Tabs>
 
         <div className="absolute bottom-4 w-full">
@@ -132,8 +135,10 @@ export default function Routes() {
             className=" hover:cursor-pointer p-4 w-[94%] rounded-2xl hover:bg-[#494c55]"
           >
             <div className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]">
-              <CiLogout style={{ height: 20, width: 20 }} />
-              <h1 className="ml-2">Logout</h1>
+              <MyIcon>
+                <CiLogout style={{ height: 20, width: 20 }} />
+              </MyIcon>
+              <MyText className="ml-2">Logout</MyText>
             </div>
           </div>
         </div>

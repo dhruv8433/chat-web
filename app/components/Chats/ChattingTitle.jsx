@@ -4,6 +4,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import CallRoundedIcon from "@mui/icons-material/CallRounded";
 import VideoCallRoundedIcon from "@mui/icons-material/VideoCallRounded";
 import { MyTextAvatar } from "@/app/common/MyAvatar";
+import Link from "next/link";
 
 const ChattingTitle = () => {
   const theme = useTheme();
@@ -40,12 +41,14 @@ const ChattingTitle = () => {
             <CallRoundedIcon fontSize="medium" />
           </IconButton>
           {/* close icon */}
-          <IconButton
-            aria-label="close"
-            className="secondary rounded-md text-white"
-          >
-            <CloseRoundedIcon fontSize="medium" />
-          </IconButton>
+          <Link href={"/chats"}>
+            <IconButton
+              aria-label="close"
+              className="secondary rounded-md text-white"
+            >
+              <CloseRoundedIcon fontSize="medium" />
+            </IconButton>
+          </Link>
         </div>
       </div>
     </>
