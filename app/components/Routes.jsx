@@ -13,6 +13,8 @@ import Link from "next/link";
 import LogoutModel from "../model/LogoutModel";
 import MyLink from "../common/MyLink";
 import MyTab from "../common/MyTab";
+import MyText from "../common/MyText";
+import MyIcon from "../common/MyIcon";
 
 const Routes = () => {
   const [value, setValue] = useState(0);
@@ -89,7 +91,6 @@ const Routes = () => {
               icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
             />
           </Link>
-
         </Tabs>
 
         <div className="absolute bottom-4 w-full">
@@ -98,8 +99,10 @@ const Routes = () => {
             className=" hover:cursor-pointer p-4 w-[94%] rounded-2xl hover:bg-[#494c55]"
           >
             <div className="flex flex-row w-full items-center  justify-start rounded-2xl hover:bg-[#494c55]">
-              <CiLogout style={{ height: 20, width: 20 }} />
-              <h1 className="ml-2">Logout</h1>
+              <MyIcon>
+                <CiLogout style={{ height: 20, width: 20 }} />
+              </MyIcon>
+              <MyText className="ml-2">Logout</MyText>
             </div>
           </div>
         </div>
