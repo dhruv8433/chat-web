@@ -13,6 +13,7 @@ import MyBox from "../common/MyBox";
 import MyTab from "../common/MyTab";
 import MyText from "../common/MyText";
 import MyIcon from "../common/MyIcon";
+import MyLink from "../common/MyLink";
 
 
 function a11yProps(index) {
