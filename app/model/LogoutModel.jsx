@@ -3,6 +3,7 @@ import React from "react";
 import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
 import MyButton from "../common/MyButton";
+import { handleSignOut } from "../authContext";
 
 const LogoutModel = ({ setLogoutDialogOpen }) => {
   return (
@@ -21,10 +22,13 @@ const LogoutModel = ({ setLogoutDialogOpen }) => {
         >
           Cancel
         </MyButton>
+        
+        {/* action -- logout */}
         <MyButton
           isPrimaryButton={false}
           customBgColor={"red"}
           className={"p-1 rounded-lg"}
+          myFunction={() => handleSignOut()}
         >
           Logout
         </MyButton>
