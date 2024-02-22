@@ -1,117 +1,92 @@
 "use client";
-import React, { useState } from "react";
-import { TextField, Grid, Typography, useTheme } from "@mui/material";
-import { signupservice } from "../services/signupService";
+import { useState } from "react";
 import MyBox from "../common/MyBox";
+import MyText from "../common/MyText";
 import MyButton from "../common/MyButton";
-import { handleSignIn } from "../authContext";
-import { useDispatch } from "react-redux";
-import MyTextField from "../common/MyTextField";
+import MyModel from "../common/MyModel";
+import SignUpModel from "./SignUpModel";
+import LoginModel from "./LoginModel";
 
-const SignUpModel = ({ onClose }) => {
-  const theme = useTheme();
-  const dispatch = useDispatch();
-  const [signup, setSignup] = useState({ username: "", password: "" });
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (!signup.username || !signup.password) {
-      console.error("please fill in all the field");
-    }
-    try {
-      const response = await signupservice(signup.username, signup.password);
-      console.log(response);
-      onClose();
-      console.log("Account Created Successfully");
-    } catch (error) {
-      console.error("Failed to Create Account");
-      console.log(error);
-    }
-  }
+const SignupModel = ({ setSignupModel }) => {
+  const [loginModel, setLoginModel] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+
+  const handleLogin = () => {
+    // Handle login logic
+    console.log("Logging in with email:", email, "and password:", password);
+  };
+
+  const handleLoginWithGoogle = () => {
+    // Handle login with Google logic
+    console.log("Logging in with Google");
+  };
 
   return (
-    <MyBox
-      className={"w-[300px]"}
-      style={{
-        boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
-        borderRadius: 8,
-        padding: 20,
-        minWidth: 300,
-      }}
-    >
-      <form onSubmit={handleSubmit}>
-        <Typography
-          variant="h5"
-          gutterBottom
-          style={{
-            textAlign: "center",
-            marginBottom: 30,
-            color: theme.palette.background.text,
-          }}
-        >
-          SignUp Form
-        </Typography>
-        <Grid container spacing={2} direction="column">
-          <Grid item xs={12}>
-            <MyTextField
-              label={"Username"}
-              type={"username"}
-              myFunction={(e) =>
-                setSignup({
-                  ...signup,
-                  username: e.target.value,
-                })
-              }
-              value={signup.username}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <MyTextField
-              label={"Password"}
-              type={"password"}
-              value={signup.password}
-              myFunction={(e) =>
-                setSignup({
-                  ...signup,
-                  password: e.target.value,
-                })
-              }
-            />
-          </Grid>
-          <Grid item xs={12} style={{ textAlign: "center" }}>
-            <MyButton
-              type={"submit"}
-              className="button text-white h-min w-max p-2 rounded  px-10 text-xl "
+    <>
+      <MyBox className="flex flex-col items-center justify-center p-4 rounded-2xl">
+        <MyText className="text-3xl font-bold mb-8">Sign up</MyText>
+        <div className="w-80">
+          {/* user name */}
+          <input
+            type="text"
+            placeholder="userName"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4 focus:outline-none focus:border-blue-500"
+          />
+          {/* email  */}
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4 focus:outline-none focus:border-blue-500"
+          />
+          {/* password */}
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border border-gray-300 rounded-md py-2 px-3 mb-6 focus:outline-none focus:border-blue-500"
+          />
+          <MyButton
+            myFunction={handleLogin}
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none"
+          >
+            SignUp
+          </MyButton>
+          <MyText className={"flex justify-center w-full mt-1"}>
+            Already have Account ?
+            <span
+              className="text-blue-500 pl-2 cursor-pointer"
+              onClick={() => {
+                setLoginModel(true);
+                setSignupModel(true);
+              }}
             >
-              Sign Up
-            </MyButton>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography
-              variant="body2"
-              gutterBottom
-              style={{ color: theme.palette.background.text }}
-            >
-              Already have an account?{" "}
-              <span
-                style={{ color: "blue", cursor: "pointer" }}
-                // onClick={handleOpenLogin} // Open signup modal when clicked
-              >
-                login Here!
-              </span>
-            </Typography>
-          </Grid>
-          <Grid item xs={12} style={{ textAlign: "center", marginTop: 10 }}>
-            <MyButton
-              className="button text-white h-min w-max p-2 rounded px-10  text-xl"
-              myFunction={() => handleSignIn({ dispatch })}
-            >
-              SignUp with Google
-            </MyButton>
-          </Grid>
-        </Grid>
-      </form>
-    </MyBox>
+              Login
+            </span>
+          </MyText>
+          <MyButton
+            myFunction={handleLoginWithGoogle}
+            className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none mt-2"
+          >
+            Login with Google
+          </MyButton>
+        </div>
+      </MyBox>
+      <MyModel
+        open={loginModel}
+        setOpen={setLoginModel}
+        className={"flex justify-center items-center "}
+      >
+        <LoginModel />
+      </MyModel>
+    </>
   );
 };
 
-export default SignUpModel;
+export default SignupModel;

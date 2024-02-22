@@ -3,8 +3,24 @@ import React from "react";
 import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
 import MyButton from "../common/MyButton";
+import { useDispatch } from "react-redux";
+import { logoutuser } from "../action/action";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase";
+import Cookies from "js-cookie";
 
 const LogoutModel = ({ setLogoutDialogOpen }) => {
+  const dispatch = useDispatch();
+
+  const logOut = async () => {
+    try {
+      await signOut(auth);
+      dispatch(logoutuser());
+      Cookies.remove("user");
+    } catch (err) {
+      console.error(err);
+    }
+  };
   return (
     <MyBox className={"p-4 rounded-2xl"}>
       <MyText className={"text-2xl"}>Logout</MyText>
@@ -21,10 +37,13 @@ const LogoutModel = ({ setLogoutDialogOpen }) => {
         >
           Cancel
         </MyButton>
+
+        {/* action -- logout */}
         <MyButton
           isPrimaryButton={false}
           customBgColor={"red"}
           className={"p-1 rounded-lg"}
+          myFunction={() => logOut()}
         >
           Logout
         </MyButton>

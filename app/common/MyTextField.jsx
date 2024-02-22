@@ -1,12 +1,12 @@
 import { TextField, useTheme } from "@mui/material";
 import React from "react";
 
-const MyTextField = ({ label, type, value, myFunction }) => {
+const MyTextField = ({ label, value, myFunction }) => {
   const theme = useTheme();
   return (
     <TextField
       label={label}
-      type={type}
+      // type={type}
       variant="outlined"
       fullWidth
       onChange={() => (myFunction ? myFunction() : "")}
