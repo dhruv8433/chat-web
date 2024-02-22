@@ -12,6 +12,7 @@ import { StoreProvider } from "./storeProvider";
 import LandingPage from "./components/LandingPage";
 import { darkTheme, lightTheme } from "./themes/theme";
 import { Box, Grid, ThemeProvider } from "@mui/material";
+import { Toaster } from "react-hot-toast";
 
 const font = Baloo_2({
   subsets: ["vietnamese"],
@@ -44,7 +45,7 @@ export default function RootLayout({ children }) {
       <body className={`${font.className}`}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
           <StoreProvider>
-            {login ? (
+            {!login ? (
               <MyBox minHeightRequire={true} className="p-10 h-full">
                 <Grid container spacing={2}>
                   <Grid item xs={12} md={2}>
@@ -69,6 +70,9 @@ export default function RootLayout({ children }) {
               <LandingPage />
             )}
           </StoreProvider>
+
+          {/* global toaster import here */}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

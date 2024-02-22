@@ -1,167 +1,118 @@
 "use client";
-import React, { useState } from "react";
-import {
-  Modal,
-  TextField,
-  Button,
-  Grid,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import SignUpModel from "./SignUpModel";
-import { loginservice } from "../services/loginService";
-import { useDispatch } from "react-redux";
-import {
-  loginUserFailure,
-  loginUserSuccess,
-} from "../action/action";
-import Cookies from "js-cookie";
-import MyModel from "../common/MyModel";
-import { handleSignIn } from "../authContext";
-import MyButton from "../common/MyButton";
-import MyTextField from "../common/MyTextField";
+import { useState } from "react";
 import MyBox from "../common/MyBox";
+import MyText from "../common/MyText";
+import MyButton from "../common/MyButton";
+import MyModel from "../common/MyModel";
+import SignUpModel from "./SignUpModel";
+import {
+  GoogleAuthProvider,
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+} from "firebase/auth";
+import { loginUserSuccess, logoutuser } from "../action/action";
+import Cookies from "js-cookie";
+import { auth } from "../firebase";
+import { useDispatch } from "react-redux";
 
-const LoginModel = ({ onClose }) => {
+const LoginModel = ({ setLoginModel }) => {
+  const [signupModel, setSignupModel] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   const dispatch = useDispatch();
-  const theme = useTheme();
-  const [login, setLogin] = useState({
-    username: "",
-    password: "",
-  });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleLogin = () => {
+  //   // Handle login logic
+  //   console.log("Logging in with email:", email, "and password:", password);
+  // };
 
-    if (!login.username || !login.password) {
-      console.error("Please fill in all the fields");
-      return;
-    }
+  // const handleLoginWithGoogle = () => {
+  //   // Handle login with Google logic
+  //   console.log("Logging in with Google");
+  // };
 
+  const signIn = async () => {
     try {
-      const response = await loginservice(login.username, login.password);
-      onClose();
-      Cookies.set("user", true);
-      dispatch(loginUserSuccess(response));
-      console.log("Logged in successfully");
-    } catch (error) {
-      console.error("Login failed");
-      Cookies.set("user", false);
-      dispatch(loginUserFailure);
-      console.log(error);
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      dispatch(loginUserSuccess(user));
+      Cookies.set("user-auth", true);
+    } catch (err) {
+      console.error(err);
+      Cookies.set("user-auth", false);
     }
   };
 
-  const [openSignUpModal, setOpenSignUpModal] = useState(false); // State to manage visibility of signup modal
-
-  const handleClose = () => {
-    onClose();
+  const signInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, new GoogleAuthProvider());
+      const user = result.user;
+      dispatch(loginUserSuccess(user)); //
+      Cookies.set("user", true);
+    } catch (err) {
+      console.error(err);
+      Cookies.set("user", false);
+    }
   };
 
-  const handleLogin = () => {
-    // Handle login functionality here
-  };
-
-  const handleSignUp = () => {
-    setOpenSignUpModal(true); // Open signup modal when "Sign up now!" is clicked
-  };
-  const openLoginModal = () => {
-    setOpenSignUpModal(false);
-    // Add logic to open the login modal
-  };
+  
   return (
     <>
-      <div>
-        <MyBox
-          className={"w-[300px]"}
-          style={{
-            boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.5)",
-            borderRadius: 8,
-            padding: 20,
-            minWidth: 300,
-          }}
-        >
-          <form onSubmit={handleSubmit}>
-            <Typography
-              variant="h5"
-              gutterBottom
-              style={{
-                textAlign: "center",
-                marginBottom: 30,
-                color: theme.palette.background.text,
+      <MyBox className="flex flex-col items-center justify-center p-4 rounded-2xl">
+        <MyText className="text-3xl font-bold mb-8">Login</MyText>
+        <div className="w-80">
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4 focus:outline-none focus:border-blue-500"
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            className="w-full border border-gray-300 rounded-md py-2 px-3 mb-6 focus:outline-none focus:border-blue-500"
+          />
+          <MyButton
+            myFunction={signIn}
+            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none"
+          >
+            Login
+          </MyButton>
+          <MyText className={"flex justify-center w-full mt-1"}>
+            No Account ?
+            <span
+              className="text-blue-500 pl-2 cursor-pointer"
+              onClick={() => {
+                // setLoginModel(false);
+                setSignupModel(true);
               }}
             >
-              Login Form
-            </Typography>
-            <Grid container spacing={2} direction="column">
-              <Grid item xs={12}>
-                <MyTextField
-                  label={"Username"}
-                  type={"username"}
-                  myFunction={(e) =>
-                    setLogin({
-                      ...login,
-                      username: e.target.value,
-                    })
-                  }
-                  value={login.username}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <MyTextField
-                  label={"Password"}
-                  type={"password"}
-                  myFunction={(e) =>
-                    setLogin({
-                      ...login,
-                      password: e.target.value,
-                    })
-                  }
-                  value={login.password}
-                />
-              </Grid>
-              <Grid item xs={12} style={{ textAlign: "center" }}>
-                <MyButton
-                  className="button text-white h-min w-max p-2 rounded  px-10 text-xl "
-                  myFunction={() => handleLogin()}
-                  type={"submit"}
-                >
-                  Login
-                </MyButton>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography
-                  variant="body2"
-                  gutterBottom
-                  style={{ color: theme.palette.background.text }}
-                >
-                  Don't have an account?{" "}
-                  <span
-                    style={{ color: "blue", cursor: "pointer" }}
-                    onClick={handleSignUp} // Open signup modal when clicked
-                  >
-                    Sign up now!
-                  </span>
-                </Typography>
-              </Grid>
-              <Grid item xs={12} style={{ textAlign: "center", marginTop: 10 }}>
-                <MyButton
-                  className="button text-white h-min w-max p-2 rounded px-10  text-xl"
-                  myFunction={() => handleSignIn({ dispatch })}
-                >
-                  Login with Google
-                </MyButton>
-              </Grid>
-            </Grid>
-          </form>
-        </MyBox>
-      </div>
-
-      <MyModel open={openSignUpModal} setOpen={setOpenSignUpModal}>
-        <SignUpModel
-          onClose={() => setOpenSignUpModal(false)}
-          openLoginModal={openLoginModal}
-        />
+              Sign Up
+            </span>
+          </MyText>
+          <MyButton
+            myFunction={signInWithGoogle}
+            className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none mt-2"
+          >
+            Login with Google
+          </MyButton>
+        </div>
+      </MyBox>
+      <MyModel
+        open={signupModel}
+        setOpen={setSignupModel}
+        className={"flex justify-center items-center "}
+      >
+        <SignUpModel setSignupModel={setSignupModel} />
       </MyModel>
     </>
   );

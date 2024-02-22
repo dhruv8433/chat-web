@@ -1,32 +1,28 @@
-"use client";
-
-import { Box, styled, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 import React from "react";
 
-// reusable Box
-const MyBox = ({
-  children,
-  className,
-  sx,
-  isPrimary,
-  style,
-  minHeightRequire,
-}) => {
+const MyBox = ({ children, className, isPrimary, style, minHeightRequire }) => {
   const theme = useTheme();
 
-  // based on user mode --> specific styles
-  const StyledBox = styled(Box)({
-    backgroundColor: isPrimary
-      ? theme.palette.primary.main
-      : theme.palette.secondary.main,
-    // if user set ,minHeightRequire true than only we provide min height 100vh -- as screen
-    minHeight: minHeightRequire ? "100vh" : "",
-  });
+  // Define background color based on isPrimary prop
+  const backgroundColor = isPrimary
+    ? theme.palette.primary.main
+    : theme.palette.secondary.main;
+
+  // Define minHeight based on minHeightRequire prop
+  const minHeight = minHeightRequire ? "100vh" : "auto";
 
   return (
-    <StyledBox className={className} sx={{ sx }} style={style}>
+    <Box
+      className={className}
+      sx={{
+        backgroundColor,
+        minHeight,
+        ...style, // Additional styles passed as props
+      }}
+    >
       {children}
-    </StyledBox>
+    </Box>
   );
 };
 
