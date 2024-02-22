@@ -1,3 +1,5 @@
+"use client"
+
 import { Icon, styled, useTheme } from "@mui/material";
 import React from "react";
 

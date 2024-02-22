@@ -1,3 +1,5 @@
+"use client";
+
 import { Tab, styled, useTheme } from "@mui/material";
 import React from "react";
 
@@ -12,10 +14,16 @@ const MyTab = ({ label, icon, className, sx, onChange }) => {
     justifyContent: "start",
     borderRadius: "1rem",
   });
-  
+
   return (
     <div>
-      <CustomTab className={className} sx={sx} label={label} icon={icon} onChange={onChange} />
+      <CustomTab
+        className={className}
+        sx={sx}
+        label={label}
+        icon={icon}
+        onChange={onChange}
+      />
     </div>
   );
 };

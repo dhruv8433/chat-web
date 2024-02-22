@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react";
 import { red } from "@mui/material/colors";
 import { Avatar, Box, useTheme } from "@mui/material";

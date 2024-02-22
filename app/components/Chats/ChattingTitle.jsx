@@ -1,3 +1,5 @@
+"use client"
+
 import { Avatar, Card, CardHeader, IconButton, useTheme } from "@mui/material";
 import React from "react";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
