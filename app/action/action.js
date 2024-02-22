@@ -13,6 +13,7 @@ export const loginUserSuccess = (userData) => ({
 export const loginUserFailure = () => ({
   type: LOGIN_USER_FAILURE,
 });
+
 export const logoutuser = () => ({
   type: LOGOUT_USER,
 });
