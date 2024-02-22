@@ -4,23 +4,49 @@ import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
 import MyButton from "../common/MyButton";
 import MyModel from "../common/MyModel";
-import SignUpModel from "./SignUpModel";
 import LoginModel from "./LoginModel";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { loginUserSuccess } from "../action/action";
+import Cookies from "js-cookie";
+import { auth } from "../firebase";
+import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast";
 
-const SignupModel = ({ setSignupModel }) => {
+const SignupModel = ({ setSignupModel}) => {
   const [loginModel, setLoginModel] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
+  const dispatch = useDispatch()
+  const signIn = async () => {
+    try {
+      const userCredential = await createUserWithEmailAndPassword(
 
-  const handleLogin = () => {
-    // Handle login logic
-    console.log("Logging in with email:", email, "and password:", password);
+        auth,
+        email,
+        password
+      );
+      const user = userCredential.user;
+      // dispatch(loginUserSuccess(user));
+      // Cookies.set("user-auth", true);
+      toast.success("Sign up successful!")
+    } catch (err) {
+      console.error(err);
+      // Cookies.set("user-auth", true);
+      toast.success('Sign up successful !');
+    }
   };
 
-  const handleLoginWithGoogle = () => {
-    // Handle login with Google logic
-    console.log("Logging in with Google");
+  const signInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, new GoogleAuthProvider());
+      const user = result.user;
+      dispatch(loginUserSuccess(user)); //
+      Cookies.set("user", true);
+    } catch (err) {
+      console.error(err);
+      Cookies.set("user", false);
+    }
   };
 
   return (
@@ -53,7 +79,7 @@ const SignupModel = ({ setSignupModel }) => {
             className="w-full border border-gray-300 rounded-md py-2 px-3 mb-6 focus:outline-none focus:border-blue-500"
           />
           <MyButton
-            myFunction={handleLogin}
+            myFunction={signIn}
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none"
           >
             SignUp
@@ -71,7 +97,7 @@ const SignupModel = ({ setSignupModel }) => {
             </span>
           </MyText>
           <MyButton
-            myFunction={handleLoginWithGoogle}
+            myFunction={signInWithGoogle}
             className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none mt-2"
           >
             Login with Google

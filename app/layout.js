@@ -34,11 +34,8 @@ export default function RootLayout({ children }) {
     localStorage.setItem("theme", false);
   }
 
-  const login = false;
+  const login = true;
 
-  // TODO -- apply title of the page based on prams on currnet page
-  // const params = useParams();
-  // console.log("params", params);
 
   return (
     <html lang="en">

@@ -7,35 +7,26 @@ import MyModel from "../common/MyModel";
 import SignUpModel from "./SignUpModel";
 import {
   GoogleAuthProvider,
-  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signInWithPopup,
-  signOut,
 } from "firebase/auth";
-import { loginUserSuccess, logoutuser } from "../action/action";
+import { loginUserSuccess } from "../action/action";
 import Cookies from "js-cookie";
 import { auth } from "../firebase";
 import { useDispatch } from "react-redux";
+import { toast } from "react-hot-toast";
+import GoogleButton from "react-google-button";
 
 const LoginModel = ({ setLoginModel }) => {
   const [signupModel, setSignupModel] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const dispatch = useDispatch();
 
-  // const handleLogin = () => {
-  //   // Handle login logic
-  //   console.log("Logging in with email:", email, "and password:", password);
-  // };
-
-  // const handleLoginWithGoogle = () => {
-  //   // Handle login with Google logic
-  //   console.log("Logging in with Google");
-  // };
 
   const signIn = async () => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(
+      const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
         password
@@ -43,9 +34,11 @@ const LoginModel = ({ setLoginModel }) => {
       const user = userCredential.user;
       dispatch(loginUserSuccess(user));
       Cookies.set("user-auth", true);
+      toast.success("login sucess")
     } catch (err) {
       console.error(err);
       Cookies.set("user-auth", false);
+      toast.error("login failed,please try again later.")
     }
   };
 
@@ -55,13 +48,14 @@ const LoginModel = ({ setLoginModel }) => {
       const user = result.user;
       dispatch(loginUserSuccess(user)); //
       Cookies.set("user", true);
+      toast.success("login successful!")
     } catch (err) {
       console.error(err);
       Cookies.set("user", false);
     }
   };
 
-  
+
   return (
     <>
       <MyBox className="flex flex-col items-center justify-center p-4 rounded-2xl">
@@ -99,12 +93,16 @@ const LoginModel = ({ setLoginModel }) => {
               Sign Up
             </span>
           </MyText>
-          <MyButton
+          {/* <MyButton
             myFunction={signInWithGoogle}
             className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none mt-2"
           >
             Login with Google
-          </MyButton>
+          </MyButton> */}
+
+          <GoogleButton className="g-btn "
+            type="dark"
+            onClick={signInWithGoogle} style={{ width: '100%' }} />
         </div>
       </MyBox>
       <MyModel
