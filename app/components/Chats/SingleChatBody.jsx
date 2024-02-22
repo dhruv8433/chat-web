@@ -5,7 +5,6 @@ import { Card, IconButton, Box, CardMedia } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
 import GalleryIcon from "@mui/icons-material/InsertPhoto";
 import VoiceIcon from "@mui/icons-material/Mic";
-import MyInput from "@/app/common/MyInput";
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 
@@ -58,10 +57,11 @@ export const SingleChatBody = () => {
 
         <ul>
           {messages.map((msg, index) => (
-            <li className="text-white" key={index}>{msg}</li>
+            <li className="text-white" key={index}>
+              {msg}
+            </li>
           ))}
         </ul>
-
       </Box>
       {/* Message input */}
       <Box>
