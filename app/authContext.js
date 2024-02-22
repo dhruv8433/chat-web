@@ -2,7 +2,6 @@ import Cookies from "js-cookie";
 import { loginUserSuccess } from "./action/action";
 import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 import { auth } from "./firebase";
-
 const googleSignIn = async ({ dispatch }) => {
   const provider = new GoogleAuthProvider();
   const response = await signInWithPopup(auth, provider);
