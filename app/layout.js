@@ -12,6 +12,7 @@ import { StoreProvider } from "./storeProvider";
 import LandingPage from "./components/LandingPage";
 import { darkTheme, lightTheme } from "./themes/theme";
 import { Box, Grid, ThemeProvider } from "@mui/material";
+import { Toaster } from "react-hot-toast";
 
 const font = Baloo_2({
   subsets: ["vietnamese"],
@@ -33,7 +34,7 @@ export default function RootLayout({ children }) {
     localStorage.setItem("theme", false);
   }
 
-  const login = true;
+  const login = false;
 
   // TODO -- apply title of the page based on prams on currnet page
   // const params = useParams();
@@ -69,6 +70,9 @@ export default function RootLayout({ children }) {
               <LandingPage />
             )}
           </StoreProvider>
+
+          {/* global toaster import here */}
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>
