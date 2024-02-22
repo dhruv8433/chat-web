@@ -61,15 +61,7 @@ const LoginModel = ({ setLoginModel }) => {
     }
   };
 
-  const logOut = async () => {
-    try {
-      await signOut(auth);
-      dispatch(logoutuser());
-      Cookies.remove("user");
-    } catch (err) {
-      console.error(err);
-    }
-  };
+  
   return (
     <>
       <MyBox className="flex flex-col items-center justify-center p-4 rounded-2xl">
