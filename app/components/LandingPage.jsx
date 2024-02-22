@@ -16,7 +16,7 @@ import MyModel from "../common/MyModel";
 import LoginModel from "../model/LoginModel";
 
 const LandingPage = () => {
-  const [signupModalOpen, setsignupModalOpen] = useState(false);
+  const [loginModel, setloginModel] = useState(false);
 
   return (
     <div>
@@ -55,7 +55,7 @@ const LandingPage = () => {
                   <MyBox className={""}>
                     {/* on button click myFunction Executed -- onClick Event */}
                     <MyButton
-                      myFunction={() => setsignupModalOpen(true)}
+                      myFunction={() => setloginModel(true)}
                       className={"text-start mt-4 px-2 py-1 rounded"}
                     >
                       Sign Up Now
@@ -76,11 +76,11 @@ const LandingPage = () => {
 
           {/* Signup Model */}
           <MyModel
-            open={signupModalOpen}
-            setOpen={setsignupModalOpen}
+            open={loginModel}
+            setOpen={setloginModel}
             className={"flex justify-center items-center "}
           >
-            <LoginModel />
+            <LoginModel setLoginModel={setloginModel} />
           </MyModel>
 
           {/* Feature */}

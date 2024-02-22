@@ -4,8 +4,11 @@ import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
 import MyButton from "../common/MyButton";
 import { handleSignOut } from "../authContext";
+import { useDispatch } from "react-redux";
+import { logoutuser } from "../action/action";
 
 const LogoutModel = ({ setLogoutDialogOpen }) => {
+  const dispatch = useDispatch();
   return (
     <MyBox className={"p-4 rounded-2xl"}>
       <MyText className={"text-2xl"}>Logout</MyText>
@@ -22,13 +25,13 @@ const LogoutModel = ({ setLogoutDialogOpen }) => {
         >
           Cancel
         </MyButton>
-        
+
         {/* action -- logout */}
         <MyButton
           isPrimaryButton={false}
           customBgColor={"red"}
           className={"p-1 rounded-lg"}
-          myFunction={() => handleSignOut()}
+          myFunction={() => dispatch(logoutuser())}
         >
           Logout
         </MyButton>
