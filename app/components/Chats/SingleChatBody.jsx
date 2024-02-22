@@ -14,55 +14,41 @@ export const SingleChatBody = () => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const newSocket = io();
+    // Establish connection to Socket.IO server
+    const newSocket = io("http://localhost:4000"); // Replace with your server URL
     setSocket(newSocket);
 
-    newSocket.on("chat message", (msg) => {
-      setMessages((prevMessages) => [...prevMessages, msg]);
-    });
-
-    return () => newSocket.close();
+    // Clean up socket connection on unmount
+    return () => {
+      newSocket.disconnect();
+    };
   }, []);
 
   const sendMessage = () => {
-    socket.emit("chat message", input);
-    setInput("");
+    // Emit message to server
+    if (socket && input.trim() !== "") {
+      socket.emit("sendMessage", { message: input });
+      setMessages((prevMessages) => [...prevMessages, input]);
+      console.log(input); // Use input instead of message
+      setInput(""); // Clear the input field after sending the message
+    }
   };
+
   return (
     <div className="p-5 rounded-2xl">
-      {/* Receiver messages */}
-      <div className="flex justify-start mb-2 rounded-2xl min-h-[500px]">
-        <h1
-          className="primary p-3 h-min rounded text-white"
-          style={{
-            borderTopLeftRadius: 0,
-          }}
-        >
-          Hello, how are you?
-        </h1>
-      </div>
-
-      {/* Sender messages */}
       <Box
         sx={{ display: "flex", justifyContent: "flex-end", marginBottom: 2 }}
       >
-        <h1
-          className="primary p-3 rounded text-white"
-          style={{
-            borderTopRightRadius: 0, // Set top-right corner border radius to zero
-          }}
-        >
-          I'm good, thank you!
-        </h1>
-
         <ul>
+          {/* TODO - If another user connected and send msg than dispaly this on that user side as well store messages  */}
           {messages.map((msg, index) => (
-            <li className="text-white" key={index}>
+            <li className="primary p-3 rounded mb-3 text-white" key={index}>
               {msg}
             </li>
           ))}
         </ul>
       </Box>
+
       {/* Message input */}
       <Box>
         <div className="flex space-x-2">
