@@ -23,17 +23,7 @@ const LoginModel = ({ setLoginModel }) => {
 
   const dispatch = useDispatch();
 
-  // const handleLogin = () => {
-  //   // Handle login logic
-  //   console.log("Logging in with email:", email, "and password:", password);
-  // };
-
-  // const handleLoginWithGoogle = () => {
-  //   // Handle login with Google logic
-  //   console.log("Logging in with Google");
-  // };
-
-  const signIn = async () => {
+  const loginUser = async () => {
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
@@ -53,7 +43,7 @@ const LoginModel = ({ setLoginModel }) => {
     try {
       const result = await signInWithPopup(auth, new GoogleAuthProvider());
       const user = result.user;
-      dispatch(loginUserSuccess(user)); //
+      dispatch(loginUserSuccess(user));
       Cookies.set("user", true);
     } catch (err) {
       console.error(err);
@@ -61,7 +51,6 @@ const LoginModel = ({ setLoginModel }) => {
     }
   };
 
-  
   return (
     <>
       <MyBox className="flex flex-col items-center justify-center p-4 rounded-2xl">
@@ -82,7 +71,7 @@ const LoginModel = ({ setLoginModel }) => {
             className="w-full border border-gray-300 rounded-md py-2 px-3 mb-6 focus:outline-none focus:border-blue-500"
           />
           <MyButton
-            myFunction={signIn}
+            myFunction={loginUser}
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none"
           >
             Login
