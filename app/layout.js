@@ -35,11 +35,9 @@ export default function RootLayout({ children }) {
     localStorage.setItem("theme", false);
   }
 
-  const login = Cookies.get("user");
+const login = Cookies.get("user");
 
-  // TODO -- apply title of the page based on prams on currnet page
-  // const params = useParams();
-  // console.log("params", params);
+
 
   return (
     <html lang="en">
