@@ -1,8 +1,9 @@
+import { api } from "../config/config";
 import { httpAxios } from "../httpAxios";
 
-export async function loginservice(username, password) {
+export async function loginservice({ email, password }) {
   const result = await httpAxios
-    .post("api/login", { username: username, password: password })
-    .then((response) => response.data);
+    .get(`/user/login`, { email: email, password: password })
+    .then((response) => response);
   return result;
 }
