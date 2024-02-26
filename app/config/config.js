@@ -1,3 +1,5 @@
 export const api_endpoint = "";
 
-export const api = "http://localhost:8080/api/v1";
+export const api = "http://chat-back-end-gamma.vercel.app/api/v1";
+
+export const JWT_SECRET='hlomynameisranjaniandmybffnameisdhruvandwebotharepartnerandbestfriend';
