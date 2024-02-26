@@ -35,7 +35,7 @@ export default function ChatList() {
         </div>
         <div className="text-start ml-3 w-full">
           <div className="flex justify-between w-full">
-            <MyText>#Partner</MyText>
+            <MyText>mental</MyText>
             <MyText>12:24</MyText>
           </div>
           <MyText>September 14, 2016</MyText>
