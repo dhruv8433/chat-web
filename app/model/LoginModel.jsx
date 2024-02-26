@@ -31,6 +31,7 @@ const LoginModel = ({ setLoginModel }) => {
       const user = await loginservice({ email, password });
       dispatch(loginUserSuccess(user));
       Cookies.set("user", true);
+      router.refresh("/");
       toast.success("login sucess");
     } catch (err) {
       console.error(err);
