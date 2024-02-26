@@ -91,7 +91,7 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
             <div className="flex items-center p-4">
               {/* user image -- dynamic */}
 
-              <MyAvatar src={user.url} />
+              <MyAvatar src={user.photoUrl} />
 
               {/* name only shown in md screen */}
               <Box display={{ xs: "none", md: "block" }}>
@@ -102,7 +102,7 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
                     color: theme.palette.background.text,
                   }}
                 >
-                  {user.name}
+                  {user.displayName}
                 </h1>
               </Box>
             </div>
