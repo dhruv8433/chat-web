@@ -35,8 +35,8 @@ export default function RootLayout({ children }) {
     localStorage.setItem("theme", false);
   }
 
-const login = Cookies.get("user");
 
+const login = Cookies.get("user");
 
 
   return (
