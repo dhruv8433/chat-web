@@ -14,7 +14,6 @@ import { useRouter } from "next/navigation";
 import { loginUserSuccess } from "../action/action";
 import {
   GoogleAuthProvider,
-  signInWithEmailAndPassword,
   signInWithPopup,
 } from "firebase/auth";
 import { loginservice } from "../services/loginService";
