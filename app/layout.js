@@ -13,6 +13,7 @@ import LandingPage from "./components/LandingPage";
 import { darkTheme, lightTheme } from "./themes/theme";
 import { Box, Grid, ThemeProvider } from "@mui/material";
 import { Toaster } from "react-hot-toast";
+import Cookies from "js-cookie";
 
 const font = Baloo_2({
   subsets: ["vietnamese"],
@@ -34,7 +35,7 @@ export default function RootLayout({ children }) {
     localStorage.setItem("theme", false);
   }
 
-const login = Cookies.get("user");
+  const login = Cookies.get("user");
 
   return (
     <html lang="en">
