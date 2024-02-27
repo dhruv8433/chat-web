@@ -18,12 +18,12 @@ const Navbar = ({ toggleTheme }) => {
     >
       <div className="flex items-center p-4">
         {/* user image -- dynamic */}
-        <MyAvatar className="bg-cover" src={user.photoUrl}/>
+        <MyAvatar className="bg-cover" src={user.url}/>
         <h1
           className="ml-4 text-2xl"
           style={{ fontWeight: 700, color: theme.palette.background.text }}
         >
-          {user.displayName}
+          {user.name}
         </h1>
       </div>
       <Routes toggleTheme={toggleTheme} />
