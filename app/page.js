@@ -1,11 +1,8 @@
-"use client";
+import React from "react";
+import LandingPage from "./components/LandingPage";
 
-import * as React from "react";
+const page = () => {
+  return <LandingPage />;
+};
 
-export default function Home() {
-  return (
-    <div>
-      <h1>todo...</h1>
-    </div>
-  );
-}
+export default page;
