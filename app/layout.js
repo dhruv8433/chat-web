@@ -1,5 +1,4 @@
 "use client";
-
 import "./globals.css";
 import "./style/style.css";
 import MyBox from "./common/MyBox";
@@ -42,7 +41,7 @@ export default function RootLayout({ children }) {
       <body className={`${font.className}`}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
           <StoreProvider>
-            {!login ? (
+            {login ? (
               <MyBox minHeightRequire={true} className="p-10 h-full">
                 <Grid container spacing={2}>
                   <Grid item xs={12} md={2}>

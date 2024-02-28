@@ -1,18 +1,30 @@
 import { NextResponse } from "next/server";
 
-let isRedirected = false;
-
 export default async function middleware(req, res) {
   const { pathname } = req.nextUrl;
-  const url = "http://localhost:3000/";
 
   const isLoggedIn = req.cookies.get("user")?.value === "true";
 
-  // to run only once this middleware
-  if (!isRedirected && isLoggedIn && pathname.startsWith("/")) {
-    console.log("redirecting to " + url + "explore");
-    isRedirected = true;
-    return NextResponse.redirect(url + "explore");
+  // User is logged in and tries to access / route, redirect to /explore
+  if (isLoggedIn && pathname === "/") {
+    console.log("User is logged in");
+    console.log("User is logged in and try to ");
+    return NextResponse.redirect(new URL("http://localhost:3000/explore"));
   }
 
+  // User is not logged in and tries to access protected routes, redirect to /
+  if (
+    !isLoggedIn &&
+    (pathname.startsWith("/chats") ||
+      pathname.startsWith("/calls") ||
+      pathname.startsWith("/explore") ||
+      pathname.startsWith("/settings"))
+  ) {
+    console.log("User is not logged in");
+    return NextResponse.redirect(new URL("http://localhost:3000/"));
+  }
+ 
+
+  // Return NextResponse to continue with normal handling for other cases
+  return NextResponse.next();
 }
