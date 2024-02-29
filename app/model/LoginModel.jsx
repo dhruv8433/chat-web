@@ -12,13 +12,10 @@ import { useDispatch } from "react-redux";
 import MyButton from "../common/MyButton";
 import { useRouter } from "next/navigation";
 import { loginUserSuccess } from "../action/action";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import { loginservice } from "../services/loginService";
+import { signInWithGoogle } from "../services/googleSignIn";
 
-const LoginModel = ({ setLoginModel }) => {
+const LoginModel = () => {
   const [signupModel, setSignupModel] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -40,20 +37,17 @@ const LoginModel = ({ setLoginModel }) => {
 
   const router = useRouter();
 
-  const signInWithGoogle = async () => {
+  async function googleSignIn() {
     try {
-      const result = await signInWithPopup(auth, new GoogleAuthProvider());
-      const user = result.user.reloadUserInfo;
-      dispatch(loginUserSuccess(user));
+      const response = await signInWithGoogle();
+      console.log(response);
+      dispatch(loginUserSuccess(response));
       Cookies.set("user", true);
-      toast.success("login successful!");
-      // refresh page so user can access actual pages
-      router.refresh("/");
-    } catch (err) {
-      console.error(err);
-      Cookies.set("user", false);
+      toast.success("Google login success..");
+    } catch (error) {
+      console.log(error);
     }
-  };
+  }
 
   return (
     <>
@@ -95,7 +89,8 @@ const LoginModel = ({ setLoginModel }) => {
 
           {/* login with GOOGLE */}
           <MyButton
-            myFunction={signInWithGoogle}
+            // provide dispatch and router that only supports in this class code
+            myFunction={() => googleSignIn()}
             className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none mt-2"
           >
             Login with Google
