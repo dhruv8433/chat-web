@@ -7,9 +7,9 @@ const MyAvatar = ({ className, src }) => {
 
 export default MyAvatar;
 
-export const MyTextAvatar = ({ title, className }) => {
+export const MyTextAvatar = ({ src, title, className }) => {
   return (
-    <Avatar alt="user" className={className}>
+    <Avatar alt="user" src={src} className={className}>
       {title}
     </Avatar>
   );
