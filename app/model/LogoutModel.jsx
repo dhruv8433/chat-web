@@ -1,13 +1,14 @@
-import { Button, Divider, Modal, Box } from "@mui/material";
+"use client"
 import React from "react";
+import Cookies from "js-cookie";
+import { auth } from "../firebase";
 import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
+import { Divider } from "@mui/material";
+import { signOut } from "firebase/auth";
 import MyButton from "../common/MyButton";
 import { useDispatch } from "react-redux";
 import { logoutuser } from "../action/action";
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase";
-import Cookies from "js-cookie";
 
 const LogoutModel = ({ setLogoutDialogOpen }) => {
   const dispatch = useDispatch();
@@ -22,33 +23,37 @@ const LogoutModel = ({ setLogoutDialogOpen }) => {
     }
   };
   return (
-    <MyBox className={"p-4 rounded-2xl"}>
-      <MyText className={"text-2xl"}>Logout</MyText>
-      <Divider />
-      <MyText className={"mt-4"}>Are you sure , Do you want to logout ?</MyText>
+    <>
+      <MyBox className={"p-4 rounded-2xl"}>
+        <MyText className={"text-2xl"}>Logout</MyText>
+        <Divider />
+        <MyText className={"mt-4"}>
+          Are you sure , Do you want to logout ?
+        </MyText>
 
-      {/* action buttons */}
-      <div className="flex justify-end m-3 gap-2">
-        <MyButton
-          myFunction={() => setLogoutDialogOpen(false)}
-          isPrimaryButton={false}
-          customBgColor={"gray"}
-          className={"px-1 py-2 rounded-lg"}
-        >
-          Cancel
-        </MyButton>
+        {/* action buttons */}
+        <div className="flex justify-end m-3 gap-2">
+          <MyButton
+            myFunction={() => setLogoutDialogOpen(false)}
+            isPrimaryButton={false}
+            customBgColor={"gray"}
+            className={"px-1 py-2 rounded-lg"}
+          >
+            Cancel
+          </MyButton>
 
-        {/* action -- logout */}
-        <MyButton
-          isPrimaryButton={false}
-          customBgColor={"red"}
-          className={"p-1 rounded-lg"}
-          myFunction={() => logOut()}
-        >
-          Logout
-        </MyButton>
-      </div>
-    </MyBox>
+          {/* action -- logout */}
+          <MyButton
+            isPrimaryButton={false}
+            customBgColor={"red"}
+            className={"p-1 rounded-lg"}
+            myFunction={() => logOut()}
+          >
+            Logout
+          </MyButton>
+        </div>
+      </MyBox>
+    </>
   );
 };
 

@@ -86,7 +86,6 @@ const LoginModel = ({ setLoginModel }) => {
             <span
               className="text-blue-500 pl-2 cursor-pointer"
               onClick={() => {
-                setLoginModel(false);
                 setSignupModel(true);
               }}
             >

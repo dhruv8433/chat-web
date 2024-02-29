@@ -5,35 +5,31 @@ import MyText from "../common/MyText";
 import MyButton from "../common/MyButton";
 import MyModel from "../common/MyModel";
 import LoginModel from "./LoginModel";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 import { loginUserSuccess } from "../action/action";
 import Cookies from "js-cookie";
 import { auth } from "../firebase";
 import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
+import { signupservice } from "../services/signupService";
 
-const SignupModel = ({ setSignupModel}) => {
+const SignupModel = ({ setSignupModel }) => {
   const [loginModel, setLoginModel] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const signIn = async () => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-
-        auth,
-        email,
-        password
-      );
-      const user = userCredential.user;
-      // dispatch(loginUserSuccess(user));
-      // Cookies.set("user-auth", true);
-      toast.success("Sign up successful!")
+      const userCredential = await signupservice(username, password, email);
+      console.log("user", userCredential);
+      toast.success("Sign up successful!");
     } catch (err) {
       console.error(err);
-      // Cookies.set("user-auth", true);
-      toast.success('Sign up successful !');
+      toast.error("Sign up error !");
     }
   };
 
