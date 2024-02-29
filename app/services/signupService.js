@@ -1,11 +1,11 @@
 import { httpAxios } from "../httpAxios";
 
-export async function signupservice(username, password) {
+export async function signupservice(username, password, email) {
   const result = await httpAxios
-    .post("api/signup", {
+    .post("/user", {
       username: username,
       password: password,
-     
+      email: email,
     })
     .then((response) => response.data);
   return result;
