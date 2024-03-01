@@ -2,7 +2,6 @@
 
 import Cookies from "js-cookie";
 import { useState } from "react";
-import { auth } from "../firebase";
 import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
 import MyModel from "../common/MyModel";
@@ -17,17 +16,19 @@ import { signInWithGoogle } from "../services/googleSignIn";
 
 const LoginModel = () => {
   const [signupModel, setSignupModel] = useState(false);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
+  // when user attempt login with their email and password
   const loginUser = async () => {
     try {
       console.log("getting user data", email, password);
-      const user = await loginservice({ email, password });
+      const user = await loginservice(email, password);
       dispatch(loginUserSuccess(user));
       Cookies.set("user", true);
-      router.refresh("/explore");
+      router.push("/explore");
       toast.success("login sucess");
     } catch (err) {
       console.error(err);
@@ -37,6 +38,7 @@ const LoginModel = () => {
 
   const router = useRouter();
 
+  // when user attempt signup with GOOGLE
   async function googleSignIn() {
     try {
       const response = await signInWithGoogle();
@@ -54,7 +56,7 @@ const LoginModel = () => {
       <MyBox className="flex flex-col items-center justify-center p-4 rounded-2xl">
         <MyText className="text-3xl font-bold mb-8">Login</MyText>
         <div className="w-80">
-          {/* login form */}
+          {/* email */}
           <input
             type="email"
             placeholder="Email"
@@ -62,6 +64,8 @@ const LoginModel = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4 focus:outline-none focus:border-blue-500"
           />
+
+          {/* password */}
           <input
             type="password"
             placeholder="Password"
@@ -69,6 +73,8 @@ const LoginModel = () => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full border border-gray-300 rounded-md py-2 px-3 mb-6 focus:outline-none focus:border-blue-500"
           />
+
+          {/* login */}
           <MyButton
             myFunction={loginUser}
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none"
