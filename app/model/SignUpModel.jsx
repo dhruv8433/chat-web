@@ -1,52 +1,88 @@
 "use client";
+
 import { useState } from "react";
 import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
 import MyButton from "../common/MyButton";
 import MyModel from "../common/MyModel";
 import LoginModel from "./LoginModel";
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { loginUserSuccess } from "../action/action";
 import Cookies from "js-cookie";
-import { auth } from "../firebase";
-import { useDispatch } from "react-redux";
 import { toast } from "react-hot-toast";
+import { useDispatch } from "react-redux";
+import { loginUserSuccess } from "../action/action";
+import { signupservice } from "../services/signupService";
+import { debounce } from "lodash";
+import { checkUserName } from "../services/checkUserNameService";
+import { signInWithGoogle } from "../services/googleSignIn";
 
-const SignupModel = ({ setSignupModel}) => {
+const SignupModel = ({ setSignupModel }) => {
   const [loginModel, setLoginModel] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [username, setUsername] = useState("");
-  const dispatch = useDispatch()
+  // Username, password, Name and email for user data.
+  const [userData, setUserData] = useState({
+    username: "",
+    password: "",
+    name: "",
+    email: "",
+  });
+
+  const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState(true);
+
+  const dispatch = useDispatch();
+
+  // when user give custom data while sign up
   const signIn = async () => {
     try {
-      const userCredential = await createUserWithEmailAndPassword(
-
-        auth,
-        email,
-        password
+      const userCredential = await signupservice(
+        userData.username,
+        userData.password,
+        userData.email,
+        userData.name
       );
-      const user = userCredential.user;
-      // dispatch(loginUserSuccess(user));
-      // Cookies.set("user-auth", true);
-      toast.success("Sign up successful!")
+      console.log("user", userCredential);
+      toast.success("Sign up successful!");
     } catch (err) {
       console.error(err);
-      // Cookies.set("user-auth", true);
-      toast.success('Sign up successful !');
+      toast.error("Sign up error !");
     }
   };
 
-  const signInWithGoogle = async () => {
+  // when user press google signup
+  const googleSignIn = async () => {
     try {
-      const result = await signInWithPopup(auth, new GoogleAuthProvider());
-      const user = result.user;
-      dispatch(loginUserSuccess(user)); //
+      const response = await signInWithGoogle();
+      console.log(response);
+      dispatch(loginUserSuccess(response));
       Cookies.set("user", true);
-    } catch (err) {
-      console.error(err);
-      Cookies.set("user", false);
+      toast.success("Google login success..");
+    } catch (error) {
+      console.log(error);
     }
+  };
+
+  // Debounce the API request to wait for the user to stop typing
+  const debounceApiCall = debounce(async (inputValue) => {
+    setLoading(true);
+    // Make API request to check username validity
+    try {
+      console.log(inputValue);
+      const response = await checkUserName({ userName: inputValue });
+      console.log("response: ", response.error);
+      // timeout for loading statement
+      setTimeout(() => {
+        setResponse(response.error);
+        setLoading(false);
+      }, 1000); // Simulate API call delay of 1 second
+    } catch (error) {
+      console.error("Error checking username:", error);
+      setLoading(false);
+    }
+  }, 1000);
+
+  const handleUsernameChange = (e) => {
+    const { value } = e.target;
+    setUserData({ ...userData, username: value });
+    debounceApiCall(value);
   };
 
   return (
@@ -58,24 +94,41 @@ const SignupModel = ({ setSignupModel}) => {
           <input
             type="text"
             placeholder="userName"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4 focus:outline-none focus:border-blue-500"
+            value={userData.username}
+            onChange={handleUsernameChange}
+            className="w-full border border-gray-300 rounded-md py-2 px-3 mb-2 focus:outline-none focus:border-blue-500"
           />
-          {/* email  */}
+          <div className="text-end w-full">
+            {loading && <MyText>Loading...</MyText>}
+            {loading ? "" : !response ? <span>✅</span> : <span>❌</span>}
+          </div>
+
+          {/* email */}
           <input
             type="email"
             placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            value={userData.email}
+            onChange={(e) =>
+              setUserData({ ...userData, email: e.target.value })
+            }
             className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4 focus:outline-none focus:border-blue-500"
           />
           {/* password */}
           <input
             type="password"
             placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={userData.password}
+            onChange={(e) =>
+              setUserData({ ...userData, password: e.target.value })
+            }
+            className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4 focus:outline-none focus:border-blue-500"
+          />
+
+          <input
+            type="text"
+            placeholder="Display Name"
+            value={userData.name}
+            onChange={(e) => setUserData({ ...userData, name: e.target.value })}
             className="w-full border border-gray-300 rounded-md py-2 px-3 mb-6 focus:outline-none focus:border-blue-500"
           />
           <MyButton
@@ -85,7 +138,7 @@ const SignupModel = ({ setSignupModel}) => {
             SignUp
           </MyButton>
           <MyText className={"flex justify-center w-full mt-1"}>
-            Already have Account ?
+            Already have an account?
             <span
               className="text-blue-500 pl-2 cursor-pointer"
               onClick={() => {
@@ -97,7 +150,7 @@ const SignupModel = ({ setSignupModel}) => {
             </span>
           </MyText>
           <MyButton
-            myFunction={signInWithGoogle}
+            myFunction={googleSignIn}
             className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none mt-2"
           >
             Login with Google
@@ -107,7 +160,7 @@ const SignupModel = ({ setSignupModel}) => {
       <MyModel
         open={loginModel}
         setOpen={setLoginModel}
-        className={"flex justify-center items-center "}
+        className={"flex justify-center items-center"}
       >
         <LoginModel />
       </MyModel>

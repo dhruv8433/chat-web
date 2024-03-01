@@ -2,7 +2,6 @@
 
 import Cookies from "js-cookie";
 import { useState } from "react";
-import { auth } from "../firebase";
 import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
 import MyModel from "../common/MyModel";
@@ -12,25 +11,24 @@ import { useDispatch } from "react-redux";
 import MyButton from "../common/MyButton";
 import { useRouter } from "next/navigation";
 import { loginUserSuccess } from "../action/action";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
 import { loginservice } from "../services/loginService";
+import { signInWithGoogle } from "../services/googleSignIn";
 
-const LoginModel = ({ setLoginModel }) => {
+const LoginModel = () => {
   const [signupModel, setSignupModel] = useState(false);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
 
+  // when user attempt login with their email and password
   const loginUser = async () => {
     try {
       console.log("getting user data", email, password);
-      const user = await loginservice({ email, password });
+      const user = await loginservice(email, password);
       dispatch(loginUserSuccess(user));
       Cookies.set("user", true);
-      router.refresh("/explore");
+      router.push("/explore");
       toast.success("login sucess");
     } catch (err) {
       console.error(err);
@@ -40,27 +38,25 @@ const LoginModel = ({ setLoginModel }) => {
 
   const router = useRouter();
 
-  const signInWithGoogle = async () => {
+  // when user attempt signup with GOOGLE
+  async function googleSignIn() {
     try {
-      const result = await signInWithPopup(auth, new GoogleAuthProvider());
-      const user = result.user.reloadUserInfo;
-      dispatch(loginUserSuccess(user));
+      const response = await signInWithGoogle();
+      console.log(response);
+      dispatch(loginUserSuccess(response));
       Cookies.set("user", true);
-      toast.success("login successful!");
-      // refresh page so user can access actual pages
-      router.refresh("/");
-    } catch (err) {
-      console.error(err);
-      Cookies.set("user", false);
+      toast.success("Google login success..");
+    } catch (error) {
+      console.log(error);
     }
-  };
+  }
 
   return (
     <>
       <MyBox className="flex flex-col items-center justify-center p-4 rounded-2xl">
         <MyText className="text-3xl font-bold mb-8">Login</MyText>
         <div className="w-80">
-          {/* login form */}
+          {/* email */}
           <input
             type="email"
             placeholder="Email"
@@ -68,6 +64,8 @@ const LoginModel = ({ setLoginModel }) => {
             onChange={(e) => setEmail(e.target.value)}
             className="w-full border border-gray-300 rounded-md py-2 px-3 mb-4 focus:outline-none focus:border-blue-500"
           />
+
+          {/* password */}
           <input
             type="password"
             placeholder="Password"
@@ -75,6 +73,8 @@ const LoginModel = ({ setLoginModel }) => {
             onChange={(e) => setPassword(e.target.value)}
             className="w-full border border-gray-300 rounded-md py-2 px-3 mb-6 focus:outline-none focus:border-blue-500"
           />
+
+          {/* login */}
           <MyButton
             myFunction={loginUser}
             className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none"
@@ -86,7 +86,6 @@ const LoginModel = ({ setLoginModel }) => {
             <span
               className="text-blue-500 pl-2 cursor-pointer"
               onClick={() => {
-                setLoginModel(false);
                 setSignupModel(true);
               }}
             >
@@ -96,7 +95,8 @@ const LoginModel = ({ setLoginModel }) => {
 
           {/* login with GOOGLE */}
           <MyButton
-            myFunction={signInWithGoogle}
+            // provide dispatch and router that only supports in this class code
+            myFunction={() => googleSignIn()}
             className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none mt-2"
           >
             Login with Google

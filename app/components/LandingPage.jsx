@@ -58,7 +58,7 @@ const LandingPage = () => {
                       myFunction={() => setloginModel(true)}
                       className={"text-start mt-4 px-2 py-1 rounded"}
                     >
-                      Sign Up Now
+                      Login Now
                     </MyButton>
                   </MyBox>
                 </MyBox>

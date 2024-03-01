@@ -99,7 +99,7 @@ const [addUserOpenModal,setAddUserOpenModal]=useState(false)
             <div className="flex items-center p-4">
               {/* user image -- dynamic */}
 
-              <MyAvatar src={user.url} />
+              <MyAvatar src={user.photoUrl} />
 
               {/* name only shown in md screen */}
               <Box display={{ xs: "none", md: "block" }}>
@@ -110,7 +110,7 @@ const [addUserOpenModal,setAddUserOpenModal]=useState(false)
                     color: theme.palette.background.text,
                   }}
                 >
-                  {user.name}
+                  {user.displayName}
                 </h1>
               </Box>
             </div>

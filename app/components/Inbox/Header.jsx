@@ -1,18 +1,17 @@
 "use client";
 
-import * as React from "react";
-import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
-import IconButton from "@mui/material/IconButton";
-import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
-import { Box, Button, Tab, Tabs, useTheme } from "@mui/material";
+import React from "react";
+import { useState } from "react";
 import ChatList from "./ChatList";
-import MyButton from "@/app/common/MyButton";
 import MyBox from "@/app/common/MyBox";
 import MyTab from "@/app/common/MyTab";
+import MyButton from "@/app/common/MyButton";
+import { Tabs, useTheme } from "@mui/material";
+import IconButton from "@mui/material/IconButton";
+import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
 
 export default function Header() {
-  const [tabValue, setTabValue] = React.useState(0);
+  const [tabValue, setTabValue] = useState(0);
 
   const handleTabChange = (newValue) => {
     setTabValue(newValue);
