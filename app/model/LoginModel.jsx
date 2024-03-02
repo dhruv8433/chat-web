@@ -14,8 +14,8 @@ import { loginUserSuccess } from "../action/action";
 import { loginservice } from "../services/loginService";
 import { signInWithGoogle } from "../services/googleSignIn";
 
-const LoginModel = () => {
-  const [signupModel, setSignupModel] = useState(false);
+const LoginModel = ({ setLoginModel }) => {
+  const [signupModelOpen, setSignupModelOpen] = useState(false);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -49,6 +49,12 @@ const LoginModel = () => {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  function signupModelVisible() {
+    // setLoginModel(false);
+    setSignupModelOpen(true);
+    console.log("signup model changed", signupModelOpen);
   }
 
   return (
@@ -85,9 +91,7 @@ const LoginModel = () => {
             No Account ?
             <span
               className="text-blue-500 pl-2 cursor-pointer"
-              onClick={() => {
-                setSignupModel(true);
-              }}
+              onClick={signupModelVisible}
             >
               Sign Up
             </span>
@@ -106,11 +110,11 @@ const LoginModel = () => {
 
       {/* SIGN UP model */}
       <MyModel
-        open={signupModel}
-        setOpen={setSignupModel}
+        open={signupModelOpen}
+        setOpen={setSignupModelOpen}
         className={"flex justify-center items-center "}
       >
-        <SignUpModel setSignupModel={setSignupModel} />
+        <SignUpModel setSignupModel={setSignupModelOpen} />
       </MyModel>
     </>
   );
