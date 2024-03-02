@@ -1,54 +1,92 @@
-'use client'
-import React from "react";
-import { Box, Button, Modal, TextField } from "@mui/material";
+"use client";
+
+import React, { useState } from "react";
+import MyBox from "../common/MyBox";
+import { searchUser } from "../services/searchUser";
+import MyText from "../common/MyText";
 import MyButton from "../common/MyButton";
 
-const AddUserModel = ({ open, onClose }) => {
-  const [inputValue, setInputValue] = React.useState("");
+const AddUserModel = () => {
+  const [inputValue, setInputValue] = useState("");
+  const [results, setResults] = useState([]);
+  const [debouncedSearchFunction, setDebouncedSearchFunction] = useState(null);
 
-  const handleConfirm = () => {
+  // Function to perform actual search
+  async function searchUsername(value) {
+    if (value === "" || value === undefined) {
+      return;
+    }
+    try {
+      const response = await searchUser({ search: value });
+      console.log(response);
+      if (response.error === false) {
+        setResults(response.data);
+      } else {
+        setResults([]); // Clear results if error is true
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
-    console.log("Confirmed:", inputValue);
-    onClose();
+  // Handle input change with debouncing
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setInputValue(value);
+    // Cancel previous debounce timer
+    if (debouncedSearchFunction) {
+      clearTimeout(debouncedSearchFunction);
+    }
+    // Set new debounce timer
+    const newDebouncedSearchFunction = setTimeout(() => {
+      searchUsername(value);
+    }, 2000);
+    setDebouncedSearchFunction(newDebouncedSearchFunction);
   };
 
+  async function addUserToIndex(user) {
+    console.log(user);
+  }
+
   return (
-    <Modal
-      open={open}
-      onClose={onClose}
-      aria-labelledby="modal-modal-title"
-      aria-describedby="modal-modal-description"
-    >
-      <Box
-        sx={{
-          position: "absolute",
-          top: "50%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
-          bgcolor: "background.paper",
-          boxShadow: 24,
-          p: 4,
-          width: 400,
-          borderRadius: 4,
-        }}
-      >
-        <TextField
-          label="search ..."
-          variant="outlined"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          fullWidth
-        />
-        <Box mt={2} display="flex" justifyContent="space-between">
-          <MyButton myFunction={handleConfirm}>
-            Confirm
-          </MyButton>
-          <MyButton myFunction={onClose}>
-            Cancel
-          </MyButton>
-        </Box>
-      </Box>
-    </Modal>
+    <MyBox className={"p-4 w-[80%] flex flex-col"} isPrimary={true}>
+      <input
+        variant="outlined"
+        placeholder="search ..."
+        value={inputValue}
+        onChange={handleChange}
+        className="w-full p-3 bg-[none] rounded"
+      />
+
+      {/* result list */}
+      <>
+        {results.length > 0
+          ? results.map((result, index) => (
+              <div
+                key={index}
+                className="mt-3 flex justify-between items-center"
+              >
+                <div>
+                  <MyText className={"pt-3 font-semibold text-xl"}>
+                    @{result.username}
+                  </MyText>
+                  <MyText className={"text-sm"}>{result.displayName}</MyText>
+                </div>
+                <div>
+                  <MyButton
+                    isPrimaryButton={true}
+                    className={"px-3 rounded-md py-2"}
+                    myFunction={() => addUserToIndex(result)}
+                  >
+                    Add
+                  </MyButton>
+                </div>
+              </div>
+            ))
+          : // Display "No Results Found" only if there are no results and no error
+            !results.length && <MyText>No Results Found</MyText>}
+      </>
+    </MyBox>
   );
 };
 

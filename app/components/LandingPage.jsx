@@ -33,13 +33,13 @@ const LandingPage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                   >
-                    <MyText
+                    <h1
                       className={
                         "md:text-6xl sm:text-4xl mb-4 text-[#898cce] font-bold"
                       }
                     >
                       New Generation Chat Web
-                    </MyText>
+                    </h1>
 
                     <MyText className={"text-xl"}>
                       "Chatting is more than just exchanging words; it's about

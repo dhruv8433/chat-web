@@ -17,6 +17,7 @@ import { signInWithGoogle } from "../services/googleSignIn";
 
 const SignupModel = ({ setSignupModel }) => {
   const [loginModel, setLoginModel] = useState(false);
+  
   // Username, password, Name and email for user data.
   const [userData, setUserData] = useState({
     username: "",
