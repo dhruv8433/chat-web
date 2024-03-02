@@ -12,12 +12,14 @@ import MyDrawer from "./MyDrawer";
 import { useSelector } from "react-redux";
 import LoginModel from "../model/LoginModel";
 import AddUserModel from "../model/AddUserModel";
+import MyModel from "./MyModel";
 
 const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
   const user = useSelector((state) => state.auth.authUser);
   console.log(user);
   const [openModal, setOpenModal] = useState(false);
-const [addUserOpenModal,setAddUserOpenModal]=useState(false)
+  const [addUserOpenModal, setAddUserOpenModal] = useState(false);
+
   const handleOpenModal = () => {
     setOpenModal(true);
   };
@@ -25,13 +27,7 @@ const [addUserOpenModal,setAddUserOpenModal]=useState(false)
   const handleCloseModal = () => {
     setOpenModal(false);
   };
-  const handleAddUserOpenModal = () => {
-    setAddUserOpenModal(true);
-  };
 
-  const handleAddUserCloseModal = () => {
-    setAddUserOpenModal(false);
-  };
   const [open, setOpen] = useState(false);
 
   const theme = useTheme();
@@ -67,7 +63,7 @@ const [addUserOpenModal,setAddUserOpenModal]=useState(false)
         {/* new chat button visible in large device else icon button here */}
         <Box display={{ xs: "none", md: "flex" }}>
           <MyButton
-            myFunction={handleAddUserOpenModal}
+            myFunction={() => setAddUserOpenModal(true)}
             className="button h-min w-max p-2 rounded m-auto mr-2"
           >
             + Add
@@ -128,7 +124,14 @@ const [addUserOpenModal,setAddUserOpenModal]=useState(false)
           <LoginModel open={openModal} onClose={handleCloseModal} />
         )}
       </div>
-      <AddUserModel open={addUserOpenModal} onClose={handleAddUserCloseModal}/>
+
+      <MyModel
+        open={addUserOpenModal}
+        className="flex justify-center h-min mt-10"
+        setOpen={setAddUserOpenModal}
+      >
+        <AddUserModel />
+      </MyModel>
     </MyBox>
   );
 };
