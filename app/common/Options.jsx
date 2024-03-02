@@ -1,6 +1,5 @@
 "use client";
 
-import { Divider } from "@mui/material";
 import React from "react";
 import MyIcon from "./MyIcon";
 import MyText from "./MyText";
@@ -30,7 +29,6 @@ const Options = ({ OptionIcon, title, callPage }) => {
           )}
         </div>
       </div>
-      <Divider />
     </>
   );
 };
