@@ -5,6 +5,8 @@ import MyBox from "../common/MyBox";
 import { searchUser } from "../services/searchUser";
 import MyText from "../common/MyText";
 import MyButton from "../common/MyButton";
+import { useDispatch } from "react-redux";
+import { addUser } from "../action/action";
 
 const AddUserModel = () => {
   const [inputValue, setInputValue] = useState("");
@@ -44,8 +46,11 @@ const AddUserModel = () => {
     setDebouncedSearchFunction(newDebouncedSearchFunction);
   };
 
+  const dispatch = useDispatch();
+
   async function addUserToIndex(user) {
     console.log(user);
+    dispatch(addUser(user));
   }
 
   return (
