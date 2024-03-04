@@ -81,10 +81,12 @@ const LandingPage = () => {
             onClose={() => setLoginModel(false)}
             className={"flex justify-center items-center "}
           >
-            <LoginModel
-              setLoginModel={setLoginModel}
-              setSignupModel={setSignupModel}
-            />
+            <div className="">
+              <LoginModel
+                setLoginModel={setLoginModel}
+                setSignupModel={setSignupModel}
+              />
+            </div>
           </Modal>
 
           <Modal
@@ -92,10 +94,12 @@ const LandingPage = () => {
             onClose={() => setSignupModel(false)}
             className={"flex justify-center items-center "}
           >
-            <SignUpModel
-              setSignupModel={setSignupModel}
-              setLoginModel={setLoginModel}
-            />
+            <div className="">
+              <SignUpModel
+                setSignupModel={setSignupModel}
+                setLoginModel={setLoginModel}
+              />
+            </div>
           </Modal>
 
           {/* Feature */}
