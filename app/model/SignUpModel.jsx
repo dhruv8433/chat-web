@@ -1,11 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
 import MyButton from "../common/MyButton";
-import MyModel from "../common/MyModel";
-import LoginModel from "./LoginModel";
 import Cookies from "js-cookie";
 import { toast } from "react-hot-toast";
 import { useDispatch } from "react-redux";
@@ -15,9 +13,7 @@ import { debounce } from "lodash";
 import { checkUserName } from "../services/checkUserNameService";
 import { signInWithGoogle } from "../services/googleSignIn";
 
-const SignupModel = ({ setSignupModel }) => {
-  const [loginModel, setLoginModel] = useState(false);
-  
+const SignupModel = ({ setSignupModel, setLoginModel }) => {
   // Username, password, Name and email for user data.
   const [userData, setUserData] = useState({
     username: "",
@@ -86,6 +82,11 @@ const SignupModel = ({ setSignupModel }) => {
     debounceApiCall(value);
   };
 
+  function LoginModelOpen() {
+    setSignupModel(false);
+    setLoginModel(true);
+  }
+
   return (
     <>
       <MyBox className="flex flex-col items-center justify-center p-4 rounded-2xl">
@@ -142,10 +143,7 @@ const SignupModel = ({ setSignupModel }) => {
             Already have an account?
             <span
               className="text-blue-500 pl-2 cursor-pointer"
-              onClick={() => {
-                setLoginModel(true);
-                setSignupModel(true);
-              }}
+              onClick={LoginModelOpen}
             >
               Login
             </span>
@@ -158,13 +156,6 @@ const SignupModel = ({ setSignupModel }) => {
           </MyButton>
         </div>
       </MyBox>
-      <MyModel
-        open={loginModel}
-        setOpen={setLoginModel}
-        className={"flex justify-center items-center"}
-      >
-        <LoginModel />
-      </MyModel>
     </>
   );
 };

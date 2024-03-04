@@ -8,6 +8,7 @@ import SupervisorAccountOutlinedIcon from "@mui/icons-material/SupervisorAccount
 import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 import StarBorderPurple500OutlinedIcon from "@mui/icons-material/StarBorderPurple500Outlined";
 import MyBox from "@/app/common/MyBox";
+import { Divider } from "@mui/material";
 
 const Settings = () => {
   return (
@@ -15,19 +16,31 @@ const Settings = () => {
       <div className="p-2 ">
         {/* Profile */}
         <Options OptionIcon={PersonOutlineIcon} title={"Profile"} />
+        <Divider />
+
         {/* your activity */}
         <Options OptionIcon={UpdateIcon} title={"Your Activity"} />
+        <Divider />
+
         {/* Archived */}
         <Options OptionIcon={HistoryIcon} title={"Archived"} />
+        <Divider />
+
         {/* Saved */}
         <Options OptionIcon={BookmarkBorderIcon} title={"Saved"} />
+        <Divider />
+
         {/* Supervision */}
         <Options
           OptionIcon={SupervisorAccountOutlinedIcon}
           title={"Supervision"}
         />
+        <Divider />
+
         {/* Verified */}
         <Options OptionIcon={CheckCircleOutlinedIcon} title={"Verified"} />
+        <Divider />
+
         {/* Close Friends */}
         <Options
           OptionIcon={StarBorderPurple500OutlinedIcon}

@@ -1,6 +1,6 @@
 "use client";
 
-import { Grid, Paper } from "@mui/material";
+import { Grid, Modal, Paper } from "@mui/material";
 import React, { useState } from "react";
 import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
@@ -12,11 +12,12 @@ import ThemeAnimation from "@/app/animations/theme.json";
 import PostActionAnimation from "@/app/animations/postaction.json";
 import Feature from "../common/Feature";
 import { motion } from "framer-motion";
-import MyModel from "../common/MyModel";
 import LoginModel from "../model/LoginModel";
+import SignUpModel from "../model/SignUpModel";
 
 const LandingPage = () => {
-  const [loginModel, setloginModel] = useState(false);
+  const [loginModel, setLoginModel] = useState(false);
+  const [signupModel, setSignupModel] = useState(false);
 
   return (
     <div>
@@ -55,7 +56,7 @@ const LandingPage = () => {
                   <MyBox className={""}>
                     {/* on button click myFunction Executed -- onClick Event */}
                     <MyButton
-                      myFunction={() => setloginModel(true)}
+                      myFunction={() => setLoginModel(true)}
                       className={"text-start mt-4 px-2 py-1 rounded"}
                     >
                       Login Now
@@ -75,13 +76,31 @@ const LandingPage = () => {
           </Grid>
 
           {/* Signup Model */}
-          <MyModel
+          <Modal
             open={loginModel}
-            setOpen={setloginModel}
+            onClose={() => setLoginModel(false)}
             className={"flex justify-center items-center "}
           >
-            <LoginModel setLoginModel={setloginModel} />
-          </MyModel>
+            <div className="">
+              <LoginModel
+                setLoginModel={setLoginModel}
+                setSignupModel={setSignupModel}
+              />
+            </div>
+          </Modal>
+
+          <Modal
+            open={signupModel}
+            onClose={() => setSignupModel(false)}
+            className={"flex justify-center items-center "}
+          >
+            <div className="">
+              <SignUpModel
+                setSignupModel={setSignupModel}
+                setLoginModel={setLoginModel}
+              />
+            </div>
+          </Modal>
 
           {/* Feature */}
           <MyBox className={"w-full text-center py-5"}>

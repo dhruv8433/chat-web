@@ -7,14 +7,13 @@ import { IoSettingsOutline } from "react-icons/io5";
 import { CiLogout } from "react-icons/ci";
 import { WhatshotOutlined } from "@mui/icons-material";
 import { Box, Modal, useTheme } from "@mui/material";
-import { Tab, Tabs } from "@mui/material";
+import { Tabs } from "@mui/material";
 import LogoutModel from "../model/LogoutModel";
 import MyBox from "../common/MyBox";
 import MyTab from "../common/MyTab";
 import MyText from "../common/MyText";
 import MyIcon from "../common/MyIcon";
 import MyLink from "../common/MyLink";
-import MyModel from "../common/MyModel";
 
 function a11yProps(index) {
   return {
@@ -157,7 +156,7 @@ export default function Routes() {
       </MyBox>
 
       {/* Logout Confirmation Dialog */}
-      <MyModel
+      <Modal
         className={"flex justify-center items-center"}
         open={logoutDialogOpen}
         setOpen={() => setLogoutDialogOpen(false)}
@@ -165,7 +164,7 @@ export default function Routes() {
         <Box>
           <LogoutModel setLogoutDialogOpen={setLogoutDialogOpen} />
         </Box>
-      </MyModel>
+      </Modal>
     </>
   );
 }

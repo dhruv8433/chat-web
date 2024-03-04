@@ -6,7 +6,6 @@ import Heading from "./common/Heading";
 import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import { Baloo_2 } from "next/font/google";
-import { useParams } from "next/navigation";
 import { StoreProvider } from "./storeProvider";
 import LandingPage from "./components/LandingPage";
 import { darkTheme, lightTheme } from "./themes/theme";

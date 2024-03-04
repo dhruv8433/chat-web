@@ -1,14 +1,14 @@
 const initialStage = {
-  user: [],
+  users: [],
 };
-export const USER_ADD_CHATLIST = "useraddchatlist";
+export const USER_ADD_CHATLIST = "adduser";
 
 const chatListUser = (state = initialStage, action) => {
   switch (action.type) {
     case USER_ADD_CHATLIST:
       return {
         ...state,
-        user: action.payload,
+        users: [...state.users, action.payload],
       };
 
     default:
