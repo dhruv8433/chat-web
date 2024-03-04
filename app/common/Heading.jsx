@@ -1,18 +1,17 @@
 "use client";
 
-import { Add, MenuRounded, NotificationsOutlined } from "@mui/icons-material";
-import { Avatar, Box, Drawer, Icon, IconButton, useTheme } from "@mui/material";
-import React, { useState } from "react";
-import NavDrawer from "../drawer/NavDrawer";
-import ThemeSwitch from "./ThemeSwitch";
+import MyBox from "./MyBox";
 import MyAvatar from "./MyAvatar";
 import MyButton from "./MyButton";
-import MyBox from "./MyBox";
 import MyDrawer from "./MyDrawer";
+import React, { useState } from "react";
+import ThemeSwitch from "./ThemeSwitch";
 import { useSelector } from "react-redux";
+import NavDrawer from "../drawer/NavDrawer";
 import LoginModel from "../model/LoginModel";
 import AddUserModel from "../model/AddUserModel";
-import MyModel from "./MyModel";
+import { Box, IconButton, Modal, useTheme } from "@mui/material";
+import { Add, MenuRounded, NotificationsOutlined } from "@mui/icons-material";
 
 const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
   const user = useSelector((state) => state.auth.authUser);
@@ -125,13 +124,13 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
         )}
       </div>
 
-      <MyModel
+      <Modal
         open={addUserOpenModal}
         className="flex justify-center h-min mt-10"
-        setOpen={setAddUserOpenModal}
+        onClose={() => setAddUserOpenModal(false)}
       >
         <AddUserModel />
-      </MyModel>
+      </Modal>
     </MyBox>
   );
 };
