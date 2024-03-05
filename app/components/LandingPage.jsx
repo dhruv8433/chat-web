@@ -14,10 +14,12 @@ import Feature from "../common/Feature";
 import { motion } from "framer-motion";
 import LoginModel from "../model/LoginModel";
 import SignUpModel from "../model/SignUpModel";
+import UserNameModel from "../model/UserNameModel";
 
 const LandingPage = () => {
   const [loginModel, setLoginModel] = useState(false);
   const [signupModel, setSignupModel] = useState(false);
+  const [userNameModel, setUserNameModel] = useState(false);
 
   return (
     <div>
@@ -53,8 +55,8 @@ const LandingPage = () => {
                       with our secure and reliable chat platform.
                     </MyText>
                   </motion.div>
+                  {/* Action button -- login form */}
                   <MyBox className={""}>
-                    {/* on button click myFunction Executed -- onClick Event */}
                     <MyButton
                       myFunction={() => setLoginModel(true)}
                       className={"text-start mt-4 px-2 py-1 rounded"}
@@ -65,6 +67,7 @@ const LandingPage = () => {
                 </MyBox>
               </motion.div>
             </Grid>
+            {/* animation for landing page */}
             <Grid item xs={12} md={8}>
               <img
                 src="https://cdn.dribbble.com/users/291221/screenshots/5601520/media/94c902c5cf585645af1a3cfb16335acf.gif"
@@ -75,7 +78,7 @@ const LandingPage = () => {
             </Grid>
           </Grid>
 
-          {/* Signup Model */}
+          {/* LOGIN Model */}
           <Modal
             open={loginModel}
             onClose={() => setLoginModel(false)}
@@ -85,10 +88,13 @@ const LandingPage = () => {
               <LoginModel
                 setLoginModel={setLoginModel}
                 setSignupModel={setSignupModel}
+                // if user logged in with google then we provide anotehr model where user have to set their username to contine the web
+                setUserNameModel={setUserNameModel}
               />
             </div>
           </Modal>
 
+          {/* SIGNUP Model */}
           <Modal
             open={signupModel}
             onClose={() => setSignupModel(false)}
@@ -98,7 +104,19 @@ const LandingPage = () => {
               <SignUpModel
                 setSignupModel={setSignupModel}
                 setLoginModel={setLoginModel}
+                // if user logged in with google then we provide anotehr model where user have to set their username to contine the web
+                setUserNameModel={setUserNameModel}
               />
+            </div>
+          </Modal>
+
+          {/* user set their username in this modal */}
+          <Modal
+            open={userNameModel}
+            className={"flex justify-center items-center "}
+          >
+            <div className="">
+              <UserNameModel />
             </div>
           </Modal>
 
