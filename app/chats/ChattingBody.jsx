@@ -7,10 +7,12 @@ const ChattingBody = ({ id }) => {
   return (
     <Grid container spacing={2} sx={{ mt: 1 }}>
       <Grid item xs={12} md={4}>
+        {/* Inbox component */}
         <AllChats />
       </Grid>
       <Grid item xs={8}>
         <Box display={{ xs: "none", md: "block" }}>
+          {/* Single Chatting Body */}
           <ChattingBox id={id} />
         </Box>
       </Grid>
