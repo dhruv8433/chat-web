@@ -4,8 +4,10 @@ import PhoneOutlinedIcon from "@mui/icons-material/PhoneOutlined";
 import MyBox from "@/app/common/MyBox";
 const Call = () => {
   return (
+    // TODO -> Dynamic
     <MyBox isPrimary={true} className="min-h-[770px] mt-4 rounded-2xl">
       <div className="p-2 ">
+        {/* Come dynamic */}
         <Options
           OptionIcon={PhoneOutlinedIcon}
           title={"#Partner"}
