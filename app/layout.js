@@ -9,7 +9,7 @@ import { Baloo_2 } from "next/font/google";
 import { StoreProvider } from "./storeProvider";
 import LandingPage from "./components/LandingPage";
 import { darkTheme, lightTheme } from "./themes/theme";
-import { Box, Grid, ThemeProvider } from "@mui/material";
+import { Box, Grid, ThemeProvider, useTheme } from "@mui/material";
 import { Toaster } from "react-hot-toast";
 import Cookies from "js-cookie";
 
@@ -23,18 +23,14 @@ export default function RootLayout({ children }) {
     typeof window !== "undefined" && localStorage.getItem("theme")
   );
 
-  function DarkThemeApplied() {
-    setDarkTheme(true);
-    localStorage.setItem("theme", true);
+  function toggleTheme() {
+    isDarkTheme == true ? setDarkTheme(false) : setDarkTheme(true);
+    isDarkTheme == true
+      ? localStorage.setItem("theme", false)
+      : localStorage.setItem("theme", true);
   }
-
-  function lightThemeApplied() {
-    setDarkTheme(false);
-    localStorage.setItem("theme", false);
-  }
-
   const login = Cookies.get("user");
-
+  const theme = useTheme();
   return (
     <html lang="en">
       <body className={`${font.className}`}>
@@ -54,8 +50,8 @@ export default function RootLayout({ children }) {
                   <Grid item xs={12} md={10}>
                     <Heading
                       title={"Chats"}
-                      DarkThemeApplied={DarkThemeApplied}
-                      lightThemeApplied={lightThemeApplied}
+                      DarkThemeApplied={toggleTheme}
+                      lightThemeApplied={toggleTheme}
                     />
                     <div>{children}</div>
                   </Grid>
