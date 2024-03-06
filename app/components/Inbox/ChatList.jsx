@@ -26,12 +26,13 @@ export default function ChatList() {
       {users ? (
         users.map((user) => {
           return (
-            <Link href={`/chats/${user.id}`} key={user.id}>
+            // Redirect it to chatting page when user click some user
+            <Link href={`/chats/${user.id}/${user.user.username}`} key={user.id}>
               <div className="flex text px-4 hover:cursor-pointer py-2 mb-2 rounded-2xl">
                 <MyTextAvatar src={user.displayImage} />
                 <div className="text-start ml-3 w-full">
                   <div className="flex justify-between w-full">
-                    <MyText>{user.displayName}</MyText>
+                    <MyText>{user.user.displayName}</MyText>
                     <MyText>12:24</MyText>
                   </div>
                   <MyText>September 14, 2016</MyText>
