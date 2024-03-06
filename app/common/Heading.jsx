@@ -61,22 +61,20 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
 
       <div className="flex">
         {/* new chat button visible in large device else icon button here */}
-        <Box display={{ xs: "none", md: "flex" }}>
-          <MyButton
-            myFunction={() => setAddUserOpenModal(true)}
-            className="button h-min w-max p-2 rounded m-auto mr-2"
-          >
-            + Add
-          </MyButton>
-        </Box>
 
-        {/* icon button for small screens */}
-        <Box className="w-max" display={{ xs: "flex", md: "none" }}>
-          <IconButton>
-            <Add className="text-white" />
-          </IconButton>
-        </Box>
-
+        {
+          user ? (
+            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+              <MyButton
+                myFunction={() => setAddUserOpenModal(true)}
+                className="button h-min w-max p-2 rounded m-auto mr-2"
+              >
+                + Add
+              </MyButton>
+            </Box>
+          ) : (<></>)
+        }
+        
         {/*  Themes Button */}
         <ThemeSwitch
           DarkThemeApplied={DarkThemeApplied}
