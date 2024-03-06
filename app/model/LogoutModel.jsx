@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Cookies from "js-cookie";
 import { auth } from "../firebase";
@@ -23,7 +23,8 @@ const LogoutModel = ({ setLogoutDialogOpen }) => {
     }
   };
   return (
-    <>
+    <div>
+      {/* TODO -> REDESIGN it and look user friendly */}
       <MyBox className={"p-4 rounded-2xl"}>
         <MyText className={"text-2xl"}>Logout</MyText>
         <Divider />
@@ -53,7 +54,7 @@ const LogoutModel = ({ setLogoutDialogOpen }) => {
           </MyButton>
         </div>
       </MyBox>
-    </>
+    </div>
   );
 };
 

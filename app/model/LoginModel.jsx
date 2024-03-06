@@ -13,7 +13,7 @@ import { loginUserSuccess } from "../action/action";
 import { loginservice } from "../services/loginService";
 import { signInWithGoogle } from "../services/googleSignIn";
 
-const LoginModel = ({ setLoginModel, setSignupModel }) => {
+const LoginModel = ({ setLoginModel, setSignupModel, setUserNameModel }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -40,9 +40,13 @@ const LoginModel = ({ setLoginModel, setSignupModel }) => {
     try {
       const response = await signInWithGoogle();
       console.log(response);
-      dispatch(loginUserSuccess(response));
-      Cookies.set("user", true);
-      toast.success("Google login success..");
+
+      setLoginModel(false);
+      // now user have to provide username to continue chatting...
+      setUserNameModel(true);
+      // dispatch(loginUserSuccess(response));
+      // Cookies.set("user", true);
+      // toast.success("Google login success..");
     } catch (error) {
       console.log(error);
     }
@@ -94,7 +98,6 @@ const LoginModel = ({ setLoginModel, setSignupModel }) => {
 
         {/* login with GOOGLE */}
         <MyButton
-          // provide dispatch and router that only supports in this class code
           myFunction={() => googleSignIn()}
           className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none mt-2"
         >

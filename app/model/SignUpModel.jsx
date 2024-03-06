@@ -47,9 +47,17 @@ const SignupModel = ({ setSignupModel, setLoginModel }) => {
   // when user press google signup
   const googleSignIn = async () => {
     try {
-      const response = await signInWithGoogle();
-      console.log(response);
-      dispatch(loginUserSuccess(response));
+      const googleUser = await signInWithGoogle();
+      console.log(googleUser);
+      const userCredential = await signupservice(
+        googleUser.email,
+        googleUser.email,
+        googleUser.email,
+        googleUser.email
+      );
+
+      console.log("user", userCredential);
+      dispatch(loginUserSuccess(userCredential));
       Cookies.set("user", true);
       toast.success("Google login success..");
     } catch (error) {

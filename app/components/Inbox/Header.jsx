@@ -9,6 +9,7 @@ import MyButton from "@/app/common/MyButton";
 import { Tabs, useTheme } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import WidgetsOutlinedIcon from "@mui/icons-material/WidgetsOutlined";
+import MyText from "@/app/common/MyText";
 
 export default function Header() {
   const [tabValue, setTabValue] = useState(0);
@@ -17,18 +18,12 @@ export default function Header() {
     setTabValue(newValue);
   };
 
-  const theme = useTheme();
-
   return (
+    // TODO -> Make it dynamic
     <MyBox isPrimary={true} className="rounded-2xl">
       <div className="flex p-2 justify-between items-center">
         <div className="flex">
-          <h1
-            className="text-2xl"
-            style={{ color: theme.palette.background.text }}
-          >
-            Index
-          </h1>
+          <MyText className="text-2xl">Index</MyText>
           <MyButton
             isPrimaryButton={false}
             customBgColor={"red"}
