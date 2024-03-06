@@ -59,8 +59,8 @@ export default function Routes() {
           value={value}
           onChange={handleTabChange} // Use handleTabChange instead of handleChange
           aria-label="Vertical tabs example"
+          className="border border-l-4 border-[#333]"
           sx={{
-            borderLeft: "4px solid #333",
             borderColor: theme.palette.primary.main,
             "& .MuiTabs-indicator": {
               left: 0,
@@ -75,7 +75,7 @@ export default function Routes() {
           <MyLink href={"/explore"}>
             <MyTab
               label="Explore"
-              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
+              className={`flex my-element flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
                 value === 0 ? "Mui-selected MuiTabs-indicator" : ""
               }`}
               icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />}
@@ -105,7 +105,7 @@ export default function Routes() {
           </MyLink>
           <MyLink href={"/calls"}>
             <MyTab
-              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
+              className={`flex     flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
                 value === 2 ? "Mui-selected" : ""
               }`}
               label="Calls"
@@ -118,7 +118,7 @@ export default function Routes() {
             <MyTab
               className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
                 value === 3 ? "Mui-selected" : ""
-              }`}
+              }`}    
               label="Privacy"
               icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
               {...a11yProps(3)}
@@ -131,7 +131,7 @@ export default function Routes() {
             <MyTab
               className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
                 value === 4 ? "Mui-selected" : ""
-              }`}
+              }`}n
               label="Settings"
               icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
               {...a11yProps(4)}
