@@ -54,40 +54,44 @@ const AddUserModel = () => {
   }
 
   return (
-    <MyBox className={"p-4 w-[80%] flex flex-col"} isPrimary={true}>
+    <MyBox className={"p-4 w-[80%] flex flex-col rounded-2xl"} isPrimary={true}>
       <input
         variant="outlined"
         placeholder="search ..."
         value={inputValue}
         onChange={handleChange}
-        className="w-full p-3 bg-[none] rounded"
+        className="w-full p-3 bg-[none] rounded border border-gray-400"
       />
 
       {/* result list */}
       <>
         {results.length > 0
-          ? results.map((result, index) => (
-              <div
-                key={index}
-                className="mt-3 flex justify-between items-center"
-              >
-                <div>
-                  <MyText className={"pt-3 font-semibold text-xl"}>
-                    @{result.username}
-                  </MyText>
-                  <MyText className={"text-sm"}>{result.displayName}</MyText>
+          ? results.map((result, index) => {
+              return (
+                <div
+                  key={index}
+                  className="mt-3 flex justify-between items-center"
+                >
+                  <div>
+                    <MyText className={"pt-3 font-semibold text-xl"}>
+                      @{result.user.username}
+                    </MyText>
+                    <MyText className={"text-sm"}>
+                      {result.user.displayName}
+                    </MyText>
+                  </div>
+                  <div>
+                    <MyButton
+                      isPrimaryButton={true}
+                      className={"px-3 rounded-md py-2"}
+                      myFunction={() => addUserToIndex(result)}
+                    >
+                      Add
+                    </MyButton>
+                  </div>
                 </div>
-                <div>
-                  <MyButton
-                    isPrimaryButton={true}
-                    className={"px-3 rounded-md py-2"}
-                    myFunction={() => addUserToIndex(result)}
-                  >
-                    Add
-                  </MyButton>
-                </div>
-              </div>
-            ))
+              );
+            })
           : // Display "No Results Found" only if there are no results and no error
             !results.length && <MyText>No Results Found</MyText>}
       </>

@@ -13,10 +13,12 @@ import { loginUserSuccess } from "../action/action";
 import { loginservice } from "../services/loginService";
 import { signInWithGoogle } from "../services/googlePopupProvider";
 import { signupCheck } from "../services/signupCheck";
+import { SyncLoader } from "react-spinners";
 
 const LoginModel = ({ setLoginModel, setSignupModel, setUserNameModel }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   // when user attempt login with their email and password
@@ -41,6 +43,7 @@ const LoginModel = ({ setLoginModel, setSignupModel, setUserNameModel }) => {
     try {
       const response = await signInWithGoogle();
       console.log(response);
+      setLoading(true);
       localStorage.setItem("google", JSON.stringify(response));
       // now user have to provide username to continue chatting...
       try {
@@ -55,6 +58,7 @@ const LoginModel = ({ setLoginModel, setSignupModel, setUserNameModel }) => {
           dispatch(loginUserSuccess(user));
           Cookies.set("user", true);
           toast.success("Google login success..");
+          setLoginModel(false);
         } else {
           console.log("open popup");
           setLoginModel(false);
@@ -117,7 +121,7 @@ const LoginModel = ({ setLoginModel, setSignupModel, setUserNameModel }) => {
           myFunction={() => googleSignIn()}
           className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none mt-2"
         >
-          Login with Google
+          {loading ? <SyncLoader color="#fff" /> : "Login with Google"}
         </MyButton>
       </div>
     </MyBox>

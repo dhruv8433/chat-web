@@ -122,7 +122,7 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
         className="flex justify-center h-min mt-10"
         onClose={() => setAddUserOpenModal(false)}
       >
-        <div className="">
+        <div className="w-[80%] flex justify-center rounded-2xl">
           <AddUserModel />
         </div>
       </Modal>
