@@ -129,7 +129,7 @@ const LandingPage = () => {
             <MyBox className={"flex mt-4 justify-around"}>
               <Grid
                 container
-                sx={{ px: { md: " 15rem", xs: "2rem", sm: "5rem" } }}
+                sx={{ px: { md: " 10rem", xs: "2rem", sm: "5rem" } }}
                 spacing={3}
               >
                 {/* Feature - 1 */}
