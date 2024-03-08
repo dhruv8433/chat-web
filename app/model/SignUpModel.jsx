@@ -11,7 +11,7 @@ import { loginUserSuccess } from "../action/action";
 import { signupservice } from "../services/signupService";
 import { debounce } from "lodash";
 import { checkUserName } from "../services/checkUserNameService";
-import { signInWithGoogle } from "../services/googleSignIn";
+import { signInWithGoogle } from "../services/googlePopupProvider";
 
 const SignupModel = ({ setSignupModel, setLoginModel }) => {
   // Username, password, Name and email for user data.
