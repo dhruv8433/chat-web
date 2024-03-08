@@ -113,6 +113,7 @@ const LandingPage = () => {
           {/* user set their username in this modal */}
           <Modal
             open={userNameModel}
+            onClose={() => setUserNameModel(false)}
             className={"flex justify-center items-center "}
           >
             <div className="">
