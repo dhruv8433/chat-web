@@ -1,11 +1,11 @@
-"use client";
-
-import * as React from "react";
-
-export default function Page() {
+import React from 'react'
+import ExploreMain from '../components/Explore/ExploreMain'
+const page = () => {
   return (
     <div>
-      <h1>todo...</h1>
+      <ExploreMain />
     </div>
-  );
+  )
 }
+
+export default page

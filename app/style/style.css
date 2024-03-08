@@ -67,3 +67,7 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.swiper-slide{
+  width: "100%"
+}

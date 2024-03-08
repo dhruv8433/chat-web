@@ -9,7 +9,7 @@ export default async function middleware(req, res) {
   if (isLoggedIn && pathname === "/") {
     console.log("User is logged in");
     console.log("User is logged in and try to ");
-    return NextResponse.redirect(new URL("https://chat-web-ruddy.vercel.app//explore"));
+    return NextResponse.redirect(new URL("https://chat-web-ruddy.vercel.app/explore"));
   }
 
   // User is not logged in and tries to access protected routes, redirect to /
@@ -17,7 +17,7 @@ export default async function middleware(req, res) {
     !isLoggedIn &&
     (pathname.startsWith("/chats") ||
       pathname.startsWith("/calls") ||
-      pathname.startsWith("/explore") ||
+      // pathname.startsWith("/explore") ||
       pathname.startsWith("/settings"))
   ) {
     console.log("User is not logged in");
