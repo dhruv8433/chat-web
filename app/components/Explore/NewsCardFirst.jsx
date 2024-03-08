@@ -13,8 +13,7 @@ const NewsCardFirst = () => {
 
     async function homecard1() {
         try {
-            const response = await axios.get("https://newsapi.ai/api/v1/article/getArticles?action=getArticles&keyword=business&articlesPage=1&articlesCount=100&articlesSortBy=date&articlesSortByAsc=false&articlesArticleBodyLen=-1&resultType=articles&dataType[]=news&dataType[]=pr&apiKey=7f5fd96a-2f8e-4ac6-9187-cb0e6efc6109&forceMaxDataTimeWindow=31");
-
+            const response = await axios.get(process.env.BUSINESS_NEWS);
             setHome1(response.data.articles.results.slice(0, 3));
         } catch (error) {
             console.error("Error fetching data:", error);
