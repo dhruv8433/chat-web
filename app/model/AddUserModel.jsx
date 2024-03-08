@@ -7,11 +7,13 @@ import MyText from "../common/MyText";
 import MyButton from "../common/MyButton";
 import { useDispatch } from "react-redux";
 import { addUser } from "../action/action";
+import MyBeatLoader from "../common/BeatLoader";
 
 const AddUserModel = () => {
   const [inputValue, setInputValue] = useState("");
   const [results, setResults] = useState([]);
   const [debouncedSearchFunction, setDebouncedSearchFunction] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   // Function to perform actual search
   async function searchUsername(value) {
@@ -19,12 +21,16 @@ const AddUserModel = () => {
       return;
     }
     try {
+      setLoading(true);
       const response = await searchUser({ search: value });
       console.log(response);
       if (response.error === false) {
         setResults(response.data);
+        setLoading(false);
       } else {
-        setResults([]); // Clear results if error is true
+        // Clear results if error is true
+        setLoading(false);
+        setResults("");
       }
     } catch (error) {
       console.log(error);
@@ -65,35 +71,39 @@ const AddUserModel = () => {
 
       {/* result list */}
       <>
-        {results.length > 0
-          ? results.map((result, index) => {
-              return (
-                <div
-                  key={index}
-                  className="mt-3 flex justify-between items-center"
-                >
-                  <div>
-                    <MyText className={"pt-3 font-semibold text-xl"}>
-                      @{result.user.username}
-                    </MyText>
-                    <MyText className={"text-sm"}>
-                      {result.user.displayName}
-                    </MyText>
-                  </div>
-                  <div>
-                    <MyButton
-                      isPrimaryButton={true}
-                      className={"px-3 rounded-md py-2"}
-                      myFunction={() => addUserToIndex(result)}
-                    >
-                      Add
-                    </MyButton>
-                  </div>
+        {loading ? (
+          <MyBeatLoader />
+        ) : results.length > 0 ? (
+          results.map((result, index) => {
+            return (
+              <div
+                key={index}
+                className="mt-3 flex justify-between items-center"
+              >
+                <div>
+                  <MyText className={"pt-3 font-semibold text-xl"}>
+                    @{result.user.username}
+                  </MyText>
+                  <MyText className={"text-sm"}>
+                    {result.user.displayName}
+                  </MyText>
                 </div>
-              );
-            })
-          : // Display "No Results Found" only if there are no results and no error
-            !results.length && <MyText>No Results Found</MyText>}
+                <div>
+                  <MyButton
+                    isPrimaryButton={true}
+                    className={"px-3 rounded-md py-2"}
+                    myFunction={() => addUserToIndex(result)}
+                  >
+                    Add
+                  </MyButton>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          // Display "No Results Found" only if there are no results and no error
+          !results.length && <MyText>No Results Found</MyText>
+        )}
       </>
     </MyBox>
   );

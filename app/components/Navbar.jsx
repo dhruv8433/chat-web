@@ -18,9 +18,12 @@ const Navbar = ({ toggleTheme }) => {
       >
         <div className="flex items-center p-4">
           {/* user image -- dynamic */}
-          {/* <MyAvatar className="bg-cover" src={user.photoUrl} /> */}
-          <MyText className="ml-4 text-2xl font-bold" style={{ fontWeight: 700 }}>
-            {/* {user.displayName} */}
+          <MyAvatar className="bg-cover" src={user.photoUrl} />
+          <MyText
+            className="ml-4 text-2xl font-bold"
+            style={{ fontWeight: 700 }}
+          >
+            {user.displayName}
           </MyText>
         </div>
         <Routes toggleTheme={toggleTheme} />
