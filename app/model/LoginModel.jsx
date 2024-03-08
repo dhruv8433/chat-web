@@ -11,7 +11,8 @@ import MyButton from "../common/MyButton";
 import { useRouter } from "next/navigation";
 import { loginUserSuccess } from "../action/action";
 import { loginservice } from "../services/loginService";
-import { signInWithGoogle } from "../services/googleSignIn";
+import { signInWithGoogle } from "../services/googlePopupProvider";
+import { signupCheck } from "../services/signupCheck";
 
 const LoginModel = ({ setLoginModel, setSignupModel, setUserNameModel }) => {
   const [email, setEmail] = useState("");
@@ -40,13 +41,28 @@ const LoginModel = ({ setLoginModel, setSignupModel, setUserNameModel }) => {
     try {
       const response = await signInWithGoogle();
       console.log(response);
-
-      setLoginModel(false);
+      localStorage.setItem("google", JSON.stringify(response));
       // now user have to provide username to continue chatting...
-      setUserNameModel(true);
-      // dispatch(loginUserSuccess(response));
-      // Cookies.set("user", true);
-      // toast.success("Google login success..");
+      try {
+        const result = await signupCheck(response.email);
+        // set user data in this format
+        const user = {
+          data: response,
+          message: "login success",
+        };
+        if (result.error === true) {
+          console.log("user donenonde");
+          dispatch(loginUserSuccess(user));
+          Cookies.set("user", true);
+          toast.success("Google login success..");
+        } else {
+          console.log("open popup");
+          setLoginModel(false);
+          setUserNameModel(true);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } catch (error) {
       console.log(error);
     }

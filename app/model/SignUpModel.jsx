@@ -11,7 +11,8 @@ import { loginUserSuccess } from "../action/action";
 import { signupservice } from "../services/signupService";
 import { debounce } from "lodash";
 import { checkUserName } from "../services/checkUserNameService";
-import { signInWithGoogle } from "../services/googleSignIn";
+import { signInWithGoogle } from "../services/googlePopupProvider";
+import { signupCheck } from "../services/signupCheck";
 
 const SignupModel = ({ setSignupModel, setLoginModel }) => {
   // Username, password, Name and email for user data.
@@ -44,26 +45,38 @@ const SignupModel = ({ setSignupModel, setLoginModel }) => {
     }
   };
 
-  // when user press google signup
-  const googleSignIn = async () => {
+  // when user attempt signup with GOOGLE
+  async function googleSignIn() {
     try {
-      const googleUser = await signInWithGoogle();
-      console.log(googleUser);
-      const userCredential = await signupservice(
-        googleUser.email,
-        googleUser.email,
-        googleUser.email,
-        googleUser.email
-      );
-
-      console.log("user", userCredential);
-      dispatch(loginUserSuccess(userCredential));
-      Cookies.set("user", true);
-      toast.success("Google login success..");
+      const response = await signInWithGoogle();
+      console.log(response);
+      localStorage.setItem("google", JSON.stringify(response));
+      // now user have to provide username to continue chatting...
+      try {
+        const result = await signupCheck(response.email);
+        // set user data in this format
+        const user = {
+          data: response,
+          message: "login success",
+        };
+        if (result.error === true) {
+          console.log("user donenonde");
+          dispatch(loginUserSuccess(user));
+          Cookies.set("user", true);
+          toast.success("Google login success..");
+        } else {
+          console.log("open popup");
+          setLoginModel(false);
+          setUserNameModel(true);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } catch (error) {
       console.log(error);
     }
-  };
+  }
+
 
   // Debounce the API request to wait for the user to stop typing
   const debounceApiCall = debounce(async (inputValue) => {

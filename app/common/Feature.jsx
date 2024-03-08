@@ -5,8 +5,7 @@ import MyLottieAnimation from "./MyLottieAnimation";
 import MyText from "./MyText";
 
 const Feature = ({ animationData, heading, subHeading, subHeading1, md }) => {
-  
-    // Function to truncate text after 50 words
+  // Function to truncate text after 50 words
   const truncateText = (text) => {
     const words = text.split(" ");
     if (words.length > 30) {
@@ -20,7 +19,7 @@ const Feature = ({ animationData, heading, subHeading, subHeading1, md }) => {
     <Grid item xs={12} md={md}>
       <MyBox
         className={
-          "flex flex-col justify-center border rounded-2xl p-4 min-h-[400px]"
+          "flex flex-col justify-center border rounded-2xl p-4  h-[300px] overflow-hidden"
         }
         isPrimary={true}
       >
@@ -31,10 +30,14 @@ const Feature = ({ animationData, heading, subHeading, subHeading1, md }) => {
           style={{ height: "80px", width: "80px" }}
         />
         <MyText className={"text-3xl text-start"}>{heading}</MyText>
-        <MyText className={"text-start mt-3"}>{truncateText(subHeading)}</MyText>
+        <MyText className={"text-start mt-3"}>
+          {truncateText(subHeading)}
+        </MyText>
         {/* if subheading 1 provided by user than only disply it */}
         {subHeading1 && (
-          <MyText className={"text-start mt-4"}>{truncateText(subHeading1)}</MyText>
+          <MyText className={"text-start mt-4"}>
+            {truncateText(subHeading1)}
+          </MyText>
         )}
       </MyBox>
     </Grid>
