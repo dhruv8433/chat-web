@@ -7,13 +7,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { Grid } from '@mui/material';
+import { BUSINESS_SWIPER_NEWS } from '@/app/config/config';
 
 const NewsCardFirst = () => {
     const [home, setHome1] = useState([]);
 
     async function homecard1() {
         try {
-            const response = await axios.get(process.env.BUSINESS_NEWS);
+            const response = await axios.get(BUSINESS_SWIPER_NEWS);
             setHome1(response.data.articles.results.slice(0, 3));
         } catch (error) {
             console.error("Error fetching data:", error);

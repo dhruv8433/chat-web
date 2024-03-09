@@ -1,5 +1,7 @@
 'use client'
 import Heading from '@/app/common/Heading';
+import NewsHeading from '@/app/common/NewsHeading';
+import { FAMILY_NEWS } from '@/app/config/config';
 import { Card, CardActionArea, CardContent, CardMedia, Grid, Typography, useTheme } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -9,7 +11,7 @@ const NewsCardSecond = () => {
 
     async function homecard1() {
         try {
-            const response = await axios.get(process.env.FAMILY_NEWS);
+            const response = await axios.get(FAMILY_NEWS);
             console.log("my-card", response.data.articles.results);
             setHome1(response.data.articles.results.slice(0, 4));
         } catch (error) {
@@ -22,15 +24,15 @@ const NewsCardSecond = () => {
     }, []);
 
     return (
-        <div>
+        <div >
+            <NewsHeading title={"Family"} className="bg-red-400 mb-10" />
             <Grid container spacing={2}>
-                <Grid item xs={12} sm={6} md={4} lg={3}>
-                    <div >
-                        <Typography>Family</Typography>
-                    </div>
-                    <div className=' flex mr-2 w-[800px]'>
-                        {home.map((news, index) => (
-                            <div className='w-[100%] mr-4'>
+
+                {/* title */}
+                <div className=' flex mr-2 h-[500px]'>
+                    {home.map((news, index) => (
+                        <div className='w-[100%] mr-4'>
+                            <Grid item xs={12} sm={12} md={12} lg={12}>
                                 <Card sx={{ maxWidth: 600 }}>
                                     <CardActionArea>
                                         <CardMedia
@@ -46,12 +48,12 @@ const NewsCardSecond = () => {
                                         </CardContent>
                                     </CardActionArea>
                                 </Card>
-                            </div>
-                        ))}
-                    </div>
-                </Grid>
+                            </Grid>
+                        </div>
+                    ))}
+                </div>
             </Grid>
-        </div>
+        </div >
     );
 }
 

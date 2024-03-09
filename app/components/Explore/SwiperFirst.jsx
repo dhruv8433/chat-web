@@ -14,13 +14,13 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { BUSINESS_SWIPER_NEWS } from '@/app/config/config';
 const SwiperFirst = () => {
     const [home1, setHome1] = useState([]);
 
     async function homecard1() {
         try {
-            const response = await axios.get(process.env.BUSINESS_SWIPER_NEWS);
-
+            const response = await axios.get(BUSINESS_SWIPER_NEWS);
             setHome1(response.data.articles.results);
         } catch (error) {
             console.error("Error fetching data:", error);
