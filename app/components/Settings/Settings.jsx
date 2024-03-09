@@ -16,39 +16,50 @@ const Settings = () => {
     <MyBox isPrimary={true} className="min-h-[770px] rounded-2xl">
       <div className="p-2 ">
         {/* Profile */}
-        <Link href={"/settings/profile"}>
+        <Link href='/settings/profile'>
+
           <Options OptionIcon={PersonOutlineIcon} title={"Profile"} />
         </Link>
         <Divider />
 
         {/* your activity */}
-        <Options OptionIcon={UpdateIcon} title={"Your Activity"} />
-        <Divider />
+        <Link href='/settings/activities'>
 
+          <Options OptionIcon={UpdateIcon} title={"Your Activity"} />
+        </Link>
+        <Divider />
         {/* Archived */}
-        <Options OptionIcon={HistoryIcon} title={"Archived"} />
+        <Link href='/settings/archived'>
+
+          <Options OptionIcon={HistoryIcon} title={"Archived"} /></Link>
         <Divider />
 
         {/* Saved */}
-        <Options OptionIcon={BookmarkBorderIcon} title={"Saved"} />
+        <Link href='/settings/saved'>
+
+          <Options OptionIcon={BookmarkBorderIcon} title={"Saved"} /></Link>
         <Divider />
 
         {/* Supervision */}
-        <Options
-          OptionIcon={SupervisorAccountOutlinedIcon}
-          title={"Supervision"}
-        />
+        <Link href='/settings/supervision'>
+
+          <Options
+            OptionIcon={SupervisorAccountOutlinedIcon}
+            title={"Supervision"}
+          /></Link>
         <Divider />
 
         {/* Verified */}
-        <Options OptionIcon={CheckCircleOutlinedIcon} title={"Verified"} />
+        <Link href='/settings/verified'>
+          <Options OptionIcon={CheckCircleOutlinedIcon} title={"Verified"} /></Link>
         <Divider />
 
         {/* Close Friends */}
-        <Options
-          OptionIcon={StarBorderPurple500OutlinedIcon}
-          title={"Close Friends"}
-        />
+        <Link href='/settings/closed-friends'>
+          <Options
+            OptionIcon={StarBorderPurple500OutlinedIcon}
+            title={"Close Friends"}
+          /></Link>
       </div>
     </MyBox>
   );

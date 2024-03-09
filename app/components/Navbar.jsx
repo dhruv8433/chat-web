@@ -6,9 +6,14 @@ import MyAvatar from "../common/MyAvatar";
 import { useSelector } from "react-redux";
 import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
+import { useRouter } from "next/navigation";
 
 const Navbar = ({ toggleTheme }) => {
-  const user = useSelector((state) => state.auth.authUser.data);
+
+  const user = useSelector((state) => state.auth.authUser);
+
+
+
   return (
     <div>
       <MyBox

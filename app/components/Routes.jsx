@@ -43,6 +43,7 @@ export default function Routes() {
   };
 
   const theme = useTheme();
+  const showLabels = value !== 4;  //hide label when value is 4 (setting tab)
   return (
     <>
       <MyBox
@@ -74,8 +75,13 @@ export default function Routes() {
         >
           <MyLink href={"/explore"}>
             <MyTab
+
+               label={showLabels ? "Explore" : ""}
+              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
+
               label="Explore"
               className={`flex my-element flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
+
                 value === 0 ? "Mui-selected MuiTabs-indicator" : ""
               }`}
               icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />}
@@ -90,7 +96,7 @@ export default function Routes() {
               className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
                 value === 1 ? "Mui-selected" : ""
               }`}
-              label="Chats"
+              label={showLabels ? "Chats" : ""}
               icon={
                 <PiChats
                   style={{
@@ -108,7 +114,7 @@ export default function Routes() {
               className={`flex     flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
                 value === 2 ? "Mui-selected" : ""
               }`}
-              label="Calls"
+              label={showLabels ? "Calls" : ""}
               icon={<IoCallOutline style={{ height: 20, width: 20 }} />}
               {...a11yProps(2)}
               onChange={() => handleTabChange(2)}
@@ -118,6 +124,8 @@ export default function Routes() {
             <MyTab
               className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
                 value === 3 ? "Mui-selected" : ""
+              }`}
+              label={showLabels ? "Privacy" : ""}
               }`}    
               label="Privacy"
               icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
@@ -131,6 +139,9 @@ export default function Routes() {
             <MyTab
               className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
                 value === 4 ? "Mui-selected" : ""
+              }`}
+              label={showLabels ? "Settings" : ""}
+              icon={<IoSettingsOutline size={'large'} style={{ height: 20, width: 20 }} />}
               }`}n
               label="Settings"
               icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
