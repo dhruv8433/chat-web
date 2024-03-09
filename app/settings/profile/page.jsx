@@ -1,10 +1,9 @@
-import ProfileLeft from '@/app/components/Settings/ProfileLeft'
-import React from 'react'
+
+import ProfileLeft from "@/app/components/Settings/ProfileLeft";
+import React from "react";
 
 const page = () => {
-    return (
-        <ProfileLeft />
-    )
-}
+  return <ProfileLeft />;
+};
 
-export default page
+export default page;

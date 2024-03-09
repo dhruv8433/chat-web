@@ -11,11 +11,14 @@ import MyButton from "../common/MyButton";
 import { useRouter } from "next/navigation";
 import { loginUserSuccess } from "../action/action";
 import { loginservice } from "../services/loginService";
-import { signInWithGoogle } from "../services/googleSignIn";
+import { signInWithGoogle } from "../services/googlePopupProvider";
+import { signupCheck } from "../services/signupCheck";
+import { SyncLoader } from "react-spinners";
 
-const LoginModel = ({ setLoginModel, setSignupModel }) => {
+const LoginModel = ({ setLoginModel, setSignupModel, setUserNameModel }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   // when user attempt login with their email and password
@@ -40,9 +43,30 @@ const LoginModel = ({ setLoginModel, setSignupModel }) => {
     try {
       const response = await signInWithGoogle();
       console.log(response);
-      dispatch(loginUserSuccess(response));
-      Cookies.set("user", true);
-      toast.success("Google login success..");
+      setLoading(true);
+      localStorage.setItem("google", JSON.stringify(response));
+      // now user have to provide username to continue chatting...
+      try {
+        const result = await signupCheck(response.email);
+        // set user data in this format
+        const user = {
+          data: response,
+          message: "login success",
+        };
+        if (result.error === true) {
+          console.log("user donenonde");
+          dispatch(loginUserSuccess(user));
+          Cookies.set("user", true);
+          toast.success("Google login success..");
+          setLoginModel(false);
+        } else {
+          console.log("open popup");
+          setLoginModel(false);
+          setUserNameModel(true);
+        }
+      } catch (error) {
+        console.log(error);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -94,11 +118,10 @@ const LoginModel = ({ setLoginModel, setSignupModel }) => {
 
         {/* login with GOOGLE */}
         <MyButton
-          // provide dispatch and router that only supports in this class code
           myFunction={() => googleSignIn()}
           className="w-full bg-red-500 text-white py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none mt-2"
         >
-          Login with Google
+          {loading ? <SyncLoader color="#fff" /> : "Login with Google"}
         </MyButton>
       </div>
     </MyBox>

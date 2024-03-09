@@ -14,10 +14,12 @@ import Feature from "../common/Feature";
 import { motion } from "framer-motion";
 import LoginModel from "../model/LoginModel";
 import SignUpModel from "../model/SignUpModel";
+import UserNameModel from "../model/UserNameModel";
 
 const LandingPage = () => {
   const [loginModel, setLoginModel] = useState(false);
   const [signupModel, setSignupModel] = useState(false);
+  const [userNameModel, setUserNameModel] = useState(false);
 
   return (
     <div>
@@ -53,8 +55,8 @@ const LandingPage = () => {
                       with our secure and reliable chat platform.
                     </MyText>
                   </motion.div>
+                  {/* Action button -- login form */}
                   <MyBox className={""}>
-                    {/* on button click myFunction Executed -- onClick Event */}
                     <MyButton
                       myFunction={() => setLoginModel(true)}
                       className={"text-start mt-4 px-2 py-1 rounded"}
@@ -65,6 +67,7 @@ const LandingPage = () => {
                 </MyBox>
               </motion.div>
             </Grid>
+            {/* animation for landing page */}
             <Grid item xs={12} md={8}>
               <img
                 src="https://cdn.dribbble.com/users/291221/screenshots/5601520/media/94c902c5cf585645af1a3cfb16335acf.gif"
@@ -75,7 +78,7 @@ const LandingPage = () => {
             </Grid>
           </Grid>
 
-          {/* Signup Model */}
+          {/* LOGIN Model */}
           <Modal
             open={loginModel}
             onClose={() => setLoginModel(false)}
@@ -85,10 +88,13 @@ const LandingPage = () => {
               <LoginModel
                 setLoginModel={setLoginModel}
                 setSignupModel={setSignupModel}
+                // if user logged in with google then we provide anotehr model where user have to set their username to contine the web
+                setUserNameModel={setUserNameModel}
               />
             </div>
           </Modal>
 
+          {/* SIGNUP Model */}
           <Modal
             open={signupModel}
             onClose={() => setSignupModel(false)}
@@ -98,7 +104,20 @@ const LandingPage = () => {
               <SignUpModel
                 setSignupModel={setSignupModel}
                 setLoginModel={setLoginModel}
+                // if user logged in with google then we provide anotehr model where user have to set their username to contine the web
+                setUserNameModel={setUserNameModel}
               />
+            </div>
+          </Modal>
+
+          {/* user set their username in this modal */}
+          <Modal
+            open={userNameModel}
+            onClose={() => setUserNameModel(false)}
+            className={"flex justify-center items-center "}
+          >
+            <div className="">
+              <UserNameModel />
             </div>
           </Modal>
 
@@ -107,6 +126,7 @@ const LandingPage = () => {
             <MyText className={"text-4xl font-semibold"}>
               Why to Consider This Chatting Web?
             </MyText>
+
             <Container>
               <MyBox className={"flex mt-4 justify-around"}>
                 <Grid container spacing={{ xs: 2, md: 3 }} >
@@ -144,6 +164,53 @@ const LandingPage = () => {
                   </Grid>
                   <Grid xs={12} sm={12} md={6} sx={{ mb: { xs: '5%' } }}>
 
+            <MyBox className={"flex mt-4 justify-around"}>
+              <Grid
+                container
+                sx={{ px: { md: " 10rem", xs: "2rem", sm: "5rem" } }}
+                spacing={3}
+              >
+                {/* Feature - 1 */}
+                <Feature
+                  animationData={ChattingMiniAnimation}
+                  md={4}
+                  heading={"Real time Chatting"}
+                  subHeading={
+                    "Real-time chatting sparks instant connections, fostering conversations that transcend boundaries. With each keystroke, words bridge gaps, emotions resonate, and friendships flourish. From fleeting hellos to heartfelt exchanges, it's a digital symphony of voices, uniting hearts and minds across the virtual landscape"
+                  }
+                />
+
+                {/* Feature - 2 */}
+                <Feature
+                  animationData={VideoCallAnimation}
+                  md={4}
+                  heading={"Video Calling"}
+                  subHeading={
+                    "Video calling brings distant faces close, weaving a tapestry of shared moments in real-time. Through pixels and screens, voices echo, laughter fills the air, and expressions paint stories. It's more than just a call; it's a window to worlds, connecting souls across miles with warmth and intimacy. you can also share your emotions with your family."
+                  }
+                />
+
+                {/* Feature - 3 */}
+                <Feature
+                  animationData={ExploreAnimation}
+                  md={4}
+                  heading={"Explore Eveything"}
+                  subHeading={
+                    "Exploring trending social media is like embarking on a digital adventure, where every click unveils a new narrative. It's a dynamic landscape of ideas, opinions, and creativity, where connections flourish and trends spark conversations. Navigating through feeds, we discover the pulse of society, shaping and reshaping our digital footprint."
+                  }
+                />
+
+
+                {/* Feature - 4 */}
+                <Feature
+                  animationData={ThemeAnimation}
+                  md={4}
+                  heading={"Dark Light Modes"}
+                  subHeading={
+                    "Dark mode themes immerse users in a sleek, sophisticated ambiance, reducing eye strain and enhancing focus during nocturnal browsing. Conversely, light mode themes exude vibrancy and clarity, ideal for daytime activities, offering a refreshing visual experience that resonates with the ambiance of a bright, sunlit environment."
+                  }
+                />
+
 
                     {/* Feature - 4 */}
                     <Feature
@@ -170,6 +237,22 @@ const LandingPage = () => {
                 </Grid>
               </MyBox>
             </Container>
+
+                {/* Feature - 5 */}
+                <Feature
+                  animationData={PostActionAnimation}
+                  md={8}
+                  heading={"Like, Comment & Share"}
+                  subHeading={
+                    "Interactions such as likes, comments, and shares on a particular post play a pivotal role in shaping digital discourse and community engagement. They signify user appreciation, spark meaningful conversations, and amplify content reach across social networks"
+                  }
+                  subHeading1={
+                    "Each action serves as a catalyst for connection, fostering a sense of belonging and facilitating the exchange of ideas, opinions, and emotions within the online ecosystem."
+                  }
+                />
+              </Grid>
+            </MyBox>
+
           </MyBox>
         </MyBox>
       </Paper>

@@ -1,6 +1,5 @@
-export const api_endpoint = "http://chat-back-end-gamma.vercel.app";
+// backend api end-point
+export const api_endpoint = "https://chat-back-end-gamma.vercel.app";
 
-export const api = "http://chat-back-end-gamma.vercel.app/api/v1";
-
-export const JWT_SECRET =
-  "hlomynameisranjaniandmybffnameisdhruvandwebotharepartnerandbestfriend";
+// backend -- data fetching url
+export const api = "https://chat-back-end-gamma.vercel.app/api/v1";

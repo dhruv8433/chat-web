@@ -6,6 +6,7 @@ import { MyTextAvatar } from "@/app/common/MyAvatar";
 import MyBox from "@/app/common/MyBox";
 import { useSelector } from "react-redux";
 
+
 const ProfileLeft = () => {
   const theme = useTheme()
   const textStyle = {
@@ -13,7 +14,8 @@ const ProfileLeft = () => {
   };
   // const user = useSelector((state) => state.auth.authUser.data)
   return (
-    <MyBox isPrimary={true} className="  border border-black min-h-[770px] rounded-2xl">
+
+    <MyBox isPrimary={true} className="border border-black min-h-[770px] mt-3 rounded-2xl">
       {/* Avatar, following and posts info */}
       <div className="mt-4 flex justify-around" >
         <MyTextAvatar className='h-36 w-36' />

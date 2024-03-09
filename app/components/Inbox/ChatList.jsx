@@ -1,15 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Box, useTheme } from "@mui/material";
-import { MyTextAvatar } from "@/app/common/MyAvatar";
 import Link from "next/link";
+import MyBox from "@/app/common/MyBox";
 import MyText from "@/app/common/MyText";
 import { useSelector } from "react-redux";
-import MyBox from "@/app/common/MyBox";
+import MyAvatar from "@/app/common/MyAvatar";
+import React, { useState, useEffect } from "react";
+import { Divider } from "@mui/material";
 
 export default function ChatList() {
-  const theme = useTheme();
   const usersList = useSelector((state) => state.chatUser.users);
   const [users, setUsers] = useState([]);
 
@@ -20,23 +19,27 @@ export default function ChatList() {
     }
   }, [usersList]);
 
-  console.log("list", usersList);
   return (
-    <Box bgcolor={theme.palette.primary.main} className="rounded-2xl">
+    <MyBox isPrimary={true} className="rounded-2xl">
       {users ? (
         users.map((user) => {
           return (
-            <Link href={`/chats/${user.id}`} key={user.id}>
+            // Redirect it to chatting page when user click some user
+            <Link
+              href={`/chats/${user.id}/${user.user.username}`}
+              key={user.id}
+            >
               <div className="flex text px-4 hover:cursor-pointer py-2 mb-2 rounded-2xl">
-                <MyTextAvatar src={user.displayImage} />
+                <MyAvatar src={user.user.photoUrl} />
                 <div className="text-start ml-3 w-full">
                   <div className="flex justify-between w-full">
-                    <MyText>{user.displayName}</MyText>
+                    <MyText>{user.user.displayName}</MyText>
                     <MyText>12:24</MyText>
                   </div>
                   <MyText>September 14, 2016</MyText>
                 </div>
               </div>
+              <Divider />
             </Link>
           );
         })
@@ -48,6 +51,6 @@ export default function ChatList() {
           </div>
         </MyBox>
       )}
-    </Box>
+    </MyBox>
   );
 }

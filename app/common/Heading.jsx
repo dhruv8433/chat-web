@@ -12,9 +12,10 @@ import LoginModel from "../model/LoginModel";
 import AddUserModel from "../model/AddUserModel";
 import { Box, IconButton, Modal, useTheme } from "@mui/material";
 import { Add, MenuRounded, NotificationsOutlined } from "@mui/icons-material";
+import MyText from "./MyText";
 
 const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
-  const user = useSelector((state) => state.auth.authUser);
+  const user = useSelector((state) => state.auth.authUser.data);
   console.log(user);
   const [openModal, setOpenModal] = useState(false);
   const [addUserOpenModal, setAddUserOpenModal] = useState(false);
@@ -96,15 +97,9 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
 
               {/* name only shown in md screen */}
               <Box display={{ xs: "none", md: "block" }}>
-                <h1
-                  className="ml-4 text-2xl"
-                  style={{
-                    fontWeight: 700,
-                    color: theme.palette.background.text,
-                  }}
-                >
+                <MyText className="ml-4 text-2xl font-bold">
                   {user.displayName}
-                </h1>
+                </MyText>
               </Box>
             </div>
           </>
@@ -127,7 +122,9 @@ const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
         className="flex justify-center h-min mt-10"
         onClose={() => setAddUserOpenModal(false)}
       >
-        <AddUserModel />
+        <div className="w-[80%] flex justify-center rounded-2xl">
+          <AddUserModel />
+        </div>
       </Modal>
     </MyBox>
   );

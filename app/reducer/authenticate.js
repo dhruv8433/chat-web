@@ -15,7 +15,7 @@ const authReducer = (state = initialStage, action) => {
         authUser: action.payload,
         authenticated: true,
       };
-    case "LOGIN_USER_FAILURE":
+    case LOGIN_USER_FAILURE:
       return {
         authuser: [],
         authenticated: false,

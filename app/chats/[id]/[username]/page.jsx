@@ -2,7 +2,7 @@
 
 import { useParams } from "next/navigation";
 import React from "react";
-import ChattingBody from "../ChattingBody";
+import ChattingBody from "../../ChattingBody";
 
 const page = () => {
   const { id } = useParams();

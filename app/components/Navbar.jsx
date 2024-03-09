@@ -9,24 +9,31 @@ import MyText from "../common/MyText";
 import { useRouter } from "next/navigation";
 
 const Navbar = ({ toggleTheme }) => {
+
   const user = useSelector((state) => state.auth.authUser);
 
 
+
   return (
-    <MyBox
-      isPrimary={true}
-      className="h-[90vh] p-2 rounded-2xl relative"
-      sx={{ width: { xs: "100%", md: "100%" } }}
-    >
-      <div className="flex items-center p-4">
-        {/* user image -- dynamic */}
-        <MyAvatar className="bg-cover" src={user.photoUrl} />
-        <MyText className="ml-4 text-2xl" style={{ fontWeight: 700 }}>
-          {user.displayName}
-        </MyText>
-      </div>
-      <Routes toggleTheme={toggleTheme} />
-    </MyBox>
+    <div>
+      <MyBox
+        isPrimary={true}
+        className="h-[90vh] p-2 rounded-2xl relative"
+        sx={{ width: { xs: "100%", md: "100%" } }}
+      >
+        <div className="flex items-center p-4">
+          {/* user image -- dynamic */}
+          <MyAvatar className="bg-cover" src={user.photoUrl} />
+          <MyText
+            className="ml-4 text-2xl font-bold"
+            style={{ fontWeight: 700 }}
+          >
+            {user.displayName}
+          </MyText>
+        </div>
+        <Routes toggleTheme={toggleTheme} />
+      </MyBox>
+    </div>
   );
 };
 

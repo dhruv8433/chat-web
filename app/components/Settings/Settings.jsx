@@ -17,6 +17,7 @@ const Settings = () => {
       <div className="p-2 ">
         {/* Profile */}
         <Link href='/settings/profile'>
+
           <Options OptionIcon={PersonOutlineIcon} title={"Profile"} />
         </Link>
         <Divider />

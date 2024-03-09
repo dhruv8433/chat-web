@@ -6,7 +6,6 @@ import MyText from "../common/MyText";
 const PrivacyPolicyPage = () => {
   return (
     <MyBox isPrimary={true} className={"rounded-2xl"}>
-      {/* <Heading title={"Privacy"} /> */}
       <div className=" privacy-policy-content mt-6">
         <div className="rounded p-4">
           <MyText className="chat-name text-2xl">Introduction</MyText>
