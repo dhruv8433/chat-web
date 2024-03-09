@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Box, useTheme } from "@mui/material";
-import { MyTextAvatar } from "@/app/common/MyAvatar";
+import MyAvatar, { MyTextAvatar } from "@/app/common/MyAvatar";
 import Link from "next/link";
 import MyText from "@/app/common/MyText";
 import { useSelector } from "react-redux";
@@ -29,7 +29,7 @@ export default function ChatList() {
             // Redirect it to chatting page when user click some user
             <Link href={`/chats/${user.id}/${user.user.username}`} key={user.id}>
               <div className="flex text px-4 hover:cursor-pointer py-2 mb-2 rounded-2xl">
-                <MyTextAvatar src={user.displayImage} />
+                <MyAvatar src={user.user.photoUrl} />
                 <div className="text-start ml-3 w-full">
                   <div className="flex justify-between w-full">
                     <MyText>{user.user.displayName}</MyText>
