@@ -75,15 +75,9 @@ export default function Routes() {
         >
           <MyLink href={"/explore"}>
             <MyTab
-
-               label={showLabels ? "Explore" : ""}
-              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
-
-              label="Explore"
-              className={`flex my-element flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
-
-                value === 0 ? "Mui-selected MuiTabs-indicator" : ""
-              }`}
+              label={showLabels ? "Explore" : ""}
+              className={`flex my-element flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 0 ? "Mui-selected MuiTabs-indicator" : ""
+                }`}
               icon={<WhatshotOutlined style={{ height: 20, width: 20 }} />}
               {...a11yProps(0)}
               onChange={() => handleTabChange(0)}
@@ -93,9 +87,8 @@ export default function Routes() {
           {/* chats route */}
           <MyLink href={"/chats"}>
             <MyTab
-              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
-                value === 1 ? "Mui-selected" : ""
-              }`}
+              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 1 ? "Mui-selected" : ""
+                }`}
               label={showLabels ? "Chats" : ""}
               icon={
                 <PiChats
@@ -111,9 +104,8 @@ export default function Routes() {
           </MyLink>
           <MyLink href={"/calls"}>
             <MyTab
-              className={`flex     flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
-                value === 2 ? "Mui-selected" : ""
-              }`}
+              className={`flex     flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 2 ? "Mui-selected" : ""
+                }`}
               label={showLabels ? "Calls" : ""}
               icon={<IoCallOutline style={{ height: 20, width: 20 }} />}
               {...a11yProps(2)}
@@ -122,31 +114,27 @@ export default function Routes() {
           </MyLink>
           <MyLink href={"/privacy-policies"}>
             <MyTab
-              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
-                value === 3 ? "Mui-selected" : ""
-              }`}
+              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 3 ? "Mui-selected" : ""
+                }`}
               label={showLabels ? "Privacy" : ""}
-              }`}    
-              label="Privacy"
-              icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
-              {...a11yProps(3)}
-              onChange={() => handleTabChange(3)}
+              
+            icon={<HiOutlineLockClosed style={{ height: 20, width: 20 }} />}
+            {...a11yProps(3)}
+            onChange={() => handleTabChange(3)}
             />
           </MyLink>
 
           {/* Settings Route */}
           <MyLink href={"/settings"}>
             <MyTab
-              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${
-                value === 4 ? "Mui-selected" : ""
-              }`}
+              className={`flex flex-row w-full items-center rounded-2xl hover:bg-[#494c55] ${value === 4 ? "Mui-selected" : ""
+                }`}
               label={showLabels ? "Settings" : ""}
               icon={<IoSettingsOutline size={'large'} style={{ height: 20, width: 20 }} />}
-              }`}n
-              label="Settings"
-              icon={<IoSettingsOutline style={{ height: 20, width: 20 }} />}
-              {...a11yProps(4)}
-              onChange={() => handleTabChange(4)}
+              
+            
+            {...a11yProps(4)}
+            onChange={() => handleTabChange(4)}
             />
           </MyLink>
         </Tabs>
