@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     // TODO -> Make it dynamic
-    <MyBox isPrimary={true} className="rounded-2xl">
+    <MyBox isPrimary={true} className="rounded-2xl min-h-[100%]">
       <div className="flex p-2 justify-between items-center">
         <div className="flex">
           <MyText className="text-2xl">Index</MyText>
