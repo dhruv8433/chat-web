@@ -14,7 +14,7 @@ const ExploreMain = () => {
                     <NewsCardFirst />
                 </Grid>
                 {/* 2nd part */}
-                <Grid xs={12} md={6}>
+                <Grid xs={12} md={12}>
                     <NewsCardSecond />
                 </Grid>
             </Grid>
