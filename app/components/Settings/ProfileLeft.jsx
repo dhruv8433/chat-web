@@ -2,10 +2,11 @@ import { Avatar, Divider } from "@mui/material";
 import React from "react";
 import PostCard from "./PostCard";
 import { MyTextAvatar } from "@/app/common/MyAvatar";
+import MyBox from "@/app/common/MyBox";
 
 const ProfileLeft = () => {
   return (
-    <div className="border border-black min-h-[770px] rounded-2xl">
+    <MyBox isPrimary={true} className="border border-black min-h-[770px] mt-3 rounded-2xl">
       {/* Avatar, following and posts info */}
       <div className="mt-4 flex justify-around">
         <MyTextAvatar className='h-36 w-36'/>
@@ -45,7 +46,7 @@ const ProfileLeft = () => {
         POSTS
         <PostCard />
       </div>
-    </div>
+    </MyBox>
   );
 };
 

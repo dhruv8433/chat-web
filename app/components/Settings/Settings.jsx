@@ -9,13 +9,16 @@ import CheckCircleOutlinedIcon from "@mui/icons-material/CheckCircleOutlined";
 import StarBorderPurple500OutlinedIcon from "@mui/icons-material/StarBorderPurple500Outlined";
 import MyBox from "@/app/common/MyBox";
 import { Divider } from "@mui/material";
+import Link from "next/link";
 
 const Settings = () => {
   return (
     <MyBox isPrimary={true} className="min-h-[770px] rounded-2xl">
       <div className="p-2 ">
         {/* Profile */}
-        <Options OptionIcon={PersonOutlineIcon} title={"Profile"} />
+        <Link href={"/settings/profile"}>
+          <Options OptionIcon={PersonOutlineIcon} title={"Profile"} />
+        </Link>
         <Divider />
 
         {/* your activity */}
