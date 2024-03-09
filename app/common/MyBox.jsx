@@ -17,9 +17,10 @@ const MyBox = ({ children, className, isPrimary, style, minHeightRequire }) => {
   return (
     <Box
       className={className}
+      // if user say min-height to be 100vh, than only this style applied otherwise user preference
+      minHeight={minHeightRequire && minHeight}
       sx={{
         backgroundColor,
-        minHeight,
         ...style, // Additional styles passed as props
       }}
     >
