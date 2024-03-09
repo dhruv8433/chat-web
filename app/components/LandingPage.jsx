@@ -1,5 +1,4 @@
 "use client";
-
 import { Container, Grid, Modal, Paper } from "@mui/material";
 import React, { useState } from "react";
 import MyBox from "../common/MyBox";
@@ -77,150 +76,152 @@ const LandingPage = () => {
               />
             </Grid>
           </Grid>
+        </MyBox>
+        {/* LOGIN Model */}
+        <Modal
+          open={loginModel}
+          onClose={() => setLoginModel(false)}
+          className={"flex justify-center items-center "}
+        >
+          <div className="">
+            <LoginModel
+              setLoginModel={setLoginModel}
+              setSignupModel={setSignupModel}
+              // if user logged in with google then we provide anotehr model where user have to set their username to contine the web
+              setUserNameModel={setUserNameModel}
+            />
+          </div>
+        </Modal>
 
-          {/* LOGIN Model */}
-          <Modal
-            open={loginModel}
-            onClose={() => setLoginModel(false)}
-            className={"flex justify-center items-center "}
-          >
-            <div className="">
-              <LoginModel
-                setLoginModel={setLoginModel}
-                setSignupModel={setSignupModel}
-                // if user logged in with google then we provide anotehr model where user have to set their username to contine the web
-                setUserNameModel={setUserNameModel}
-              />
-            </div>
-          </Modal>
+        {/* SIGNUP Model */}
+        <Modal
+          open={signupModel}
+          onClose={() => setSignupModel(false)}
+          className={"flex justify-center items-center "}
+        >
+          <div className="">
+            <SignUpModel
+              setSignupModel={setSignupModel}
+              setLoginModel={setLoginModel}
+              // if user logged in with google then we provide anotehr model where user have to set their username to contine the web
+              setUserNameModel={setUserNameModel}
+            />
+          </div>
+        </Modal>
 
-          {/* SIGNUP Model */}
-          <Modal
-            open={signupModel}
-            onClose={() => setSignupModel(false)}
-            className={"flex justify-center items-center "}
-          >
-            <div className="">
-              <SignUpModel
-                setSignupModel={setSignupModel}
-                setLoginModel={setLoginModel}
-                // if user logged in with google then we provide anotehr model where user have to set their username to contine the web
-                setUserNameModel={setUserNameModel}
-              />
-            </div>
-          </Modal>
+        {/* user set their username in this modal */}
+        <Modal
+          open={userNameModel}
+          onClose={() => setUserNameModel(false)}
+          className={"flex justify-center items-center "}
+        >
+          <div className="">
+            <UserNameModel />
+          </div>
+        </Modal>
 
-          {/* user set their username in this modal */}
-          <Modal
-            open={userNameModel}
-            onClose={() => setUserNameModel(false)}
-            className={"flex justify-center items-center "}
-          >
-            <div className="">
-              <UserNameModel />
-            </div>
-          </Modal>
+        {/* Feature */}
+        <MyBox className={"w-full text-center py-5"}>
+          <MyText className={"text-4xl font-semibold"}>
+            Why to Consider This Chatting Web?
+          </MyText>
 
-          {/* Feature */}
-          <MyBox className={"w-full text-center py-5"}>
-            <MyText className={"text-4xl font-semibold"}>
-              Why to Consider This Chatting Web?
-            </MyText>
-
-            <Container>
-              <MyBox className={"flex mt-4 justify-around"}>
-                <Grid container spacing={{ xs: 2, md: 3 }} >
-                  <Grid sm={12} md={4} xs={12} sx={{ mb: { xs: '5%' } }} >
-                    {/* Feature - 1 */}
-                    <Feature
-                      animationData={ChattingMiniAnimation}
-
-                      heading={"Real time Chatting"}
-                      subHeading={
-                        "Real-time chatting sparks instant connections, fostering conversations that transcend boundaries. With each keystroke, words bridge gaps, emotions resonate, and friendships flourish. From fleeting hellos to heartfelt exchanges, it's a digital symphony of voices, uniting hearts and minds across the virtual landscape"
-                      }
-                    />
-                  </Grid>
-                  <Grid sm={12} md={4} xs={12} sx={{ mb: { xs: '5%' } }}>
-                    {/* Feature - 2 */}
-                    <Feature
-                      animationData={VideoCallAnimation}
-
-                      heading={"Video Calling"}
-                      subHeading={
-                        "Video calling brings distant faces close, weaving a tapestry of shared moments in real-time. Through pixels and screens, voices echo, laughter fills the air, and expressions paint stories. It's more than just a call; it's a window to worlds, connecting souls across miles with warmth and intimacy. you can also share your emotions with your family."
-                      }
-                    />
-                  </Grid>
-                  <Grid sm={12} md={4} xs={12} sx={{ mb: { xs: '5%' } }}>
-                    {/* Feature - 3 */}
-                    <Feature
-                      animationData={ExploreAnimation}
-                      heading={"Explore Eveything"}
-                      subHeading={
-                        "Exploring trending social media is like embarking on a digital adventure, where every click unveils a new narrative. It's a dynamic landscape of ideas, opinions, and creativity, where connections flourish and trends spark conversations. Navigating through feeds, we discover the pulse of society."
-                      }
-                    />
-                  </Grid>
-                  <Grid xs={12} sm={12} md={6} sx={{ mb: { xs: '5%' } }}>
-
+          <Container>
             <MyBox className={"flex mt-4 justify-around"}>
-              <Grid
-                container
-                sx={{ px: { md: " 10rem", xs: "2rem", sm: "5rem" } }}
-                spacing={3}
-              >
-                {/* Feature - 1 */}
-                <Feature
-                  animationData={ChattingMiniAnimation}
-                  md={4}
-                  heading={"Real time Chatting"}
-                  subHeading={
-                    "Real-time chatting sparks instant connections, fostering conversations that transcend boundaries. With each keystroke, words bridge gaps, emotions resonate, and friendships flourish. From fleeting hellos to heartfelt exchanges, it's a digital symphony of voices, uniting hearts and minds across the virtual landscape"
-                  }
-                />
+              <Grid container spacing={{ xs: 2, md: 3 }} >
+                <Grid sm={12} md={4} xs={12} sx={{ mb: { xs: '5%' } }} >
+                  {/* Feature - 1 */}
+                  <Feature
+                    animationData={ChattingMiniAnimation}
 
-                {/* Feature - 2 */}
-                <Feature
-                  animationData={VideoCallAnimation}
-                  md={4}
-                  heading={"Video Calling"}
-                  subHeading={
-                    "Video calling brings distant faces close, weaving a tapestry of shared moments in real-time. Through pixels and screens, voices echo, laughter fills the air, and expressions paint stories. It's more than just a call; it's a window to worlds, connecting souls across miles with warmth and intimacy. you can also share your emotions with your family."
-                  }
-                />
+                    heading={"Real time Chatting"}
+                    subHeading={
+                      "Real-time chatting sparks instant connections, fostering conversations that transcend boundaries. With each keystroke, words bridge gaps, emotions resonate, and friendships flourish. From fleeting hellos to heartfelt exchanges, it's a digital symphony of voices, uniting hearts and minds across the virtual landscape"
+                    }
+                  />
+                </Grid>
+                <Grid sm={12} md={4} xs={12} sx={{ mb: { xs: '5%' } }}>
+                  {/* Feature - 2 */}
+                  <Feature
+                    animationData={VideoCallAnimation}
 
-                {/* Feature - 3 */}
-                <Feature
-                  animationData={ExploreAnimation}
-                  md={4}
-                  heading={"Explore Eveything"}
-                  subHeading={
-                    "Exploring trending social media is like embarking on a digital adventure, where every click unveils a new narrative. It's a dynamic landscape of ideas, opinions, and creativity, where connections flourish and trends spark conversations. Navigating through feeds, we discover the pulse of society, shaping and reshaping our digital footprint."
-                  }
-                />
+                    heading={"Video Calling"}
+                    subHeading={
+                      "Video calling brings distant faces close, weaving a tapestry of shared moments in real-time. Through pixels and screens, voices echo, laughter fills the air, and expressions paint stories. It's more than just a call; it's a window to worlds, connecting souls across miles with warmth and intimacy. you can also share your emotions with your family."
+                    }
+                  />
+                </Grid>
+                <Grid sm={12} md={4} xs={12} sx={{ mb: { xs: '5%' } }}>
+                  {/* Feature - 3 */}
+                  <Feature
+                    animationData={ExploreAnimation}
+                    heading={"Explore Eveything"}
+                    subHeading={
+                      "Exploring trending social media is like embarking on a digital adventure, where every click unveils a new narrative. It's a dynamic landscape of ideas, opinions, and creativity, where connections flourish and trends spark conversations. Navigating through feeds, we discover the pulse of society."
+                    }
+                  />
+                </Grid>
+                <Grid xs={12} sm={12} md={6} sx={{ mb: { xs: '5%' } }}>
+
+                  <MyBox className={"flex mt-4 justify-around"}>
+                    <Grid
+                      container
+                      sx={{ px: { md: " 10rem", xs: "2rem", sm: "5rem" } }}
+                      spacing={3}
+                    >
+
+                      {/* Feature - 1 */}
+                      <Feature
+                        animationData={ChattingMiniAnimation}
+                        md={4}
+                        heading={"Real time Chatting"}
+                        subHeading={
+                          "Real-time chatting sparks instant connections, fostering conversations that transcend boundaries. With each keystroke, words bridge gaps, emotions resonate, and friendships flourish. From fleeting hellos to heartfelt exchanges, it's a digital symphony of voices, uniting hearts and minds across the virtual landscape"
+                        }
+                      />
+
+                      {/* Feature - 2 */}
+                      <Feature
+                        animationData={VideoCallAnimation}
+                        md={4}
+                        heading={"Video Calling"}
+                        subHeading={
+                          "Video calling brings distant faces close, weaving a tapestry of shared moments in real-time. Through pixels and screens, voices echo, laughter fills the air, and expressions paint stories. It's more than just a call; it's a window to worlds, connecting souls across miles with warmth and intimacy. you can also share your emotions with your family."
+                        }
+                      />
+
+                      {/* Feature - 3 */}
+                      <Feature
+                        animationData={ExploreAnimation}
+                        md={4}
+                        heading={"Explore Eveything"}
+                        subHeading={
+                          "Exploring trending social media is like embarking on a digital adventure, where every click unveils a new narrative. It's a dynamic landscape of ideas, opinions, and creativity, where connections flourish and trends spark conversations. Navigating through feeds, we discover the pulse of society, shaping and reshaping our digital footprint."
+                        }
+                      />
 
 
-                {/* Feature - 4 */}
-                <Feature
-                  animationData={ThemeAnimation}
-                  md={4}
-                  heading={"Dark Light Modes"}
-                  subHeading={
-                    "Dark mode themes immerse users in a sleek, sophisticated ambiance, reducing eye strain and enhancing focus during nocturnal browsing. Conversely, light mode themes exude vibrancy and clarity, ideal for daytime activities, offering a refreshing visual experience that resonates with the ambiance of a bright, sunlit environment."
-                  }
-                />
+                      {/* Feature - 4 */}
+                      <Feature
+                        animationData={ThemeAnimation}
+                        md={4}
+                        heading={"Dark Light Modes"}
+                        subHeading={
+                          "Dark mode themes immerse users in a sleek, sophisticated ambiance, reducing eye strain and enhancing focus during nocturnal browsing. Conversely, light mode themes exude vibrancy and clarity, ideal for daytime activities, offering a refreshing visual experience that resonates with the ambiance of a bright, sunlit environment."
+                        }
+                      />
 
 
-                    {/* Feature - 4 */}
-                    <Feature
-                      animationData={ThemeAnimation}
-                      heading={"Dark Light Modes"}
-                      subHeading={
-                        "Dark mode themes immerse users in a sleek, sophisticated ambiance, reducing eye strain and enhancing focus during nocturnal browsing. Conversely, light mode themes exude vibrancy and clarity, ideal for daytime activities, offering a refreshing visual experience that resonates with the ambiance of a bright, sunlit environment."
-                      }
-                    />
-                  </Grid>
+                      {/* Feature - 4 */}
+                      <Feature
+                        animationData={ThemeAnimation}
+                        heading={"Dark Light Modes"}
+                        subHeading={
+                          "Dark mode themes immerse users in a sleek, sophisticated ambiance, reducing eye strain and enhancing focus during nocturnal browsing. Conversely, light mode themes exude vibrancy and clarity, ideal for daytime activities, offering a refreshing visual experience that resonates with the ambiance of a bright, sunlit environment."
+                        }
+                      />
+                    </Grid>
+                  </MyBox>
                   {/* Feature - 5 */}
                   <Grid xs={12} sm={12} md={6} sx={{ mb: { xs: '5%' } }}>
                     <Feature
@@ -235,28 +236,26 @@ const LandingPage = () => {
                     />
                   </Grid>
                 </Grid>
-              </MyBox>
-            </Container>
-
-                {/* Feature - 5 */}
-                <Feature
-                  animationData={PostActionAnimation}
-                  md={8}
-                  heading={"Like, Comment & Share"}
-                  subHeading={
-                    "Interactions such as likes, comments, and shares on a particular post play a pivotal role in shaping digital discourse and community engagement. They signify user appreciation, spark meaningful conversations, and amplify content reach across social networks"
-                  }
-                  subHeading1={
-                    "Each action serves as a catalyst for connection, fostering a sense of belonging and facilitating the exchange of ideas, opinions, and emotions within the online ecosystem."
-                  }
-                />
               </Grid>
             </MyBox>
+          </Container>
 
-          </MyBox>
+          {/* Feature - 5 */}
+          <Feature
+            animationData={PostActionAnimation}
+            md={8}
+            heading={"Like, Comment & Share"}
+            subHeading={
+              "Interactions such as likes, comments, and shares on a particular post play a pivotal role in shaping digital discourse and community engagement. They signify user appreciation, spark meaningful conversations, and amplify content reach across social networks"
+            }
+            subHeading1={
+              "Each action serves as a catalyst for connection, fostering a sense of belonging and facilitating the exchange of ideas, opinions, and emotions within the online ecosystem."
+            }
+          />
         </MyBox>
+
       </Paper>
-    </div>
+    </div >
   );
 };
 
