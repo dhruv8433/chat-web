@@ -44,7 +44,7 @@ export const SingleChatBody = ({ user, recipient }) => {
   };
 
   return (
-    <div className="p-5 rounded-2xl">
+    <div className="p-5 rounded-2xl min-h-[660px]">
       <Box
         sx={{ display: "flex", justifyContent: "flex-end", marginBottom: 2 }}
       >
@@ -59,7 +59,7 @@ export const SingleChatBody = ({ user, recipient }) => {
       </Box>
 
       <Box>
-        <div className="flex space-x-2">
+        <div className="flex space-x-2 mt-[60%]">
           <input
             className={"w-full rounded bg-none px-1"}
             placeholder={"Write message"}
