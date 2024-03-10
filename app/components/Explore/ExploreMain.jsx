@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { Grid, TextField } from '@mui/material'
 import React from 'react'
 import SwiperFirst from './SwiperFirst'
 import NewsCardFirst from './NewsCardFirst'
@@ -6,7 +6,9 @@ import NewsCardSecond from './NewsCardSecond'
 const ExploreMain = () => {
     return (
         <div>
+
             <Grid container spacing={1}>
+                
                 <Grid xs={12} md={6}>
                     <SwiperFirst />
                 </Grid>

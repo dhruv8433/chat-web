@@ -8,10 +8,10 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { Grid } from '@mui/material';
 import { BUSINESS_SWIPER_NEWS } from '@/app/config/config';
+import Link from 'next/link';
 
 const NewsCardFirst = () => {
     const [home, setHome1] = useState([]);
-
     async function homecard1() {
         try {
             const response = await axios.get(BUSINESS_SWIPER_NEWS);
@@ -25,19 +25,26 @@ const NewsCardFirst = () => {
         homecard1();
     }, []);
 
+    const handleCardClick = (response) => {
+
+        localStorage.setItem("selectNews", JSON.stringify(response))
+
+    }
     return (
         <div className=' w-full mt-3'>
 
             {home.map((news, index) => (
-                <Card key={index} sx={{ display: 'inline-block', margin: '10px', height: '100px' }}>
+                <Card key={index} sx={{ display: 'inline-block', margin: '10px', height: '100px' }} OnClick={handleCardClick(news)}>
                     <Grid container spacing={1}>
                         <Grid xs={12} md={4}>
-                            <CardMedia
-                                component="img"
-                                sx={{ width: 151 }}
-                                image={news.image}
-                                alt={news.alt}
-                            />
+                            <Link href={`/explore/${encodeURIComponent(news.title)}`}>
+                                <CardMedia
+                                    component="img"
+                                    sx={{ width: 151 }}
+                                    image={news.image}
+                                    alt={news.alt}
+                                />
+                            </Link>
                         </Grid>
                         <Grid xs={12} md={8}>
                             <CardContent sx={{ flex: '1 0 auto', overflow: 'hidden' }}>
