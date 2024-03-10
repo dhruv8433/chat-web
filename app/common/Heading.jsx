@@ -16,7 +16,6 @@ import MyText from "./MyText";
 
 const Heading = ({ title, lightThemeApplied, DarkThemeApplied }) => {
   const user = useSelector((state) => state.auth.authUser.data);
-  console.log(user);
   const [openModal, setOpenModal] = useState(false);
   const [addUserOpenModal, setAddUserOpenModal] = useState(false);
 

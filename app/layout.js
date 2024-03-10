@@ -3,7 +3,7 @@ import "./globals.css";
 import "./style/style.css";
 import MyBox from "./common/MyBox";
 import Heading from "./common/Heading";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "./components/Navbar";
 import { Baloo_2 } from "next/font/google";
 import { StoreProvider } from "./storeProvider";
@@ -12,6 +12,7 @@ import { darkTheme, lightTheme } from "./themes/theme";
 import { Box, Grid, ThemeProvider, useTheme } from "@mui/material";
 import { Toaster } from "react-hot-toast";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 const font = Baloo_2({
   subsets: ["vietnamese"],
@@ -22,7 +23,6 @@ export default function RootLayout({ children }) {
   const [isDarkTheme, setDarkTheme] = useState(
     typeof window !== "undefined" && localStorage.getItem("theme")
   );
-
   function toggleTheme() {
     isDarkTheme == true ? setDarkTheme(false) : setDarkTheme(true);
     isDarkTheme == true
@@ -30,13 +30,18 @@ export default function RootLayout({ children }) {
       : localStorage.setItem("theme", true);
   }
   const login = Cookies.get("user");
-  const theme = useTheme();
+  const [title, setTitle] = useState("");
+  useEffect(() => {
+    localStorage.setItem("pathname", window.location.pathname);
+
+    const pathValue = localStorage.getItem("pathname");
+    setTitle(pathValue);
+  }, []);
   return (
     <html lang="en">
       <body className={`${font.className}`}>
         <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
           <StoreProvider>
-            
             {login ? (
               <MyBox minHeightRequire={true} className="p-10 h-full">
                 <Grid container spacing={2}>
@@ -50,7 +55,7 @@ export default function RootLayout({ children }) {
                   </Grid>
                   <Grid item xs={12} md={10}>
                     <Heading
-                      title={"Chats"}
+                      title={getTitle(title)}
                       DarkThemeApplied={toggleTheme}
                       lightThemeApplied={toggleTheme}
                     />
@@ -70,3 +75,20 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+
+const getTitle = (pathname) => {
+  switch (pathname) {
+    case "/chats":
+      return "Chats";
+    case "/settings":
+      return "Settings";
+    case "/calls":
+      return "Calls";
+    case "/explore":
+      return "Explore";
+    case "/privacy":
+      return "Privacy";
+    default:
+      return "Default Title";
+  }
+};

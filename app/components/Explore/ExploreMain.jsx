@@ -3,7 +3,6 @@ import React from 'react'
 import SwiperFirst from './SwiperFirst'
 import NewsCardFirst from './NewsCardFirst'
 import NewsCardSecond from './NewsCardSecond'
-import Heading from '@/app/common/Heading'
 const ExploreMain = () => {
     return (
         <div>
