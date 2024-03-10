@@ -15,6 +15,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { BUSINESS_SWIPER_NEWS } from '@/app/config/config';
+import Link from 'next/link';
 const SwiperFirst = () => {
     const [home1, setHome1] = useState([]);
 
@@ -31,6 +32,10 @@ const SwiperFirst = () => {
         homecard1();
     }, []); // Execute only once on component mount
 
+    const handleClick = (response) => {
+        localStorage.setItem("selectNews", JSON.stringify(response))
+
+    }
     return (
         <div >
 
@@ -45,17 +50,22 @@ const SwiperFirst = () => {
 
                         <SwiperSlide key={index}>
                             <div className="h-[300px] w-full">
+                                <Link href={`/explore/${encodeURIComponent(news.title)}`}>
 
-                                <img src={news.image} alt={news.title} height={'100%'}
-                                    width={"100%"} className='object-cover'
-                                />
+                                    <img src={news.image} alt={news.title} height={'100%'}
+                                        width={"100%"} onClick={() => handleClick(news)} className='object-co
+                                            ver'
+                                    />
+
+
+                                </Link>
                             </div>
                         </SwiperSlide>
                     ))
                 }
             </Swiper>
 
-        </div>
+        </div >
     );
 };
 
