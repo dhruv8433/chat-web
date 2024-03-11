@@ -13,7 +13,7 @@ export const SingleChatBody = ({ user, recipient }) => {
 
   useEffect(() => {
     // Establish connection to Socket.IO server -- we need to start backend server idk why..?
-    const newSocket = io("http://localhost:4000"); // Replace with your server URL
+    const newSocket = io("https://chat-back-end-gamma.vercel.app"); // Replace with your server URL
     setSocket(newSocket);
 
     // Clean up socket connection on unmount
