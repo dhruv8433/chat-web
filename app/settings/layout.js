@@ -4,11 +4,11 @@ import { Grid, Switch } from "@mui/material";
 import Settings from "../components/Settings/Settings";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-export default function Layout({children}) {
+export default function Layout({ children }) {
   return (
     <Router>
       <div>
-        <Grid container spacing={2} mt={4}>
+        <Grid container spacing={2} mt={2}>
           <Grid xs={12} md={6} lg={4}>
             <Settings />
           </Grid>

@@ -13,7 +13,7 @@ import Link from "next/link";
 
 const Settings = () => {
   return (
-    <MyBox isPrimary={true} className="min-h-[770px] rounded-2xl">
+    <MyBox isPrimary={true} className="min-h-[100%] rounded-2xl">
       <div className="p-2 ">
         {/* Profile */}
         <Link href='/settings/profile'>
