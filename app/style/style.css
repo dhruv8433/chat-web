@@ -71,3 +71,7 @@
 .swiper-slide{
   width: "100%"
 }
+
+.maplibregl-canvas{
+  border-radius: 1rem;
+}

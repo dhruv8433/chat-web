@@ -23,6 +23,7 @@
     "jsonwebtoken": "^9.0.2",
     "lodash": "^4.17.21",
     "lottie-react": "^2.4.0",
+    "maplibre-gl": "^4.1.0",
     "mongoose": "^8.1.2",
     "next": "14.1.0",
     "react": "^18",
