@@ -1,11 +1,8 @@
-import React from 'react'
-import ExploreMain from '../components/Explore/ExploreMain'
-const page = () => {
-  return (
-    <div>
-      <ExploreMain />
-    </div>
-  )
-}
+import React from "react";
+import ExploreMain from "../components/Explore/ExploreMain";
 
-export default page
+const page = () => {
+  return <ExploreMain />;
+};
+
+export default page;
