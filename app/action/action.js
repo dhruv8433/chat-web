@@ -1,3 +1,4 @@
+import { ADD_BIO, EDIT_BIO, REMOVE_BIO } from "../reducer/ProfileBio";
 import {
   LOGIN_USER_FAILURE,
   LOGIN_USER_SUCCESS,
@@ -25,4 +26,21 @@ export const logoutuser = () => ({
 export const addUser = (userData) => ({
   type: USER_ADD_CHATLIST,
   payload: userData,
+});
+
+// profile add bio
+export const addBio = (bio) => ({
+  type: ADD_BIO,
+  payload: bio,
+});
+
+// edit bio
+export const editBio = (bio) => ({
+  type: EDIT_BIO,
+  payload: bio,
+});
+
+// remove Bio
+export const removeBio = () => ({
+  type: REMOVE_BIO
 });
