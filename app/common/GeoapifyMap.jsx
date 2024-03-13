@@ -1,24 +1,24 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import maplibre from "maplibre-gl";
+import { useEffect } from "react";
 
-function GeoapifyMap() {
+const GeoapifyMap = ({key}) => {
   let mapContainer;
   let map; // Store map instance
 
   useEffect(() => {
     const mapStyle = "https://maps.geoapify.com/v1/styles/osm-carto/style.json";
-    console.log("key", process.env.NEXT_PUBLIC_API_KEY);
     const initialState = {
-      lng: 11,
-      lat: 49,
+      lat: 20.5937,
+      lng: 78.9629,
       zoom: 4,
     };
-
+const key=process.env.MAP_API_KEY;
     map = new maplibre.Map({
       container: mapContainer,
-      style: `${mapStyle}?apiKey=${process.env.NEXT_PUBLIC_API_KEY}`,
+      style: `${mapStyle}?apiKey=${key}`,
       center: [initialState.lng, initialState.lat],
       zoom: initialState.zoom,
     });
@@ -35,6 +35,6 @@ function GeoapifyMap() {
       style={{ height: "760px" }}
     ></div>
   );
-}
+};
 
 export default GeoapifyMap;

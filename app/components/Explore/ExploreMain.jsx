@@ -1,10 +1,11 @@
-import { Grid, TextField } from "@mui/material";
+import { Grid } from "@mui/material";
 import React from "react";
 import SwiperFirst from "./SwiperFirst";
-import NewsCardFirst from "./NewsCardFirst";
-import NewsCardSecond from "./NewsCardSecond";
 import GeoapifyMap from "@/app/common/GeoapifyMap";
+
 const ExploreMain = () => {
+  const key = process.env.MAP_API_KEY;
+  console.log("here", key);
   return (
     <div>
       <Grid container spacing={1}>
@@ -14,7 +15,7 @@ const ExploreMain = () => {
 
         <Grid item xs={12} md={4}>
           <div className="mt-10 rounded-2xl">
-            <GeoapifyMap />
+            <GeoapifyMap key={key} />
           </div>
         </Grid>
 
