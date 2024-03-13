@@ -33,13 +33,7 @@ export default function RootLayout({ children }) {
       : localStorage.setItem("theme", true);
   }
   const login = Cookies.get("user");
-  const [title, setTitle] = useState("");
-  useEffect(() => {
-    localStorage.setItem("pathname", window.location.pathname);
 
-    const pathValue = localStorage.getItem("pathname");
-    setTitle(pathValue);
-  }, []);
   return (
     <html lang="en">
       <body className={`${font.className}`}>
@@ -58,7 +52,7 @@ export default function RootLayout({ children }) {
                   </Grid>
                   <Grid item xs={12} md={10}>
                     <Heading
-                      title={getTitle(title)}
+                      title={getTitle(window.location.pathname)}
                       DarkThemeApplied={toggleTheme}
                       lightThemeApplied={toggleTheme}
                     />
