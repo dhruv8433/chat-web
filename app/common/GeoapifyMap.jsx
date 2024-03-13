@@ -8,9 +8,8 @@ function GeoapifyMap() {
   let map; // Store map instance
 
   useEffect(() => {
-    const myAPIKey = "7a63216f12d64daf8c810b73b0866e99";
     const mapStyle = "https://maps.geoapify.com/v1/styles/osm-carto/style.json";
-
+    console.log("key", process.env.NEXT_PUBLIC_API_KEY);
     const initialState = {
       lng: 11,
       lat: 49,
@@ -19,7 +18,7 @@ function GeoapifyMap() {
 
     map = new maplibre.Map({
       container: mapContainer,
-      style: `${mapStyle}?apiKey=${myAPIKey}`,
+      style: `${mapStyle}?apiKey=${process.env.NEXT_PUBLIC_API_KEY}`,
       center: [initialState.lng, initialState.lat],
       zoom: initialState.zoom,
     });
