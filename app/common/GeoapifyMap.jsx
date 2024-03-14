@@ -28,10 +28,31 @@ const GeoapifyMap = ({ key }) => {
       zoom: initialState.zoom,
     });
 
+    let marker;
+
     map.on("load", () => {
       // Now that the map is loaded, you can add the marker
-      new maplibre.Marker().setLngLat([lat, lng]).addTo(map);
+      marker = new maplibre.Marker().setLngLat([lat, lng]).addTo(map);
+
+      // Add a click event to the map
+      map.on("click", (event) => {
+        console.log(
+          "Latitude:",
+          event.lngLat.lat,
+          "Longitude:",
+          event.lngLat.lng
+        );
+
+        // Add a new marker at the clicked location
+        marker = new maplibre.Marker()
+          .setLngLat([event.lngLat.lat, event.lngLat.lng])
+          .addTo(map);
+      });
     });
+
+    return () => {
+      map.remove();
+    };
 
     return () => {
       map.remove();

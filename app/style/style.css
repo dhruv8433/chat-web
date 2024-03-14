@@ -110,3 +110,10 @@
 .maplibregl-ctrl-bottom-right {
   display: none;
 }
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 760px;
+  overflow: hidden; /* This will hide anything that goes outside the container */
+}
