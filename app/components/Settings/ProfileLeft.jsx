@@ -7,6 +7,7 @@ import MyBox from "@/app/common/MyBox";
 import { useDispatch, useSelector } from "react-redux";
 import MyButton from "@/app/common/MyButton";
 import { addBio, editBio, removeBio } from "@/app/action/action"; // Import the action creators for adding, editing, and removing bio
+import { userBioServices } from "@/app/services/userBioService";
 
 const ProfileLeft = () => {
   const theme = useTheme();
@@ -32,8 +33,10 @@ const ProfileLeft = () => {
     setIsModalOpen(false);
   };
 
-  const handleAddBio = () => {
-    dispatch(addBio(bio)); // Dispatch the action to add bio to the Redux store
+  async function handleAddBio() {
+    const response = await userBioServices(bio)
+    console.log(response)
+    dispatch(addBio(response)); // Dispatch the action to add bio to the Redux store
     handleCloseModal();
   };
 
@@ -82,9 +85,7 @@ const ProfileLeft = () => {
 
         {
           bio && (
-
             <div>
-
               <MyButton
                 title={"Remove Bio"}
                 className="button h-min w-max p-2 rounded m-auto mr-2"
