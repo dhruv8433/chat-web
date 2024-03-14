@@ -13,9 +13,7 @@ import { darkTheme, lightTheme } from "./themes/theme";
 import { Box, Grid, ThemeProvider } from "@mui/material";
 import { Toaster } from "react-hot-toast";
 import Cookies from "js-cookie";
-import { config } from "dotenv";
-
-config();
+require("dotenv").config();
 
 const font = Baloo_2({
   subsets: ["vietnamese"],

@@ -68,10 +68,45 @@
   justify-content: space-evenly;
 }
 
-.swiper-slide{
-  width: "100%"
+.swiper-slide {
+  width: "100%";
 }
 
-.maplibregl-canvas{
+.maplibregl-canvas {
   border-radius: 1rem;
+}
+
+.swiper-button-next {
+  background: #2f80f0;
+  padding-block: 50px;
+  margin-right: -14px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding-inline: 20px;
+}
+
+.swiper-button-prev {
+  background: #2f80f0;
+  padding-block: 50px;
+  padding-inline: 20px;
+  margin-left: -14px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-button-prev::after {
+  color: white;
+}
+
+.swiper-button-next::after {
+  color: white;
+}
+
+.maplibregl-ctrl-bottom-right {
+  display: none;
 }

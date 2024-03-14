@@ -1,26 +1,36 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import maplibre from "maplibre-gl";
+import { useEffect } from "react";
+import { MAP_KEY } from "../config/config";
+import L from "leaflet";
 
-function GeoapifyMap() {
+const GeoapifyMap = ({ key }) => {
   let mapContainer;
   let map; // Store map instance
 
   useEffect(() => {
     const mapStyle = "https://maps.geoapify.com/v1/styles/osm-carto/style.json";
-    console.log("key", process.env.NEXT_PUBLIC_API_KEY);
+    const lat = 20.5937;
+    const lng = 78.9629;
+
     const initialState = {
-      lng: 11,
-      lat: 49,
+      lat: lat,
+      lng: lng,
       zoom: 4,
     };
 
     map = new maplibre.Map({
       container: mapContainer,
-      style: `${mapStyle}?apiKey=${process.env.NEXT_PUBLIC_API_KEY}`,
+      style: `${mapStyle}?apiKey=${MAP_KEY}`,
       center: [initialState.lng, initialState.lat],
       zoom: initialState.zoom,
+    });
+
+    map.on("load", () => {
+      // Now that the map is loaded, you can add the marker
+      new maplibre.Marker().setLngLat([lat, lng]).addTo(map);
     });
 
     return () => {
@@ -35,6 +45,6 @@ function GeoapifyMap() {
       style={{ height: "760px" }}
     ></div>
   );
-}
+};
 
 export default GeoapifyMap;

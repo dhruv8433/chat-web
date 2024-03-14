@@ -1,15 +1,24 @@
-import { Grid, TextField } from "@mui/material";
 import React from "react";
+import { Grid } from "@mui/material";
+import MyBox from "@/app/common/MyBox";
 import SwiperFirst from "./SwiperFirst";
 import NewsCardFirst from "./NewsCardFirst";
-import NewsCardSecond from "./NewsCardSecond";
 import GeoapifyMap from "@/app/common/GeoapifyMap";
+
 const ExploreMain = () => {
   return (
-    <div>
-      <Grid container spacing={1}>
+    <MyBox isPrimary={true} className="mt-4 rounded-2xl p-2">
+      {/* we provide categories here */}
+      <div className="">
+        articles
+        tourism
+        12-15
+      </div>
+
+      <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
           <SwiperFirst />
+          <NewsCardFirst />
         </Grid>
 
         <Grid item xs={12} md={4}>
@@ -17,15 +26,8 @@ const ExploreMain = () => {
             <GeoapifyMap />
           </div>
         </Grid>
-
-        {/* <Grid xs={12} md={6}>
-                    <NewsCardFirst />
-                </Grid>
-                <Grid xs={12} md={12}>
-                    <NewsCardSecond />
-                </Grid> */}
       </Grid>
-    </div>
+    </MyBox>
   );
 };
 
