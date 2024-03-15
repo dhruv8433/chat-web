@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import React, { useEffect, useState } from "react";
 import { Navigation, Pagination } from "swiper/modules";
 import { getArticals } from "@/app/services/getArticles";
-import { SwiperSkeleton } from "../Skeleton";
+import { SwiperSkeleton } from "../../Skeleton";
 import SwiperCard from "./SwiperCard";
 
 const SwiperFirst = () => {

@@ -5,6 +5,7 @@ import MyBox from "@/app/common/MyBox";
 import MyText from "@/app/common/MyText";
 import React, { useEffect, useState } from "react";
 import { getArticals } from "@/app/services/getArticles";
+import slugify from "slugify";
 
 const NewsCardFirst = () => {
   const [articles, setArticles] = useState([]);
@@ -33,24 +34,32 @@ const NewsCardFirst = () => {
     <div className="w-full mt-3">
       {/* get only 3 news */}
       {articles.slice(0, 3).map((news, index) => (
-        <Link key={index} href={`/explore/${encodeURIComponent(news.title)}`}>
+        // use slugify to make url with - separator
+        <Link
+          key={index}
+          href={`/explore/${slugify(news.title).toLowerCase()}`}
+        >
           <MyBox
-            className="flex justify-center p-5 my-4 h-[200px] overflow-hidden"
+            className="flex justify-center p-5 my-4 h-[200px] rounded-2xl overflow-hidden"
             OnClick={handleCardClick(news)}
           >
-            <div className="min-w-[200px] object-cover h-full">
+            {/* news image */}
+            <div className="w-[80%] h-full">
               <img
                 className="object-cover w-full h-full rounded-xl"
                 src={news.image}
                 alt={news.alt}
-                height={"100%"}
-                width={"100%"}
               />
             </div>
 
+            {/* news body with max 300 character */}
             <div className="ml-10">
-              <MyText className={"font-semibold text-lg"}>{news.title}</MyText>
-              <MyText>{news.body}</MyText>
+              <MyText className={"font-semibold text-2xl"}>{news.title}</MyText>
+              <MyText className={"mt-4"}>
+                {news.body.length > 300
+                  ? news.body.substring(0, 300) + "..."
+                  : news.body}
+              </MyText>
             </div>
           </MyBox>
         </Link>
