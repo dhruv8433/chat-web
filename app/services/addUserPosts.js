@@ -1,9 +1,9 @@
 import { httpAxios } from "../httpAxios";
 
-export async function userAddPostServices(postImg) {
+export async function userAddPostServices(formData) {
   const result = await httpAxios
     .post("/add-posts", {
-      postImg: postImg,
+      formData: formData,
     })
     .then((response) => response.data);
   return result;
