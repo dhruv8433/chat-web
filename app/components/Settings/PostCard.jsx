@@ -12,9 +12,9 @@ const PostCard = () => {
     console.log([...formData.entries()])
     try {
       const responseData = await userAddPostServices(formData); // Call service function with FormData
-      if (responseData && responseData.file && responseData.file.url) {
+      if (responseData && responseData.url) {
         console.log("File uploaded successfully!");
-        setImageUrl(responseData.file.url);
+        setImageUrl(responseData.url);
       } else {
         console.error("Failed to upload file");
       }
