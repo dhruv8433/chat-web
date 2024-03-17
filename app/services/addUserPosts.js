@@ -1,9 +1,12 @@
-import axios from "axios";
 import { httpAxios } from "../httpAxios";
 
 export async function userAddPostServices(formData) {
-  const result = await httpAxios
-    .post("/add-post", formData) // Specify complete URL
-    .then((response) => response.data);
-  return result;
+  try {
+    const response = await httpAxios.post("/add-post", formData);
+    return response.data;
+  } catch (error) {
+    // Handle errors, e.g., network errors, server errors, etc.
+    console.error("Error adding post:", error);
+    throw error; // Re-throw the error to propagate it to the caller
+  }
 }
