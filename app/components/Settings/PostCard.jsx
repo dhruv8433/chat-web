@@ -9,6 +9,7 @@ const PostCard = () => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("postImg", e.target.postImg.files[0]);
+    console.log(...formData.entries())
 
     try {
       const responseData = await userAddPostServices(formData); // Call service function with FormData
