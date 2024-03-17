@@ -1,11 +1,8 @@
 import React from "react";
-import ProfileLeft from "../components/Settings/ProfileLeft";
-import EmptyChattingComponent from "../emptystate/EmptyChattingComponent";
+import SettingEmptyState from "../emptystate/SettingEmptyState";
 
 const page = () => {
-  return (
-    <EmptyChattingComponent />
-  );
+  return <SettingEmptyState />;
 };
 
 export default page;

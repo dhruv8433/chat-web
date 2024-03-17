@@ -8,7 +8,7 @@ export default function Layout({ children }) {
   return (
     <Router>
       <div>
-        <Grid container spacing={2} mt={2}>
+        <Grid container mt={2}>
           <Grid xs={12} md={6} lg={4}>
             <Settings />
           </Grid>
