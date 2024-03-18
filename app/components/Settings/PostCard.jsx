@@ -1,8 +1,23 @@
 "use client"
 import { userAddPostServices } from "@/app/services/addUserPosts";
-import React, { useState } from "react";
+import { getUserPost } from "@/app/services/getUserPosts";
+import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 
 const PostCard = () => {
+  const [posts, setPosts] = useState([])
+
+  // get post 
+  const fetchUserPosts = async () => {
+    try {
+      const postData = await getUserPost("SKybRaMPvu7Fxb5t1Trc");
+      setPosts([postData]); // Assuming the response contains a "posts" array
+      console.log(postData, "posts-get")
+    } catch (error) {
+      console.error("Error fetching user posts:", error);
+    }
+  };
+  // post added req
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -17,7 +32,7 @@ const PostCard = () => {
       // Handle error, maybe show an error message to the user
     }
   };
-
+  useEffect(() => { fetchUserPosts() }, [])
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -26,6 +41,25 @@ const PostCard = () => {
       </form>
 
       <h1>Post Info</h1>
+      {posts.map((post) => (
+        <Card key={post.id} sx={{ maxWidth: 345 }}>
+          <CardActionArea>
+            <CardMedia
+              component="img"
+              height="140"
+              image={post.profile_url} // Assuming "profile_url" contains the image URL
+              alt="Post Image"
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div">
+                {post.filename}
+              </Typography>
+
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      ))}
+
     </div >
   );
 };
