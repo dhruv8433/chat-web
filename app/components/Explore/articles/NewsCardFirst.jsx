@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import MyBox from "@/app/common/MyBox";
-import MyText from "@/app/common/MyText";
 import React, { useEffect, useState } from "react";
 import { getArticals } from "@/app/services/getArticles";
 import slugify from "slugify";
