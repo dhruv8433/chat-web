@@ -1,13 +1,13 @@
 "use client";
 
+import Link from "next/link";
+import slugify from "slugify";
+import { Grid } from "@mui/material";
 import MyBox from "@/app/common/MyBox";
+import NewsCardContent from "./NewsCardContent";
+import React, { useEffect, useState } from "react";
 import NewsHeading from "@/app/common/NewsHeading";
 import { getArticals } from "@/app/services/getArticles";
-import { Grid } from "@mui/material";
-import Link from "next/link";
-import React, { useEffect, useState } from "react";
-import slugify from "slugify";
-import NewsCardContent from "./NewsCardContent";
 
 const NewsCardSecond = () => {
   const [articles, setArticles] = useState([]);
