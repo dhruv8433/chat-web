@@ -9,7 +9,7 @@ import MyButton from "@/app/common/MyButton";
 import { addBio, editBio, removeBio } from "@/app/action/action"; // Import the action creators for adding, editing, and removing bio
 import { userBioServices } from "@/app/services/userBioService";
 
-const ProfileLeft = () => {
+const ProfileLeft = ({ posts }) => {
   const theme = useTheme();
   const dispatch = useDispatch();
   const textStyle = {
@@ -103,7 +103,8 @@ const ProfileLeft = () => {
       {/* user posts */}
       <div className="p-10" style={textStyle}>
         POSTS
-        <PostCard />
+        <PostCard posts={posts} />
+
       </div>
 
       {/* Bio modal */}
