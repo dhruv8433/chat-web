@@ -10,13 +10,15 @@ import StarBorderPurple500OutlinedIcon from "@mui/icons-material/StarBorderPurpl
 import MyBox from "@/app/common/MyBox";
 import { Divider } from "@mui/material";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 
-const Settings = () => {
+const Settings = ({ posts }) => {
+ 
   return (
     <MyBox isPrimary={true} className="min-h-[100%] rounded-2xl">
       <div className="p-2 ">
         {/* Profile */}
-        <Link href='/settings/profile'>
+        <Link href={`/settings/profile/${posts}`}>
 
           <Options OptionIcon={PersonOutlineIcon} title={"Profile"} />
         </Link>
