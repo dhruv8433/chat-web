@@ -102,7 +102,6 @@ const ProfileLeft = ({ posts }) => {
 
       {/* user posts */}
       <div className="p-10" style={textStyle}>
-        POSTS
         <PostCard onPostsLoaded={(total) => setTotalPosts(total)} />      </div>
 
       {/* Bio modal */}
