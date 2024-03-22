@@ -55,27 +55,31 @@ const PostCard = ({ onPostsLoaded }) => {
   useEffect(() => { fetchUserPosts() }, [userId])
   return (
     <div>
-      <div style={{ textAlign: 'center', marginBottom: '20px' }} onClick={handleOpenModal}>
+      <div style={{ textAlign: 'center', marginBottom: '20px', cursor: 'pointer' }} onClick={handleOpenModal}>
         {/* add camera */}
         <CameraIcon style={{ fontSize: "40px", borderRadius: "50%", border: "1px solid #000", padding: "20px" }} />
         <MyText style={{ fontWeight: "bold", fontSize: "40px" }}>Share Photos</MyText>
         <MyText >When you share photos, they will appear on your profile </MyText>
-        <MyLink href={'google'}>Share your first photo</MyLink>
+        <MyText className={{ color: 'to-blue-500' }}>Share your first photo</MyText>
       </div>
       <Modal open={isModalOpen} onClose={handleCloseModal}>
         <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', padding: '20px', borderRadius: '10px', backgroundColor: theme.palette.background.body, color: theme.palette.background.text }}>
           <MyText>Create new post</MyText>
           <Divider />
           {/* img */}
-          <MyText className='m-10'>Drag photos and videos here</MyText>
-          <form onSubmit={handleSubmit}>
-            <TextField type="file" name="postImages" />
-            <Button type="submit">Submit</Button>
-          </form>
+          <div style={{ margin: '60px' }}>
+            <img src='https://aeromegh.com/wp-content/uploads/2023/05/Image-Upload.png' width={'200px'} height='100px' alt='upload img photos' />
+            <MyText >Drag photos and videos here</MyText>
+            <form onSubmit={handleSubmit}>
+              <TextField type="file" name="postImages" />
+              <MyButton type='submit'>Submit</MyButton>
+            </form>
+          </div>
         </div>
       </Modal>
       <Divider />
-      <h1>Post Info</h1>
+      <h1>Posts</h1>
+      
 
       {
         loading ? (
