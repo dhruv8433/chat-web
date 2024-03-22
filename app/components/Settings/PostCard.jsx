@@ -1,21 +1,24 @@
 "use client"
 import { userAddPostServices } from "@/app/services/addUserPosts";
 import { getUserPost } from "@/app/services/getUserPosts";
-import { Card, CardActionArea, CardContent, CardMedia, Typography } from "@mui/material";
+import { Card, CardActionArea, CardContent, CardMedia, CircularProgress, Divider, Grid, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
-const PostCard = () => {
+const PostCard = ({ onPostsLoaded }) => {
   const [post, setPosts] = useState([])
+  const [loading, setLoading] = useState(true);
   const userId = useSelector((state) => state.auth.authUser.data.localId); // Get userId from Redux
   // get post 
   const fetchUserPosts = async () => {
     try {
       const postData = await getUserPost(userId);
-      console.log(postData, "post-get-check")
-      setPosts(postData.posts); // Assuming the response contains a "posts" array
+      setPosts(postData.posts);
+      setLoading(false)
+      onPostsLoaded(postData.posts.length)
     } catch (error) {
       console.error("Error fetching user posts:", error);
+      setLoading(false)
     }
   };
   // post added req
@@ -38,34 +41,44 @@ const PostCard = () => {
   return (
     <div>
       <form onSubmit={handleSubmit}>
+
         <input type="file" name="postImages" />
-        
         <button type="submit">Submit</button>
       </form>
-
+      <Divider />
       <h1>Post Info</h1>
-      {post.map((post) => (
 
-        <Card key={post.id} sx={{ maxWidth: 345 }}>
-          <CardActionArea>
-            <CardMedia
-              component="img"
-              height="140"
-              image={post.profile_url} // Assuming "profile_url" contains the image URL
-              alt="Post Image"
-              sx={{ display: 'flex' }}
-            />
-            <CardContent>
-              <Typography gutterBottom variant="h5" component="div">
-                {post.filename}
-              </Typography>
+      {
+        loading ? (
+          <CircularProgress />
+        ) : (
+          <Grid container spacing={2}>
+            {post.map((post) => (
+              <Grid item key={post.id} xs={12} sm={6} md={6} lg={4} xl={4}>
+                <Card key={post.id} sx={{ maxWidth: 345 }}>
+                  <CardActionArea>
+                    <CardMedia
+                      component="img"
+                      height="140"
+                      image={post.profile_url}
+                      alt="Post Image"
+                      sx={{ display: 'flex' }}
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="div">
+                        {post.filename}
+                      </Typography>
 
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      ))}
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        )
+      }
 
-    </div >
+    </div>
   );
 };
 
