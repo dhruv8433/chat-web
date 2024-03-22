@@ -19,7 +19,8 @@ const ProfileLeft = ({ posts }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bio, setBio] = useState("");
   const storedBio = useSelector((state) => state.Bio.bio);
-
+  const userData = useSelector((state) => state.auth.authUser.data)
+  const [totalPosts, setTotalPosts] = useState(0)
   useEffect(() => {
     // Set the bio from the Redux store as the initial state when the component mounts
     setBio(storedBio);
@@ -35,7 +36,6 @@ const ProfileLeft = ({ posts }) => {
 
   async function handleAddBio() {
     const response = await userBioServices(bio)
-    console.log(response)
     dispatch(addBio(response)); // Dispatch the action to add bio to the Redux store
     handleCloseModal();
   };
@@ -51,9 +51,9 @@ const ProfileLeft = ({ posts }) => {
     <MyBox isPrimary={true} className="border border-black min-h-[770px]  rounded-2xl">
       {/* Avatar, following and posts info */}
       <div className="mt-4 flex justify-around">
-        <MyTextAvatar className='h-36 w-36' />
+        <MyTextAvatar className='h-36 w-36' src={userData.photoUrl} />
         <div className="flex flex-col justify-center text-center">
-          <h1 style={textStyle}>1</h1>
+          <h1 style={textStyle}>{totalPosts}</h1>
           <h1 style={textStyle}>Posts</h1>
         </div>
         <div className="flex flex-col justify-center text-center">
@@ -69,7 +69,7 @@ const ProfileLeft = ({ posts }) => {
       {/* user details and captions */}
       <div className="m-10 mt-2">
         <div className="flex">
-          <h1 className="chat-name text-2xl" style={textStyle}>Partner</h1>
+          <h1 className="chat-name text-2xl" style={textStyle}>{userData.displayName}</h1>
           <MyButton
             title={"Edit Bio"}
             className="button h-min w-max p-2 rounded m-auto mr-2"
@@ -102,10 +102,7 @@ const ProfileLeft = ({ posts }) => {
 
       {/* user posts */}
       <div className="p-10" style={textStyle}>
-        POSTS
-        <PostCard posts={posts} />
-
-      </div>
+        <PostCard onPostsLoaded={(total) => setTotalPosts(total)} />      </div>
 
       {/* Bio modal */}
       <Modal open={isModalOpen} onClose={handleCloseModal} className="flex justify-center h-min mt-10" sx={{ justifyContent: 'center' }}>
