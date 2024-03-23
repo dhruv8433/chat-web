@@ -79,7 +79,7 @@ const PostCard = ({ onPostsLoaded }) => {
       </Modal>
       <Divider />
       <h1>Posts</h1>
-      
+    
 
       {
         loading ? (
