@@ -1,7 +1,6 @@
 "use client";
 
 import MyBox from "@/app/common/MyBox";
-import MyButton from "@/app/common/MyButton";
 import MyText from "@/app/common/MyText";
 import { getLiveTouristSuggestion } from "@/app/services/getLiveTouristSuggestion";
 import { Grid } from "@mui/material";
@@ -39,7 +38,10 @@ const page = () => {
         <MyText className={"font-semibold text-2xl"}>
           Top Tourism Places Of India
         </MyText>
-        <input placeholder="Search places" className="border w-[400px] p-2 rounded-xl" />
+        <input
+          placeholder="Search places"
+          className="border w-[400px] p-2 rounded-xl"
+        />
       </div>
 
       {/* list of user prefrence cards */}
@@ -61,6 +63,8 @@ const page = () => {
             </div>
           ))}
         </Grid>
+
+        {/* here pagination logic*/}
       </div>
     </MyBox>
   );
