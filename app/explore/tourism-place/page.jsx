@@ -2,7 +2,9 @@
 
 import MyBox from "@/app/common/MyBox";
 import MyButton from "@/app/common/MyButton";
+import MyText from "@/app/common/MyText";
 import { getLiveTouristSuggestion } from "@/app/services/getLiveTouristSuggestion";
+import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 const page = () => {
@@ -12,8 +14,8 @@ const page = () => {
   async function handleSeachPlace() {
     try {
       const response = await getLiveTouristSuggestion(query);
-      console.log("search for " + query + "results :" + response);
       setTouristData(response.data);
+      console.log("data", response);
     } catch (error) {
       console.log("error in gettign results : ", error);
     }
@@ -23,9 +25,9 @@ const page = () => {
     handleSeachPlace();
   }, []);
   return (
-    <MyBox isPrimary={true} className={"mt-4 rounded-2xl"}>
+    <MyBox isPrimary={true} className={"p-4 mt-4 rounded-2xl"}>
       {/* image container with input for search anything popular */}
-      <div className="p-4 h-[600px] w-full">
+      <div className="h-[600px] w-full">
         <img
           src="https://ds393qgzrxwzn.cloudfront.net/resize/m600x500/cat1/img/images/0/jwkvsCOubn.jpg"
           className="object-cover h-full w-full rounded-2xl"
@@ -33,26 +35,32 @@ const page = () => {
         />
       </div>
 
-      {/* search bar */}
-      <div className="w-full flex justify-center items-center relative -mb-4">
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search for popular places"
-          className="p-2 w-[50%]"
-        />
-        <MyButton isPrimaryButton={true} className={"py-2 px-3"}>Search</MyButton>
+      <div className="mt-2 flex justify-between">
+        <MyText className={"font-semibold text-2xl"}>
+          Top Tourism Places Of India
+        </MyText>
+        <input placeholder="Search places" className="border w-[400px] p-2 rounded-xl" />
       </div>
 
       {/* list of user prefrence cards */}
-      <div className="">
-        {touristData.map((place) => {
-          return <div key={place.id}>
-            <img src={place.result_object.photo.images.original.url} height={"300px"} width={"300px"} alt={place.result_object.name} />
-            {place.result_object.name}
-            </div>;
-        })}
+      <div className="w-full">
+        <Grid container>
+          {touristData.map((places, index) => (
+            <div key={index}>
+              <Grid key={places.id} item xs={12} md={4}>
+                <div className="border p-2 rounded-2xl mx-1 w-[480px] my-3">
+                  <img
+                    src={places.image}
+                    className="object-cover h-[300px] w-full rounded-2xl"
+                    alt={places.name}
+                  />
+                  <MyText className={"font-bold mt-2"}>{places.name}</MyText>
+                  <h1 className={"text-gray-400"}>{places.location}</h1>
+                </div>
+              </Grid>
+            </div>
+          ))}
+        </Grid>
       </div>
     </MyBox>
   );
