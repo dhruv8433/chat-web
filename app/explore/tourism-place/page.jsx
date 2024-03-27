@@ -3,26 +3,38 @@
 import MyBox from "@/app/common/MyBox";
 import MyText from "@/app/common/MyText";
 import { getLiveTouristSuggestion } from "@/app/services/getLiveTouristSuggestion";
-import { Grid } from "@mui/material";
+import { Grid, Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 const page = () => {
   const [query, setQuery] = useState("india");
   const [touristData, setTouristData] = useState([]);
 
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+
   async function handleSeachPlace() {
     try {
-      const response = await getLiveTouristSuggestion(query);
+      const response = await getLiveTouristSuggestion(query, page, 10);
       setTouristData(response.data);
+      setTotalPages(
+        Math.ceil(response.pagination.total / response.pagination.limit)
+      ); // calculate total pages
       console.log("data", response);
     } catch (error) {
       console.log("error in gettign results : ", error);
     }
   }
 
+  async function handlePageChange(event, value) {
+    setPage(value);
+    handleSeachPlace();
+  }
+
   useEffect(() => {
     handleSeachPlace();
-  }, []);
+  }, [page]);
+
   return (
     <MyBox isPrimary={true} className={"p-4 mt-4 rounded-2xl"}>
       {/* image container with input for search anything popular */}
@@ -65,6 +77,9 @@ const page = () => {
         </Grid>
 
         {/* here pagination logic*/}
+        <div className="flex justify-center items-center">
+          <Pagination count={totalPages} onChange={handlePageChange} />
+        </div>
       </div>
     </MyBox>
   );
