@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import MyBox from "@/app/common/MyBox";
 import MyText from "@/app/common/MyText";
 import { Grid } from "@mui/material";
@@ -73,14 +73,28 @@ const Page = () => {
                                     <MyText className={"font-bold mt-2"}>{places.category}</MyText>
                                     <p className={"text-gray-400"}>{places.description}</p>
                                 </div>
+                                {/* Display eating_image in the same card */}
+                                {places.category.toLowerCase() === searchQuery.toLowerCase() && places.eating_image && places.eating_image.map((image, imageIndex) => (
+                                    <div key={imageIndex} className="flex items-center mt-2">
+                                        <img
+                                            src={image}
+                                            className="object-cover h-12 w-12 rounded-full mr-2"
+                                            alt={`eating_image_${imageIndex}`}
+                                        />
+                                        <div>
+                                            {/* You can add more details about the eating image here */}
+                                        </div>
+                                    </div>
+                                ))}
                             </Grid>
+
                         ))}
                     </Grid>
-                )}
 
+                )}
                 {/* pagination logic here*/}
             </div>
-        </MyBox>
+        </MyBox >
     );
 };
 
