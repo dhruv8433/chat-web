@@ -40,7 +40,7 @@ const NewsCardSecond = () => {
           {articles.slice(0, 2).map((news, index) => (
             <div className="w-[100%] mr-4" key={index}>
               <Grid item xs={12}>
-                <Link href={`/explore/${slugify(news.title).toLowerCase()}`}>
+                <Link href={`/explore/articles/${slugify(news.title).toLowerCase()}`}>
                   <MyBox
                     className="flex justify-center p-5 my-4 h-[300px] rounded-2xl overflow-hidden"
                     OnClick={handleCardClick(news)}
