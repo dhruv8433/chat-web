@@ -8,7 +8,7 @@ const ExploreMain = () => {
   return (
     <MyBox isPrimary={true} className="mt-4 rounded-2xl p-4">
       <Grid container>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={3}>
           {/* Tourism places */}
           <Link href={"/explore/articles"}>
             <div className="border rounded-2xl p-4 w-max">
@@ -24,7 +24,7 @@ const ExploreMain = () => {
             </div>
           </Link>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={3}>
           {/* Articles */}
           <Link href={"/explore/health-and-fitness"}>
             <div className="border rounded-2xl p-4 w-max">
@@ -40,7 +40,7 @@ const ExploreMain = () => {
             </div>
           </Link>
         </Grid>
-        <Grid item xs={12} md={4}>
+        <Grid item xs={12} md={3}>
           {/* Health & Fitness */}
           <Link href={"/explore/tourism-place"}>
             <div className="border rounded-2xl p-4 w-max">
