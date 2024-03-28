@@ -37,7 +37,7 @@ const NewsCardFirst = () => {
         // use slugify to make url with - separator
         <Link
           key={index}
-          href={`/explore/${slugify(news.title).toLowerCase()}`}
+          href={`/explore/articles/${slugify(news.title).toLowerCase()}`}
         >
           <MyBox
             className="flex justify-center p-5 my-4 h-[200px] rounded-2xl overflow-hidden"

@@ -7,7 +7,7 @@ const SwiperCard = ({ news }) => {
   };
   return (
     <div className="h-[500px] rounded-2xl w-full">
-      <Link href={`/explore/${encodeURIComponent(news.title)}`}>
+      <Link href={`/explore/articles/${encodeURIComponent(news.title)}`}>
         <img
           src={news.image}
           alt={news.title}
