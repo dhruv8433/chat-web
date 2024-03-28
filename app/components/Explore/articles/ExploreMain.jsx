@@ -7,6 +7,7 @@ import { Grid } from "@mui/material";
 const ExploreMain = () => {
   return (
     <MyBox isPrimary={true} className="mt-4 rounded-2xl p-4">
+      {/* Arrange all categories in alphabetical order */}
       <Grid container>
         <Grid item xs={12} md={3}>
           {/* Tourism places */}
