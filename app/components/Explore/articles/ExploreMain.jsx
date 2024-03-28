@@ -13,7 +13,7 @@ const ExploreMain = () => {
           <Link href={"/explore/articles"}>
             <div className="border rounded-2xl p-4 w-max">
               <img
-                src="https://ds393qgzrxwzn.cloudfront.net/resize/m600x500/cat1/img/images/0/jwkvsCOubn.jpg"
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBsi9V4IAJOdHT8TwQlO1w6WiVQjt0vCqwTfstFDnQ3dNF-7aO-cJHCu6wpUnnyiYrpg"
                 className="object-cover h-[200px] w-[300px] rounded-2xl"
                 alt="bg"
               />
@@ -26,10 +26,10 @@ const ExploreMain = () => {
         </Grid>
         <Grid item xs={12} md={4}>
           {/* Articles */}
-          <Link href={"/explore/health-and-fintess"}>
+          <Link href={"/explore/health-and-fitness"}>
             <div className="border rounded-2xl p-4 w-max">
               <img
-                src="https://ds393qgzrxwzn.cloudfront.net/resize/m600x500/cat1/img/images/0/jwkvsCOubn.jpg"
+                src="https://www.fitnall.com/wp-content/uploads/2023/10/HealthInsurance.png"
                 className="object-cover h-[200px] w-[300px] rounded-2xl"
                 alt="bg"
               />
