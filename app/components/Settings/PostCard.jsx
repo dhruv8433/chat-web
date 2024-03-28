@@ -71,28 +71,12 @@ const PostCard = ({ onPostsLoaded }) => {
   }, [userId]);
   return (
     <div>
-      <div
-        style={{ textAlign: "center", marginBottom: "20px" }}
-        onClick={handleOpenModal}
-      >
-        <IconButton
-          style={{
-            fontSize: "80px",
-            borderRadius: "50%",
-            border: "1px solid #000",
-            padding: "20px",
-          }}
-        >
-          {/* add camera */}
-          <UploadIcon />
-        </IconButton>
-        <MyText style={{ fontWeight: "bold", fontSize: "40px" }}>
-          Share Photos
-        </MyText>
-        <MyText>
-          When you share photos, they will appear on your profile{" "}
-        </MyText>
-        <MyLink href={"google"}>Share your first photo</MyLink>
+      <div style={{ textAlign: 'center', marginBottom: '20px' }} onClick={handleOpenModal}>
+        {/* add camera */}
+        <CameraIcon style={{ fontSize: "40px", borderRadius: "50%", border: "1px solid #000", padding: "20px" }} />
+        <MyText style={{ fontWeight: "bold", fontSize: "40px" }}>Share Photos</MyText>
+        <MyText >When you share photos, they will appear on your profile </MyText>
+        <MyLink href={'google'}>Share your first photo</MyLink>
       </div>
       <Modal open={isModalOpen} onClose={handleCloseModal}>
         <div
@@ -110,7 +94,7 @@ const PostCard = ({ onPostsLoaded }) => {
           <MyText>Create new post</MyText>
           <Divider />
           {/* img */}
-          <MyText className="m-10">Drag photos and videos here</MyText>
+          <MyText className='m-10'>Drag photos and videos here</MyText>
           <form onSubmit={handleSubmit}>
             <TextField type="file" name="postImages" />
             <Button type="submit">Submit</Button>
@@ -118,7 +102,8 @@ const PostCard = ({ onPostsLoaded }) => {
         </div>
       </Modal>
       <Divider />
-      <h1>Post Info</h1>
+      <h1>Posts</h1>
+    
 
       {loading ? (
         <CircularProgress />
