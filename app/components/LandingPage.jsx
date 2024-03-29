@@ -32,14 +32,19 @@ const LandingPage = () => {
           width={"100%"}
           alt=""
         />
-        <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
+        <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center ">
           <h1
             className={
-              "font-bold text-center opacity-45 text-white hover:opacity-55"
+              "font-bold text-start opacity-45 text-white hover:opacity-55 font-serif"
             }
             style={{ fontSize: "300px" }}
           >
             explore
+          </h1>
+          <h1 className="font-semibold text-xl w-[500px] text-start text-white">
+           `` Exploration knows no bounds; it's a journey of revelation. With
+            every step, new horizons unfold, inviting us to embrace the unknown
+            and discover the beauty that lies beyond. ``
           </h1>
           {/* Action button -- login form */}
           <div className="">
