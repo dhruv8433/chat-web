@@ -46,7 +46,7 @@ const LandingPage = () => {
             <MyButton
               myFunction={() => setLoginModel(true)}
               className={
-                "text-start text-2xl mt-4 px-2 py-1 rounded border border-white font-bold"
+                "text-start text-2xl mt-4 px-2 py-1 rounded border border-white bg-transparent font-bold"
               }
             >
               Login Now
