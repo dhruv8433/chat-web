@@ -2,14 +2,13 @@
 
 import MyBox from "../common/MyBox";
 import MyText from "../common/MyText";
-import { motion } from "framer-motion";
 import Feature from "../common/Feature";
 import React, { useState } from "react";
 import MyButton from "../common/MyButton";
 import LoginModel from "../model/LoginModel";
 import SignUpModel from "../model/SignUpModel";
 import UserNameModel from "../model/UserNameModel";
-import { Grid, Modal, Paper } from "@mui/material";
+import { Box, Grid, Modal } from "@mui/material";
 import ThemeAnimation from "@/app/animations/theme.json";
 import ExploreAnimation from "@/app/animations/explore.json";
 import VideoCallAnimation from "@/app/animations/video-call.json";
@@ -32,7 +31,10 @@ const LandingPage = () => {
           width={"100%"}
           alt=""
         />
-        <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center ">
+        <Box
+          sx={{display: {xs: "none", md: "block"}}}
+          className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center "
+        >
           <h1
             className={
               "font-bold text-start opacity-45 text-white hover:opacity-55 font-serif"
@@ -42,7 +44,7 @@ const LandingPage = () => {
             explore
           </h1>
           <h1 className="font-semibold text-xl w-[500px] text-start text-white">
-           `` Exploration knows no bounds; it's a journey of revelation. With
+            `` Exploration knows no bounds; it's a journey of revelation. With
             every step, new horizons unfold, inviting us to embrace the unknown
             and discover the beauty that lies beyond. ``
           </h1>
@@ -57,7 +59,7 @@ const LandingPage = () => {
               Login Now
             </MyButton>
           </div>
-        </div>
+        </Box>
       </div>
 
       {/* LOGIN Model */}
