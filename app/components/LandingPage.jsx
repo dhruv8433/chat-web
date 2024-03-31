@@ -25,14 +25,28 @@ const LandingPage = () => {
       {/* Bg -- mountains */}
 
       <div className="w-full relative">
-        <img
-          src="https://assets.cntraveller.in/photos/643e4e2d894e6f6e66aad427/16:9/w_4368,h_2457,c_limit/153245593"
-          height={"100%"}
-          width={"100%"}
-          alt=""
-        />
+        {/* for large screen */}
+        <Box sx={{ display: { xs: "none", md: "flex" } }}>
+          <img
+            src="https://assets.cntraveller.in/photos/643e4e2d894e6f6e66aad427/16:9/w_4368,h_2457,c_limit/153245593"
+            height={"100%"}
+            width={"100%"}
+            alt=""
+          />
+        </Box>
+        {/* for small screen */}
+        <Box sx={{ display: { xs: "flex", md: "none" }, height: "500px", objectFit: "cover" }}>
+          <img
+            src="https://assets.cntraveller.in/photos/643e4e2d894e6f6e66aad427/16:9/w_4368,h_2457,c_limit/153245593"
+            height={"100%"}
+            width={"100%"}
+            alt=""
+            className="object-cover"
+          />
+        </Box>
+        {/* for large screen */}
         <Box
-          sx={{display: {xs: "none", md: "block"}}}
+          sx={{ display: { xs: "none", md: "flex" } }}
           className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center "
         >
           <h1
@@ -54,6 +68,36 @@ const LandingPage = () => {
               myFunction={() => setLoginModel(true)}
               className={
                 "text-start text-2xl mt-4 px-2 py-1 rounded border border-white bg-transparent font-bold"
+              }
+            >
+              Login Now
+            </MyButton>
+          </div>
+        </Box>
+        {/* for small screen */}
+        <Box
+          sx={{ display: { xs: "flex", md: "none" } }}
+          className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center "
+        >
+          <h1
+            className={
+              "font-bold text-start opacity-45 text-white hover:opacity-55 font-serif"
+            }
+            style={{ fontSize: "80px" }}
+          >
+            explore
+          </h1>
+          <h1 className="font-semibold text-sm md:w-[500px] sm:w-auto text-start text-white">
+            `` Exploration knows no bounds; it's a journey of revelation. With
+            every step, new horizons unfold, inviting us to embrace the unknown
+            and discover the beauty that lies beyond. ``
+          </h1>
+          {/* Action button -- login form */}
+          <div className="">
+            <MyButton
+              myFunction={() => setLoginModel(true)}
+              className={
+                "text-start text-sm mt-4 px-2 py-1 rounded border border-white bg-transparent font-bold"
               }
             >
               Login Now
