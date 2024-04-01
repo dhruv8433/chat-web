@@ -10,7 +10,6 @@ import StarBorderPurple500OutlinedIcon from "@mui/icons-material/StarBorderPurpl
 import MyBox from "@/app/common/MyBox";
 import { Divider } from "@mui/material";
 import Link from "next/link";
-import { useSelector } from "react-redux";
 
 const Settings = ({ posts }) => {
  
