@@ -22,6 +22,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import UploadIcon from "@mui/icons-material/Upload";
 import MyButton from "@/app/common/MyButton";
+
 const PostCard = ({ onPostsLoaded }) => {
   const theme = useTheme();
   const [post, setPosts] = useState([]);
@@ -73,7 +74,7 @@ const PostCard = ({ onPostsLoaded }) => {
     <div>
       <div style={{ textAlign: 'center', marginBottom: '20px' }} onClick={handleOpenModal}>
         {/* add camera */}
-        <CameraIcon style={{ fontSize: "40px", borderRadius: "50%", border: "1px solid #000", padding: "20px" }} />
+        <UploadIcon style={{ fontSize: "40px", borderRadius: "50%", border: "1px solid #000", padding: "20px" }} />
         <MyText style={{ fontWeight: "bold", fontSize: "40px" }}>Share Photos</MyText>
         <MyText >When you share photos, they will appear on your profile </MyText>
         <MyLink href={'google'}>Share your first photo</MyLink>
