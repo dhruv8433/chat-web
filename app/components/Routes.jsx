@@ -135,7 +135,7 @@ export default function Routes() {
             
             {...a11yProps(4)}
             onChange={() => handleTabChange(4)}
-            />
+            />Settings
           </MyLink>
         </Tabs>
 
